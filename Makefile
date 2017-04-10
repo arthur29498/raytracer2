@@ -5,16 +5,38 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Mon Apr 10 09:19:51 2017 Arthur Philippe
+## Last update Mon Apr 10 10:15:48 2017 Arthur Philippe
 ##
 
 CC	=	gcc
 
 RM	=	rm -f
 
-NAME	=	raytracer
+NAME	=	raytracer2
 
-SRCS	=	src/main.c
+SRCS	=	src/main.c				\
+		src/data_nuke.c				\
+		src/light.c				\
+		src/str.c				\
+		src/open_window.c			\
+		src/data_gathering/fd_errors.c		\
+		src/data_gathering/get_next_line.c	\
+		src/data_gathering/list.c		\
+		src/data_gathering/load_data.c		\
+		src/data_gathering/match.c		\
+		src/data_gathering/objects_creation.c	\
+		src/moves/rotate.c			\
+		src/moves/translate.c			\
+		src/objects/cone.c			\
+		src/objects/cylinder.c			\
+		src/objects/plane.c			\
+		src/objects/sphere.c			\
+		src/objects/utils.c			\
+		src/render/calc_dir_vector.c		\
+		src/render/color_modifier.c		\
+		src/render/my_put_pixel.c		\
+		src/render/obj_fctn_shunter.c		\
+		src/render/raytrace_scene.c		\
 
 OBJS	=	$(SRCS:.c=.o)
 
@@ -24,7 +46,7 @@ CFLAGS	=	-Wextra -Wall
 
 CFLAGS	+=	-I include/
 
-LDFLAGS	=	-L./lib/acp -lacp
+LDFLAGS	=	-L./lib/acp -lacp -lc_graph_prog -lm
 
 all: make_acp_print $(NAME)
 
@@ -44,4 +66,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re lib_make
+.PHONY: all clean fclean re make_acp_print
