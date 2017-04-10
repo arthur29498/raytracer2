@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Feb 22 18:45:40 2017 Arthur Philippe
-** Last update Sun Mar 19 22:05:28 2017 Arthur Philippe
+** Last update Mon Apr 10 16:23:29 2017 etienne.filliat
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -16,6 +16,7 @@
 #include "raytracer.h"
 #include "raytracer_messages.h"
 #include "raytracer_data.h"
+#define D	150
 
 inline static sfColor	get_def_color(t_object *obj)
 {
@@ -29,6 +30,31 @@ inline static sfColor	get_def_color(t_object *obj)
     return (sfYellow);
   else
     return (sfBlack);
+}
+
+inline static void	get_damier_color(sfVector3f last_intersect,
+					 sfColor *color)
+{
+  sfVector2i		pos;
+
+  pos.x = (int) last_intersect.x % D;
+  pos.y = (int) last_intersect.y % D;
+  if (pos.x >= 0 && pos.y >= 0)
+    {
+      if ((pos.x > (D / 2) && pos.y > (D / 2))
+	  || (pos.x <= (D / 2) && pos.y <= (D / 2)))
+	*color = sfRed;
+      else
+	*color = sfYellow;
+    }
+  else
+    {
+      if ((pos.x > (D / 2) && pos.y > (D / 2 * -1))
+	  || (pos.x <= (D / 2) && pos.y <= (D / 2 * -1)))
+	*color = sfRed;
+      else
+	*color = sfYellow;
+    }
 }
 
 inline static int	raytrace(t_object *list,
@@ -51,6 +77,7 @@ inline static int	raytrace(t_object *list,
           env->last_intersect = get_intersection(env->eye,
 						 env->curr_dir_vector,
 						 k);
+	  get_damier_color(env->last_intersect, color);
 	  coef = color_modifier(env, list, env->last_intersect);
 	  coef += (coef < 0.9) ? 0.1 : 1 - coef;
 	  color->a *= coef;
