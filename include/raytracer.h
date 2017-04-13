@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Sun Mar 19 14:40:36 2017 Arthur Philippe
+** Last update Tue Apr 11 17:38:45 2017 etienne.filliat
 */
 
 #ifndef RAYTRACER_H_
@@ -157,5 +157,7 @@ void	*my_memset(void *str, int c, int size);
 int	my_getnbr(char *);
 char	*my_strcpy(char *dest, char *src);
 char	*my_strcat(char *dest, char *src);
+void			get_damier_color(sfVector3f last_intersect,
+					 sfColor *color);
 
 #endif /* !RAYTRACER_H_ */
