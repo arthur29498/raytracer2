@@ -1,11 +1,11 @@
 /*
-** list.c for raytracer1 in /home/arthur/delivery/raytracer1/src/data_gathering/
+** list.c for raytracer1 in raytracer1/src/data_gathering/
 **
 ** Made by Arthur Philippe
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Mon Feb 20 12:30:23 2017 Arthur Philippe
-** Last update Sat Mar 18 10:15:55 2017 Arthur Philippe
+** Last update Sat Apr 15 14:22:18 2017 Arthur Philippe
 */
 
 #include <stdlib.h>
@@ -42,23 +42,28 @@ t_object	*create_list_node()
   return (obj);
 }
 
-void	find_eye(t_object *list, t_env *env)
+void	find_eye(t_env *env)
 {
+  t_object	*list;
+
+  list = env->objects;
   while (list)
     {
       if (list->type == ID_EYE)
 	{
-	  env->eye = list->pos;
-	  env->eye_rot = list->rot;
+	  env->eye_pt = list->pos;
+	  env->eye_rt = list->rot;
 	  return ;
 	}
       list = list->next;
     }
-  env->light = DEFAUT_LIGHT;
 }
 
-void	find_light(t_object *list, t_env *env)
+void	find_light(t_env *env)
 {
+  t_object	*list;
+
+  list = env->objects;
   while (list)
     {
       if (list->type == ID_LIGHT)
@@ -68,7 +73,6 @@ void	find_light(t_object *list, t_env *env)
 	}
       list = list->next;
     }
-  env->light = DEFAUT_LIGHT;
 }
 
 int		check_list_content(t_object *list,

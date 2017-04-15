@@ -5,12 +5,13 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Sun Mar 19 14:40:36 2017 Arthur Philippe
+** Last update Sat Apr 15 14:31:00 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
 # define RAYTRACER_H_
 
+# include "raytracer_structs.h"
 # define EXIT_SUCCESS	0
 # define EXIT_FAIL	84
 # define EXIT_ARG_COUNT	84
@@ -48,45 +49,6 @@
 # define X_TR_Z	((to_rotate.x * cosf(ZA)) + (to_rotate.y * -sinf(ZA)))
 # define Y_TR_Z	((to_rotate.x * sinf(ZA)) + (to_rotate.y * cosf(ZA)))
 # define Z_TR_Z	(to_rotate.z)
-
-typedef struct		s_my_framebuffer
-{
-  sfUint8		*pixels;
-  int			width;
-  int			height;
-}			t_my_framebuffer;
-
-typedef struct		s_my_window
-{
-  sfRenderWindow	*window;
-  sfSprite		*sprite;
-  sfTexture		*tex;
-  t_my_framebuffer	*buffer;
-}			t_my_window;
-
-typedef struct		s_object
-{
-  int			id;
-  int			type;
-  float			size_a;
-  float			size_b;
-  sfVector3f		pos;
-  sfVector3f		rot;
-  struct s_object	*next;
-}			t_object;
-
-typedef struct		s_env
-{
-  t_object		*list;
-  sfVector3f		eye;
-  sfVector3f		eye_rot;
-  sfVector3f		light;
-  sfVector3f		curr_dir_vector;
-  sfVector3f		last_intersect;
-  sfVector3f		last_normal;
-  int			last_obj;
-  sfVector2i		screen_size;
-}			t_env;
 /*
 ** Mandatory
 */
@@ -117,28 +79,15 @@ sfVector3f	get_intersection(sfVector3f eye_pos,
 /*
 ** window related implements.
 */
-int			open_window(t_my_window *,
-				    t_object *,
-				    t_env *,
-				    char *);
 sfRenderWindow		*create_window(char *, int, int);
 t_my_framebuffer	*my_framebuffer_create(int, int);
 void			wf_window_destroy(t_my_window *);
-void			wf_refresh_window(t_my_window *,
-					  t_env *,
-					  int *);
 void			reset_pixels(t_my_framebuffer *buffer);
 /*
 ** Render
 */
-void			raytrace_scene(t_my_framebuffer *buffer,
-				       t_object *list,
-				       t_env *env);
 float			obj_fctn_shunter(t_object *object,
-					 t_env *env);
-float			color_modifier(t_env *env,
-				       t_object *obj,
-				       sfVector3f intersect_pt);
+					 t_render_in *in_arg);
 /*
 ** Math
 */
