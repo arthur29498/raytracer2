@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Feb 15 19:36:12 2017 Arthur Philippe
-** Last update Sat Apr 15 14:21:30 2017 Arthur Philippe
+** Last update Sat Apr 15 16:28:10 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -49,8 +49,9 @@ int		raytracer_launcher(char *file_name)
   find_light(&env);
   env.screen_size.x = SC_W;
   env.screen_size.y = SC_H;
+  raytrace_full_scene(&env);
   destroy_objects(env.objects);
-  window_destroy(&w);
+  // window_destroy(&w);
   return (0);
 }
 

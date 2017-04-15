@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Sat Apr 15 14:41:48 2017 Arthur Philippe
+## Last update Sat Apr 15 15:07:01 2017 Arthur Philippe
 ##
 
 CC	=	gcc
@@ -35,6 +35,7 @@ SRCS	=	src/main.c				\
 		src/render/calc_dir_vector.c		\
 		src/render/my_put_pixel.c		\
 		src/render/obj_fctn_shunter.c		\
+		src/render/raytrace.c		\
 
 OBJS	=	$(SRCS:.c=.o)
 
