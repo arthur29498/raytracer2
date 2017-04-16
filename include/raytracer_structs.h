@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 12:40:43 2017 Arthur Philippe
-** Last update Sat Apr 15 16:05:20 2017 Arthur Philippe
+** Last update Sat Apr 15 17:22:38 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_STRUCTS_H_
@@ -53,6 +53,7 @@ typedef struct		s_render_out
 
 typedef struct		s_env
 {
+  t_my_window		*w;
   t_object		*objects;
   t_object		*lights;
   sfVector3f		eye_pt;

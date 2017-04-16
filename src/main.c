@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Feb 15 19:36:12 2017 Arthur Philippe
-** Last update Sat Apr 15 16:28:10 2017 Arthur Philippe
+** Last update Sat Apr 15 17:28:51 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -42,6 +42,7 @@ int		raytracer_launcher(char *file_name)
   t_my_window	w;
   t_env		env;
 
+  env.w = &w;
   env.objects = get_objects_from_file(file_name);
   if (!env.objects)
     return (84);
@@ -49,9 +50,13 @@ int		raytracer_launcher(char *file_name)
   find_light(&env);
   env.screen_size.x = SC_W;
   env.screen_size.y = SC_H;
+  if (!(w.buffer = my_framebuffer_create(SC_W, SC_H)))
+    return (84);
   raytrace_full_scene(&env);
+  open_window(&w, file_name);
+  window_loop(&w, &env, file_name);
   destroy_objects(env.objects);
-  // window_destroy(&w);
+  window_destroy(&w);
   return (0);
 }
 

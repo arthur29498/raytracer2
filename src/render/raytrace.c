@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Sat Apr 15 16:50:29 2017 Arthur Philippe
+** Last update Sat Apr 15 17:21:45 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -69,7 +69,7 @@ void		raytrace_full_scene(t_env *env)
       prep_ray(&in, env, px);
       objects_hit_attempt(env, &in, &out);
       if (out.k > 0)
-	printf("out: %f - %d\n", out.k, out.last_obj);
+	my_put_pixel(env->w->buffer, px.x, px.y, sfBlue);
       px.y = (px.x < SC_W) ? px.y : px.y + 1;
       px.x = (px.x < SC_W) ? px.x + 1 : 0;
       total_px += 1;

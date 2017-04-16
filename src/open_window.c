@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:35:59 2017 Arthur Philippe
-** Last update Sat Apr 15 12:54:18 2017 Arthur Philippe
+** Last update Sat Apr 15 17:20:09 2017 Arthur Philippe
 */
 
 #include <stdlib.h>
@@ -25,7 +25,6 @@ int		open_window(t_my_window *w, char *file_name)
   my_strcat(window_name, PROGRAM_NAME);
   if (!w)
     return (1);
-  w->buffer = my_framebuffer_create(SC_W, SC_H);
   acp_print(MSG_WIN_OPEN);
   w->window = create_window(window_name, SC_W, SC_H);
   w->sprite = sfSprite_create();
