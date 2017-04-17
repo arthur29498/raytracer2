@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Sat Apr 15 17:21:45 2017 Arthur Philippe
+** Last update Mon Apr 17 13:44:54 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -22,8 +22,8 @@ static void	objects_hit_attempt(t_env *env,
 				    t_render_in *in,
 				    t_render_out *out)
 {
-  t_object		*objs;
-  float			k;
+  t_object	*objs;
+  float		k;
 
   objs = env->objects;
   my_memset(out, 0, sizeof(t_render_out));
@@ -69,7 +69,7 @@ void		raytrace_full_scene(t_env *env)
       prep_ray(&in, env, px);
       objects_hit_attempt(env, &in, &out);
       if (out.k > 0)
-	my_put_pixel(env->w->buffer, px.x, px.y, sfBlue);
+	my_put_pixel(env->w->buffer, px.x - 1, px.y, sfBlue);
       px.y = (px.x < SC_W) ? px.y : px.y + 1;
       px.x = (px.x < SC_W) ? px.x + 1 : 0;
       total_px += 1;
