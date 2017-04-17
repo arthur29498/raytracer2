@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 12:40:43 2017 Arthur Philippe
-** Last update Mon Apr 17 17:21:13 2017 Arthur Philippe
+** Last update Mon Apr 17 18:08:30 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_STRUCTS_H_
@@ -50,6 +50,7 @@ typedef struct		s_render_out
   float			k;
   sfVector3f		hit_pt;
   int			last_obj;
+  int			type;
 }			t_render_out;
 
 typedef struct		s_env
@@ -62,5 +63,12 @@ typedef struct		s_env
   sfVector3f		light;
   sfVector2i		screen_size;
 }			t_env;
+
+typedef struct		s_px
+{
+  int			total_px;
+  sfVector2i		pos;
+  sfColor		color;
+}			t_px;
 
 #endif /* !RAYTRACER_STRUCTS_H_ */

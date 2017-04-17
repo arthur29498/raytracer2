@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Mon Apr 17 16:14:09 2017 Arthur Philippe
-** Last update Mon Apr 17 17:21:40 2017 Arthur Philippe
+** Last update Mon Apr 17 18:37:37 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -22,9 +22,9 @@ static void	prep_ray(t_render_in *in,
 			 t_render_out *pr_out,
 			 t_env *env)
 {
-  in->dir_vector.x = env->light.x;
-  in->dir_vector.y = env->light.y;
-  in->dir_vector.z = env->light.z;
+  in->dir_vector.x = env->light.x - pr_out->hit_pt.x;
+  in->dir_vector.y = env->light.y - pr_out->hit_pt.y;
+  in->dir_vector.z = env->light.z - pr_out->hit_pt.z;
   in->eye_pt = pr_out->hit_pt;
   in->skip = pr_out->last_obj;
 }
@@ -37,7 +37,7 @@ int		std_color_effect(t_env *env, t_render_out *pr_out)
   my_memset(&in, 0, sizeof(t_render_in));
   prep_ray(&in, pr_out, env);
   objects_hit_attempt(env, &in, &nw_out);
-  if (k >= 0 || k < 1)
+  if (nw_out.k >= 0 && nw_out.k < 1)
     return (1);
   return (0);
 }

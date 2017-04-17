@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Mon Apr 17 14:17:26 2017 Arthur Philippe
+## Last update Mon Apr 17 18:35:45 2017 Arthur Philippe
 ##
 
 CC	=	gcc
@@ -32,11 +32,14 @@ SRCS	=	src/main.c				\
 		src/objects/plane.c			\
 		src/objects/sphere.c			\
  		src/objects/utils.c			\
+		src/objects/default_colors.c		\
 		src/render/calc_dir_vector.c		\
+		src/render/get_intersection.c		\
 		src/render/my_put_pixel.c		\
 		src/render/obj_fctn_shunter.c		\
 		src/render/raytrace.c			\
 		src/render/progress.c			\
+		src/render/std_effects.c		\
 
 OBJS	=	$(SRCS:.c=.o)
 

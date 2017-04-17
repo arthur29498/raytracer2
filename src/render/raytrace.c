@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Mon Apr 17 17:30:52 2017 Arthur Philippe
+** Last update Mon Apr 17 18:33:14 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -17,6 +17,8 @@
 #include "raytracer_messages.h"
 #include "raytracer_data.h"
 #include "launch.h"
+
+int		std_color_effect(t_env *env, t_render_out *pr_out);
 
 void		objects_hit_attempt(t_env *env,
 				    t_render_in *in,
@@ -35,12 +37,17 @@ void		objects_hit_attempt(t_env *env,
     {
       k = obj_fctn_shunter(objs, in);
       if (k >= 0 && (out->k == -1 || out->k > k))
-	out->k = k;
+	{
+	  out->k = k;
+	  out->type = objs->type;
+	  out->last_obj = objs->id;
+	}
       objs = objs->next;
       if (objs && objs->id == in->skip)
 	objs = objs->next;
     }
   out->k = (out->k >= 0) ? out->k : 0;
+  out->hit_pt = get_intersection(in->eye_pt, in->dir_vector, out->k);
 }
 
 static void	prep_ray(t_render_in *in,
@@ -55,21 +62,26 @@ static void	prep_ray(t_render_in *in,
 
 void		raytrace_full_scene(t_env *env)
 {
-  int		total_px;
+  t_px		px;
   t_render_in	in;
   t_render_out	out;
-  sfVector2i	px;
 
-  total_px = px.x = px.y = 0;
-  display_progress(&total_px, 0);
-  while (px.y < SC_H)
+  px.total_px = px.pos.x = px.pos.y = 0;
+  px.color = sfBlue;
+  display_progress(&(px.total_px), 0);
+  while (px.pos.y < SC_H)
     {
-      prep_ray(&in, env, px);
+      prep_ray(&in, env, px.pos);
       objects_hit_attempt(env, &in, &out);
       if (out.k > 0)
-	my_put_pixel(env->w->buffer, px.x - 1, px.y, sfBlue);
-      display_progress(&total_px, 1);
-      progress_to_next_px(&total_px, &px);
+	{
+	  px.color = get_def_color_ty(out.type);
+	  if (!std_color_effect(env, &out))
+	    px.color.a *= 0.1;
+	  my_put_pixel(env->w->buffer, px.pos.x - 1, px.pos.y, px.color);
+	}
+      display_progress(&(px.total_px), 1);
+      progress_to_next_px(&(px.total_px), &(px.pos));
     }
-  display_progress(&total_px, 0);
+  display_progress(&(px.total_px), 0);
 }

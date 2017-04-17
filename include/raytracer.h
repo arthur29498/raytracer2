@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Mon Apr 17 15:10:31 2017 Arthur Philippe
+** Last update Mon Apr 17 18:08:11 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -85,8 +85,16 @@ t_my_framebuffer	*my_framebuffer_create(int, int);
 void			wf_window_destroy(t_my_window *);
 void			reset_pixels(t_my_framebuffer *buffer);
 /*
+** Objects
+*/
+sfColor	get_def_color_ob(t_object *obj);
+sfColor	get_def_color_ty(int type);
+/*
 ** Render
 */
+void			objects_hit_attempt(t_env *env,
+					    t_render_in *in,
+					    t_render_out *out);
 float			obj_fctn_shunter(t_object *object,
 					 t_render_in *in_arg);
 void			raytrace_full_scene(t_env *env);
