@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Sat Apr 15 14:31:00 2017 Arthur Philippe
+** Last update Mon Apr 17 15:10:31 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -79,6 +79,7 @@ sfVector3f	get_intersection(sfVector3f eye_pos,
 /*
 ** window related implements.
 */
+int			open_window(t_my_window *w, char *file_name);
 sfRenderWindow		*create_window(char *, int, int);
 t_my_framebuffer	*my_framebuffer_create(int, int);
 void			wf_window_destroy(t_my_window *);
@@ -88,6 +89,10 @@ void			reset_pixels(t_my_framebuffer *buffer);
 */
 float			obj_fctn_shunter(t_object *object,
 					 t_render_in *in_arg);
+void			raytrace_full_scene(t_env *env);
+void			progress_to_next_px(int *total_px,
+					    sfVector2i *px);
+void			display_progress(int *pr, int runing);
 /*
 ** Math
 */
