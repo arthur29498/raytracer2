@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Mon Apr 17 14:59:22 2017 Arthur Philippe
+** Last update Mon Apr 17 15:28:55 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -56,9 +56,7 @@ void		raytrace_full_scene(t_env *env)
   t_render_out	out;
   sfVector2i	px;
 
-  total_px = 0;
-  px.x = 0;
-  px.y = 0;
+  total_px = px.x = px.y = 0;
   display_progress(&total_px, 0);
   while (px.y < SC_H)
     {
