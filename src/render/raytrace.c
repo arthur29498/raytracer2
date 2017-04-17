@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Mon Apr 17 21:35:44 2017 Arthur Philippe
+** Last update Mon Apr 17 22:09:08 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -18,7 +18,7 @@
 #include "raytracer_data.h"
 #include "launch.h"
 
-int		std_color_effect(t_env *env, t_render_out *pr_out);
+float		std_color_effect(t_env *env, t_render_out *pr_out);
 
 static int	hit_single_obj(t_render_in *in,
 			       t_render_out *out,
@@ -88,8 +88,7 @@ void		raytrace_full_scene(t_env *env)
       if (out.k > 0)
 	{
 	  px.color = get_def_color_ty(out.type);
-	  if (!std_color_effect(env, &out))
-	    px.color.a *= 0.1;
+	  px.color.a *= std_color_effect(env, &out);
 	  my_put_pixel(env->w->buffer, px.pos.x - 1, px.pos.y, px.color);
 	}
       display_progress(&(px.total_px), 1);
