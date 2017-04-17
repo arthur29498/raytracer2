@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Mon Apr 17 18:33:14 2017 Arthur Philippe
+** Last update Mon Apr 17 21:23:54 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -38,7 +38,9 @@ void		objects_hit_attempt(t_env *env,
       k = obj_fctn_shunter(objs, in);
       if (k >= 0 && (out->k == -1 || out->k > k))
 	{
-	  out->k = k;
+	  out->k = (in->skip && k > 0 && k < 1) ? 1 : k;
+	  if (in->skip && k > 0 && k < 1)
+	    return ;
 	  out->type = objs->type;
 	  out->last_obj = objs->id;
 	}
@@ -47,7 +49,8 @@ void		objects_hit_attempt(t_env *env,
 	objs = objs->next;
     }
   out->k = (out->k >= 0) ? out->k : 0;
-  out->hit_pt = get_intersection(in->eye_pt, in->dir_vector, out->k);
+  if (out->k >= 0)
+    out->hit_pt = get_intersection(in->eye_pt, in->dir_vector, out->k);
 }
 
 static void	prep_ray(t_render_in *in,

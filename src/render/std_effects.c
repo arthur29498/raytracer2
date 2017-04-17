@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Mon Apr 17 16:14:09 2017 Arthur Philippe
-** Last update Mon Apr 17 18:37:37 2017 Arthur Philippe
+** Last update Mon Apr 17 21:08:43 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -37,7 +37,7 @@ int		std_color_effect(t_env *env, t_render_out *pr_out)
   my_memset(&in, 0, sizeof(t_render_in));
   prep_ray(&in, pr_out, env);
   objects_hit_attempt(env, &in, &nw_out);
-  if (nw_out.k >= 0 && nw_out.k < 1)
-    return (1);
-  return (0);
+  if (nw_out.k == 1)
+    return (0);
+  return (1);
 }
