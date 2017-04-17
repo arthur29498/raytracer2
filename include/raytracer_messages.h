@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 16 16:35:31 2017 Arthur Philippe
-** Last update Sat Mar 18 11:22:04 2017 Arthur Philippe
+** Last update Mon Apr 17 17:01:55 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_MESSAGES_H_
@@ -25,7 +25,7 @@
 # define MSG_QUIT		"raytracer: user exited. (ESC)\
 \nrun terminated.\n"
 # define MSG_RELOAD		"----------------\n\nReloading\n"
-# define MSG_RENDER		"Rendering:\n[          ]\r"
+# define MSG_RENDER		"Rendering from nought:\n[          ]\r"
 # define MSG_RENDER_DONE	"-\x1b[32mCOMPLETE\x1b[0m-\n"
 # define LOAD_CHAR		'#'
 # define MSG_WIN_OPEN		"\nOpenning window"

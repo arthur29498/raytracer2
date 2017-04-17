@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Mon Apr 17 15:28:55 2017 Arthur Philippe
+** Last update Mon Apr 17 17:30:52 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -18,7 +18,7 @@
 #include "raytracer_data.h"
 #include "launch.h"
 
-static void	objects_hit_attempt(t_env *env,
+void		objects_hit_attempt(t_env *env,
 				    t_render_in *in,
 				    t_render_out *out)
 {
@@ -26,6 +26,8 @@ static void	objects_hit_attempt(t_env *env,
   float		k;
 
   objs = env->objects;
+  if (objs && objs->id == in->skip)
+    objs = objs->next;
   my_memset(out, 0, sizeof(t_render_out));
   out->k = -1;
   k = -1;
@@ -35,6 +37,8 @@ static void	objects_hit_attempt(t_env *env,
       if (k >= 0 && (out->k == -1 || out->k > k))
 	out->k = k;
       objs = objs->next;
+      if (objs && objs->id == in->skip)
+	objs = objs->next;
     }
   out->k = (out->k >= 0) ? out->k : 0;
 }

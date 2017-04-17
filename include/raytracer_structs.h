@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 12:40:43 2017 Arthur Philippe
-** Last update Sat Apr 15 17:22:38 2017 Arthur Philippe
+** Last update Mon Apr 17 17:21:13 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_STRUCTS_H_
@@ -42,6 +42,7 @@ typedef struct		s_render_in
   sfVector3f		eye_pt;
   sfVector3f		eye_rt;
   sfVector3f		dir_vector;
+  int			skip;
 }			t_render_in;
 
 typedef struct		s_render_out
