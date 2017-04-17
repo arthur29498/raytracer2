@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Mon Apr 17 21:23:54 2017 Arthur Philippe
+** Last update Mon Apr 17 21:35:44 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -20,30 +20,39 @@
 
 int		std_color_effect(t_env *env, t_render_out *pr_out);
 
+static int	hit_single_obj(t_render_in *in,
+			       t_render_out *out,
+			       t_object *objs)
+{
+  float		k;
+
+  k = obj_fctn_shunter(objs, in);
+  if (k >= 0 && (out->k == -1 || out->k > k))
+    {
+      out->k = (in->skip && k > 0 && k < 1) ? 1 : k;
+      if (in->skip && k > 0 && k < 1)
+	return (1);
+      out->type = objs->type;
+      out->last_obj = objs->id;
+    }
+  return (0);
+}
+
 void		objects_hit_attempt(t_env *env,
 				    t_render_in *in,
 				    t_render_out *out)
 {
   t_object	*objs;
-  float		k;
 
   objs = env->objects;
   if (objs && objs->id == in->skip)
     objs = objs->next;
   my_memset(out, 0, sizeof(t_render_out));
   out->k = -1;
-  k = -1;
   while (objs)
     {
-      k = obj_fctn_shunter(objs, in);
-      if (k >= 0 && (out->k == -1 || out->k > k))
-	{
-	  out->k = (in->skip && k > 0 && k < 1) ? 1 : k;
-	  if (in->skip && k > 0 && k < 1)
-	    return ;
-	  out->type = objs->type;
-	  out->last_obj = objs->id;
-	}
+      if (hit_single_obj(in, out, objs))
+	return ;
       objs = objs->next;
       if (objs && objs->id == in->skip)
 	objs = objs->next;
