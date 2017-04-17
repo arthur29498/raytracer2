@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Mon Apr 17 13:44:54 2017 Arthur Philippe
+** Last update Mon Apr 17 14:22:19 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -59,13 +59,10 @@ void		raytrace_full_scene(t_env *env)
   total_px = 0;
   px.x = 0;
   px.y = 0;
+  display_progress(&total_px, 0);
   while (px.y < SC_H)
     {
-      if (total_px >= SC_W * SC_H / 10)
-	{
-	  acp_print("%c", LOAD_CHAR);
-	  total_px = 0;
-	}
+      display_progress(&total_px, 1);
       prep_ray(&in, env, px);
       objects_hit_attempt(env, &in, &out);
       if (out.k > 0)
@@ -74,4 +71,5 @@ void		raytrace_full_scene(t_env *env)
       px.x = (px.x < SC_W) ? px.x + 1 : 0;
       total_px += 1;
     }
+  display_progress(&total_px, 0);
 }
