@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 12:40:43 2017 Arthur Philippe
-** Last update Mon Apr 17 18:08:30 2017 Arthur Philippe
+** Last update Tue Apr 18 13:44:16 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_STRUCTS_H_
@@ -70,5 +70,12 @@ typedef struct		s_px
   sfVector2i		pos;
   sfColor		color;
 }			t_px;
+
+typedef struct		s_keywords
+{
+  int			id_type;
+  char			*match_name;
+  char			*name;
+}			t_keywords;
 
 #endif /* !RAYTRACER_STRUCTS_H_ */

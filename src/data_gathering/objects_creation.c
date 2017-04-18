@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Feb 18 11:24:50 2017 Arthur Philippe
-** Last update Wed Mar 15 21:29:55 2017 Arthur Philippe
+** Last update Tue Apr 18 13:46:00 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -16,37 +16,42 @@
 #include "raytracer_messages.h"
 #include "raytracer_data.h"
 
+t_keywords	g_keywords[] =
+  {
+    {ID_SPHERE, OBJ_SPHERE, TYPE_SPHERE},
+    {ID_PLANE, OBJ_PLANE, TYPE_PLANE},
+    {ID_CYLINDER, OBJ_CYLINDER, TYPE_CYLINDER},
+    {ID_CONE, OBJ_CONE, TYPE_CONE},
+    {ID_LIGHT, OBJ_LIGHT, TYPE_LIGHT},
+    {ID_EYE, OBJ_EYE, TYPE_EYE},
+    {0, NULL, NULL},
+  };
+
 int	resolve_object_type(char *str)
 {
-  if (match(str, OBJ_SPHERE))
-    return (ID_SPHERE);
-  else if (match(str, OBJ_PLANE))
-    return (ID_PLANE);
-  else if (match(str, OBJ_CYLINDER))
-    return (ID_CYLINDER);
-  else if (match(str, OBJ_CONE))
-    return (ID_CONE);
-  else if (match(str, OBJ_LIGHT))
-    return (ID_LIGHT);
-  else if (match(str, OBJ_EYE))
-    return (ID_EYE);
+  int	i;
+
+  i = 0;
+  while (g_keywords[i].id_type)
+    {
+      if (g_keywords[i].name && match(str, g_keywords[i].match_name))
+	return (g_keywords[i].id_type);
+      i += 1;
+    }
   return (0);
 }
 
 char	*get_object_type(int type)
 {
-  if (type == ID_SPHERE)
-    return (TYPE_SPHERE);
-  else if (type == ID_PLANE)
-    return (TYPE_PLANE);
-  else if (type == ID_CYLINDER)
-    return (TYPE_CYLINDER);
-  else if (type == ID_CONE)
-    return (TYPE_CONE);
-  else if (type == ID_LIGHT)
-    return (TYPE_LIGHT);
-  else if (type == ID_EYE)
-    return (TYPE_EYE);
+  int	i;
+
+  i = 0;
+  while (g_keywords[i].id_type)
+    {
+      if (type == g_keywords[i].id_type)
+	return (g_keywords[i].name);
+      i += 1;
+    }
   return (TYPE_UNK);
 }
 
