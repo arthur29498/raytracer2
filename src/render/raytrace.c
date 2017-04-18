@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Tue Apr 18 11:25:51 2017 Arthur Philippe
+** Last update Tue Apr 18 14:52:42 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -87,7 +87,7 @@ void		raytrace_full_scene(t_env *env)
       objects_hit_attempt(env, &in, &out);
       if (out.k > 0)
 	{
-	  px.color = get_def_color_ty(out.type);
+	  px.color = get_color_from_objs(env->objects, out.last_obj);
 	  if (out.type == ID_PLANE)
 	    set_chessboard_color(out.hit_pt, &(px.color));
 	  px.color.a *= std_color_effect(env, &out);

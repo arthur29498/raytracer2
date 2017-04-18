@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Mon Apr 17 17:46:14 2017 Arthur Philippe
-** Last update Mon Apr 17 18:07:49 2017 Arthur Philippe
+** Last update Tue Apr 18 14:55:54 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -43,4 +43,20 @@ sfColor	get_def_color_ty(int type)
     return (sfYellow);
   else
     return (sfBlack);
+}
+
+sfColor get_color_from_objs(t_object *objs, int id)
+{
+  while (objs)
+    {
+      if (objs->id == id)
+	{
+	  if (objs->col.a)
+	    return (objs->col);
+	  else
+	    return (get_def_color_ob(objs));
+	}
+      objs = objs->next;
+    }
+  return (sfBlack);
 }
