@@ -119,5 +119,7 @@ void	*my_memset(void *str, int c, int size);
 int	my_getnbr(char *);
 char	*my_strcpy(char *dest, char *src);
 char	*my_strcat(char *dest, char *src);
+void			get_damier_color(sfVector3f last_intersect,
+					 sfColor *color);
 
 #endif /* !RAYTRACER_H_ */

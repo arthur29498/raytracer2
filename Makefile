@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Mon Apr 17 18:35:45 2017 Arthur Philippe
+## Last update Tue Apr 11 17:37:50 2017 etienne.filliat
 ##
 
 CC	=	gcc
@@ -40,6 +40,7 @@ SRCS	=	src/main.c				\
 		src/render/raytrace.c			\
 		src/render/progress.c			\
 		src/render/std_effects.c		\
+		src/procedural_texturing/chest_board.c	\
 
 OBJS	=	$(SRCS:.c=.o)
 
