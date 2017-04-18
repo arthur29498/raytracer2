@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Tue Apr 18 11:28:10 2017 Arthur Philippe
+## Last update Tue Apr 18 14:27:21 2017 Arthur Philippe
 ##
 
 CC	=	gcc
@@ -33,6 +33,7 @@ SRCS	=	src/main.c				\
 		src/objects/sphere.c			\
  		src/objects/utils.c			\
 		src/objects/default_colors.c		\
+		src/data_gathering/objs_types.c		\
 		src/render/calc_dir_vector.c		\
 		src/render/get_intersection.c		\
 		src/render/my_put_pixel.c		\

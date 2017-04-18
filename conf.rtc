@@ -18,6 +18,10 @@ A=25
 X=60
 Y=51
 Z=75
+cR=255
+cG=0
+cB=255
+cA=0
 END
 
 OBJECT

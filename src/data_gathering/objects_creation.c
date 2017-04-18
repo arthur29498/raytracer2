@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Feb 18 11:24:50 2017 Arthur Philippe
-** Last update Tue Apr 18 13:52:52 2017 Arthur Philippe
+** Last update Tue Apr 18 14:37:06 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -40,6 +40,34 @@ int	add_rotation(char *buffer, int *idx, t_object *new_object)
   return (1);
 }
 
+int	add_position(char *buffer, int *idx, t_object *new_object)
+{
+  if (buffer[*idx] == 'X')
+    new_object->pos.x = my_getnbr(&buffer[*idx + 2]);
+  else if (buffer[*idx] == 'Y')
+    new_object->pos.y = my_getnbr(&buffer[*idx + 2]);
+  else if (buffer[*idx] == 'Z')
+    new_object->pos.z = my_getnbr(&buffer[*idx + 2]);
+  else
+    return (0);
+  return (1);
+}
+
+int	add_color(char *buffer, int *idx, t_object *new_object)
+{
+  if (buffer[*idx] == 'c' && buffer[*idx + 1] == 'R')
+    new_object->col.r = my_getnbr(&buffer[*idx + 3]);
+  else if (buffer[*idx] == 'c' && buffer[*idx + 1] == 'G')
+    new_object->col.g = my_getnbr(&buffer[*idx + 3]);
+  else if (buffer[*idx] == 'c' && buffer[*idx + 1] == 'B')
+    new_object->col.b = my_getnbr(&buffer[*idx + 3]);
+  else if (buffer[*idx] == 'c' && buffer[*idx + 1] == 'A')
+    new_object->col.a = my_getnbr(&buffer[*idx + 3]);
+  else
+    return (0);
+  return (1);
+}
+
 t_object	*create_object(char *buffer, int *idx)
 {
   t_object	*new_object;
@@ -49,17 +77,16 @@ t_object	*create_object(char *buffer, int *idx)
   new_object->next = NULL;
   while (buffer[*idx])
     {
-      add_size(buffer, idx, new_object);
-      add_rotation(buffer, idx, new_object);
-      if (buffer[*idx] == 'X')
-  	new_object->pos.x = my_getnbr(&buffer[*idx + 2]);
-      else if (buffer[*idx] == 'Y')
-	new_object->pos.y = my_getnbr(&buffer[*idx + 2]);
-      else if (buffer[*idx] == 'Z')
-	new_object->pos.z = my_getnbr(&buffer[*idx + 2]);
-      else if (buffer[*idx] == 'T')
-	new_object->type = resolve_object_type(&buffer[*idx + 2]);
-      else if (buffer[*idx] == 'E')
+      if (buffer[*idx] != '#')
+	{
+	  add_size(buffer, idx, new_object);
+	  add_rotation(buffer, idx, new_object);
+	  add_position(buffer, idx, new_object);
+	  add_color(buffer, idx, new_object);
+	  if (buffer[*idx] == 'T')
+	    new_object->type = resolve_object_type(&buffer[*idx + 2]);
+	}
+      if (buffer[*idx] == 'E')
 	break;
       while (buffer[*idx] && buffer[(*idx)++] != '\n');
     }
