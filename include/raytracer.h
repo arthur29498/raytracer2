@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Tue Apr 18 14:51:27 2017 Arthur Philippe
+** Last update Tue Apr 18 16:17:06 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -88,11 +88,11 @@ void			reset_pixels(t_my_framebuffer *buffer);
 /*
 ** Objects
 */
-sfColor	get_def_color_ob(t_object *obj);
-sfColor	get_def_color_ty(int type);
-int	resolve_object_type(char *str);
-char	*get_object_type(int type);
-sfColor get_color_from_objs(t_object *objs, int id);
+sfColor			get_def_color_ob(t_object *obj);
+sfColor			get_def_color_ty(int type);
+int			resolve_object_type(char *str);
+char			*get_object_type(int type);
+sfColor			get_color_from_objs(t_object *objs, int id);
 /*
 ** Render
 */
@@ -108,22 +108,24 @@ void			display_progress(int *pr, int runing);
 /*
 ** Math
 */
-float		get_quadric_discriminant(sfVector3f);
-sfVector3f	define_quadric_eq_vars(sfVector3f eye_pos,
-				       sfVector3f dir_vector,
-				       float radius);
-float		solve_quadric_eq(float discriminant, float a, float b);
+float			get_quadric_discriminant(sfVector3f);
+sfVector3f		define_quadric_eq_vars(sfVector3f eye_pos,
+					       sfVector3f dir_vector,
+					       float radius);
+float			solve_quadric_eq(float discriminant,
+					 float a,
+					 float b);
 /*
 ** Data obliteration - for your destructive needs.
 */
-void	window_destroy(t_my_window *);
-void	destroy_objects(t_object *);
-int	acp_putstr(int fd, char *str);
-void	*my_memset(void *str, int c, int size);
-int	my_getnbr(char *);
-char	*my_strcpy(char *dest, char *src);
-char	*my_strcat(char *dest, char *src);
-void	set_chessboard_color(sfVector3f last_intersect,
-			     sfColor *color);
+void			window_destroy(t_my_window *);
+void			destroy_objects(t_object *);
+int			acp_putstr(int fd, char *str);
+void			*my_memset(void *str, int c, int size);
+int			my_getnbr(char *);
+char			*my_strcpy(char *dest, char *src);
+char			*my_strcat(char *dest, char *src);
+void			set_chessboard_color(sfVector3f last_intersect,
+					     sfColor *color);
 
 #endif /* !RAYTRACER_H_ */
