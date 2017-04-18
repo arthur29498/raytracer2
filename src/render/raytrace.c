@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Tue Apr 18 14:52:42 2017 Arthur Philippe
+** Last update Tue Apr 18 20:28:14 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -17,8 +17,6 @@
 #include "raytracer_messages.h"
 #include "raytracer_data.h"
 #include "launch.h"
-
-float		std_color_effect(t_env *env, t_render_out *pr_out);
 
 static int	hit_single_obj(t_render_in *in,
 			       t_render_out *out,
