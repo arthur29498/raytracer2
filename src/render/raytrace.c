@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Tue Apr 18 11:20:29 2017 Arthur Philippe
+** Last update Tue Apr 18 11:25:51 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -89,7 +89,7 @@ void		raytrace_full_scene(t_env *env)
 	{
 	  px.color = get_def_color_ty(out.type);
 	  if (out.type == ID_PLANE)
-	    get_damier_color(out.hit_pt, &(px.color));
+	    set_chessboard_color(out.hit_pt, &(px.color));
 	  px.color.a *= std_color_effect(env, &out);
 	  my_put_pixel(env->w->buffer, px.pos.x - 1, px.pos.y, px.color);
 	}

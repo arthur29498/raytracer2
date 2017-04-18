@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Mon Apr 17 18:08:11 2017 Arthur Philippe
+** Last update Tue Apr 18 11:25:33 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -35,6 +35,7 @@
 # define ID_LIGHT	5
 # define ID_EYE		6
 # define PI		3.14159265359
+# define TILE_SIZE	50
 # define XA		angles.x
 # define YA		angles.y
 # define ZA		angles.z
@@ -119,7 +120,7 @@ void	*my_memset(void *str, int c, int size);
 int	my_getnbr(char *);
 char	*my_strcpy(char *dest, char *src);
 char	*my_strcat(char *dest, char *src);
-void			get_damier_color(sfVector3f last_intersect,
-					 sfColor *color);
+void	set_chessboard_color(sfVector3f last_intersect,
+			     sfColor *color);
 
 #endif /* !RAYTRACER_H_ */
