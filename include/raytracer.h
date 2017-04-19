@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Tue Apr 18 20:01:36 2017 Arthur Philippe
+** Last update Wed Apr 19 15:45:34 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -106,6 +106,8 @@ void			progress_to_next_px(int *total_px,
 					    sfVector2i *px);
 void			display_progress(int *pr, int runing);
 float			std_color_effect(t_env *env, t_render_out *pr_out);
+void			apply_colored_light_effect(sfColor *color,
+						   t_object *objects);
 /*
 ** Math
 */
