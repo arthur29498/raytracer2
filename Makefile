@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Tue Apr 18 14:27:21 2017 Arthur Philippe
+## Last update Wed Apr 19 10:02:11 2017 Arthur Philippe
 ##
 
 CC	=	gcc
@@ -37,6 +37,7 @@ SRCS	=	src/main.c				\
 		src/render/calc_dir_vector.c		\
 		src/render/get_intersection.c		\
 		src/render/my_put_pixel.c		\
+		src/render/colored_light_effect.c	\
 		src/render/obj_fctn_shunter.c		\
 		src/render/raytrace.c			\
 		src/render/progress.c			\
