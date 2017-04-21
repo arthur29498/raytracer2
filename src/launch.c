@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Apr 19 15:52:50 2017 Arthur Philippe
-** Last update Wed Apr 19 16:02:13 2017 Arthur Philippe
+** Last update Fri Apr 21 10:50:30 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -40,6 +40,8 @@ int		raytracer_launcher(char *file_name)
     return (84);
   raytrace_full_scene(&env);
   open_window(&w, file_name);
+  if (export_render("export", env.w->buffer) == -1)
+    acp_print("export error");
   while (window_loop(&w, &env, file_name));
   destroy_objects(env.objects);
   window_destroy(&w);
