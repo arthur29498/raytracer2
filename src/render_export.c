@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Apr 19 16:02:34 2017 Arthur Philippe
-** Last update Fri Apr 21 10:50:04 2017 Arthur Philippe
+** Last update Sat Apr 22 11:26:48 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -52,8 +52,8 @@ int		export_render(char *file_name,
   buffer->pixels = NULL;
   if (write(fd, buffer, sizeof(t_my_framebuffer)) != sizeof(t_my_framebuffer))
     return (-1);
-  if (write(fd, pixels, buffer->width * buffer->height)
-      != buffer->width * buffer->height)
+  if (write(fd, pixels, buffer->width * buffer->height * 4)
+      != buffer->width * buffer->height * 4)
     return (-1);
   acp_print("export successfull\n");
   buffer->pixels = pixels;
