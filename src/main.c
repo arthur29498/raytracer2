@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Feb 15 19:36:12 2017 Arthur Philippe
-** Last update Sat Apr 22 15:25:13 2017 Arthur Philippe
+** Last update Sat Apr 22 15:40:12 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -33,7 +33,10 @@ int		main(int ac, char **av)
   else
     {
       opt = get_rtc_opt(ac, av);
-      status = raytracer_launcher(opt->file_name);
+      if (opt->render)
+	status = raytracer_launcher(opt->file_name);
+      else
+	status = import_launcher(opt->file_name);
     }
   if (status)
     acp_print(MSG_INTERUPTED, BOLD, RED, RST);

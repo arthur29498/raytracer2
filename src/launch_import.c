@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 22 13:45:47 2017 Arthur Philippe
-** Last update Sat Apr 22 14:21:41 2017 Arthur Philippe
+** Last update Sat Apr 22 15:44:11 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -32,7 +32,7 @@ int			framebuffer_from_file(char *file_name,
     return (-1);
   if (ingest.width != SC_W || ingest.height != SC_H)
     {
-      acp_print("screen size of export not compatible");
+      acp_print("import error\n");
       return (-1);
     }
   if (read(fd, buffer->pixels, ingest.width * ingest.height * 4)
