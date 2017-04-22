@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Apr 19 15:52:50 2017 Arthur Philippe
-** Last update Sat Apr 22 11:27:04 2017 Arthur Philippe
+** Last update Sat Apr 22 14:22:01 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -21,25 +21,6 @@
 #include "raytracer_data.h"
 #include "launch.h"
 
-int		framebuffer_from_file(char *file_name,
-				      t_my_framebuffer *buffer)
-{
-  int		fd;
-  t_my_framebuffer	ingest;
-
-  if ((fd = open(file_name, O_RDONLY)) == -1)
-    return (-1);
-  if (read(fd, &ingest, sizeof(t_my_framebuffer))
-      != sizeof(t_my_framebuffer))
-    return (-1);
-  if (read(fd, buffer->pixels, ingest.width * ingest.height * 4)
-      != ingest.width * ingest.height * 4)
-    return (-1);
-  buffer->width = ingest.width;
-  buffer->height = ingest.height;
-  return (0);
-}
-
 int		raytracer_launcher(char *file_name)
 {
   t_my_window	w;
@@ -48,15 +29,14 @@ int		raytracer_launcher(char *file_name)
   env.w = &w;
   env.objects = get_objects_from_file(file_name);
   if (!env.objects)
-    return (84);
+    return (EXIT_FAIL);
   find_eye(&env);
   find_light(&env);
   env.screen_size.x = SC_W;
   env.screen_size.y = SC_H;
   if (!(w.buffer = my_framebuffer_create(SC_W, SC_H)))
-    return (84);
-  // raytrace_full_scene(&env);
-  framebuffer_from_file("export", w.buffer);
+    return (EXIT_FAIL);
+  raytrace_full_scene(&env);
   open_window(&w, file_name);
   if (export_render("export", env.w->buffer) == -1)
     acp_print("export error");
@@ -98,7 +78,9 @@ int	window_loop(t_my_window *w, t_env *env, char *file_name)
 	  sfRenderWindow_close(w->window);
 	  return (0);
 	}
-      if (event.type == sfEvtKeyPressed && event.key.code == sfKeySpace)
+      if (env
+	  && event.type == sfEvtKeyPressed
+	  && event.key.code == sfKeySpace)
 	return (refresh_window(w, env, file_name));
     }
   return (1);

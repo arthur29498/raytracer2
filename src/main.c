@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Feb 15 19:36:12 2017 Arthur Philippe
-** Last update Wed Apr 19 15:53:21 2017 Arthur Philippe
+** Last update Sat Apr 22 15:25:13 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -17,19 +17,24 @@
 #include "raytracer_messages.h"
 #include "raytracer_data.h"
 #include "launch.h"
+#include "opt.h"
 
-int	main(int ac, char **av)
+int		main(int ac, char **av)
 {
-  int	status;
+  int		status;
+  t_rtc_opt	*opt;
 
   status = 0;
-  if (ac < 2)
+  if (ac < 3)
     {
       acp_putstr(STDERR_FILENO, MSG_TOO_FEW_ARG);
-      status = 84;
+      status = EXIT_FAIL;
     }
   else
-    status = raytracer_launcher(av[1]);
+    {
+      opt = get_rtc_opt(ac, av);
+      status = raytracer_launcher(opt->file_name);
+    }
   if (status)
     acp_print(MSG_INTERUPTED, BOLD, RED, RST);
   else

@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Fri Apr 21 10:35:53 2017 Arthur Philippe
+## Last update Sat Apr 22 15:21:35 2017 Arthur Philippe
 ##
 
 CC	=	gcc
@@ -15,12 +15,14 @@ RM	=	rm -f
 NAME	=	raytracer2
 
 SRCS	=	src/main.c				\
-		src/launch.c				\
+		src/launch_import.c			\
+		src/launch_engine.c			\
 		src/data_nuke.c				\
 		src/light.c				\
 		src/str.c				\
 		src/open_window.c			\
 		src/render_export.c			\
+		src/get_opt.c				\
 		src/data_gathering/fd_errors.c		\
 		src/data_gathering/get_next_line.c	\
 		src/data_gathering/list.c		\
