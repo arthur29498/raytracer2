@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 22 14:32:54 2017 Arthur Philippe
-** Last update Sat Apr 22 15:40:29 2017 Arthur Philippe
+** Last update Sun Apr 23 13:48:57 2017 Arthur Philippe
 */
 
 #ifndef OPT_H_
@@ -25,5 +25,6 @@ typedef struct	s_rtc_opt
 
 char		*my_strcpy(char *, char *);
 t_rtc_opt	*get_rtc_opt(int ac, char **av);
+void		*my_memset(void *, int, int);
 
 #endif /* !OPT_H_ */

@@ -5,11 +5,12 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 22 14:32:17 2017 Arthur Philippe
-** Last update Sat Apr 22 15:22:47 2017 Arthur Philippe
+** Last update Sun Apr 23 13:47:31 2017 Arthur Philippe
 */
 
 #include <stdlib.h>
 #include "opt.h"
+#include "acp.h"
 
 void	set_rtc_opt(char *opt_str, t_rtc_opt *opt)
 {
@@ -34,6 +35,7 @@ t_rtc_opt	*get_rtc_opt(int ac, char **av)
 
   if (!(opt = malloc(sizeof(t_rtc_opt))))
     return (NULL);
+  my_memset(opt, 0, sizeof(t_rtc_opt));
   if (av[1][0] == '-')
     {
       if (ac == 3)
