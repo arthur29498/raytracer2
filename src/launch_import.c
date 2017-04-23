@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 22 13:45:47 2017 Arthur Philippe
-** Last update Sat Apr 22 15:44:11 2017 Arthur Philippe
+** Last update Sun Apr 23 13:51:24 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -53,5 +53,6 @@ int	import_launcher(char *file_name)
     return (EXIT_FAIL);
   open_window(&w, file_name);
   while (window_loop(&w, NULL, file_name));
+  window_destroy(&w);
   return (EXIT_SUCCESS);
 }
