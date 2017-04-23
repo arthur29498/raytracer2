@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Apr 19 15:52:50 2017 Arthur Philippe
-** Last update Sat Apr 22 14:22:01 2017 Arthur Philippe
+** Last update Sun Apr 23 13:23:46 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -21,7 +21,7 @@
 #include "raytracer_data.h"
 #include "launch.h"
 
-int		raytracer_launcher(char *file_name)
+int		raytracer_launcher(char *file_name, int exprt)
 {
   t_my_window	w;
   t_env		env;
@@ -38,8 +38,9 @@ int		raytracer_launcher(char *file_name)
     return (EXIT_FAIL);
   raytrace_full_scene(&env);
   open_window(&w, file_name);
-  if (export_render("export", env.w->buffer) == -1)
-    acp_print("export error");
+  if (exprt)
+    if (export_render("export", env.w->buffer) == -1)
+      acp_print("export error");
   while (window_loop(&w, &env, file_name));
   destroy_objects(env.objects);
   window_destroy(&w);
