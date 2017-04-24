@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Feb 15 19:36:12 2017 Arthur Philippe
-** Last update Sun Apr 23 13:44:14 2017 Arthur Philippe
+** Last update Mon Apr 24 09:49:37 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -25,7 +25,7 @@ int		main(int ac, char **av)
   t_rtc_opt	*opt;
 
   status = 0;
-  if (ac < 3)
+  if (ac < 2)
     {
       acp_putstr(STDERR_FILENO, MSG_TOO_FEW_ARG);
       status = EXIT_FAIL;
@@ -33,7 +33,7 @@ int		main(int ac, char **av)
   else
     {
       opt = get_rtc_opt(ac, av);
-      if (opt && opt->render)
+      if (opt && !opt->imprt)
 	status = raytracer_launcher(opt->file_name, opt->exprt);
       else if (opt)
 	status = import_launcher(opt->file_name);
