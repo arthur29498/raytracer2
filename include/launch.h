@@ -5,14 +5,15 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Mar 18 11:16:50 2017 Arthur Philippe
-** Last update Sat Apr 15 14:09:49 2017 Arthur Philippe
+** Last update Sun Apr 23 13:22:26 2017 Arthur Philippe
 */
 
 #ifndef LAUNCH_H_
 # define LAUNCH_H_
 
 int	window_loop(t_my_window *, t_env *, char *);
-int	raytracer_launcher();
+int	raytracer_launcher(char *file_name, int exprt);
+int	import_launcher(char *file_name);
 void	find_light(t_env* env);
 void	find_eye(t_env* env);
 

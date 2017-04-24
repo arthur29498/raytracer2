@@ -1,3 +1,6 @@
 *.o
 raytracer2
 *.a
+export
+
+rt_export
