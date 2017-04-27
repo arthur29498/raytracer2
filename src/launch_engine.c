@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Apr 19 15:52:50 2017 Arthur Philippe
-** Last update Sun Apr 23 14:02:31 2017 Arthur Philippe
+** Last update Thu Apr 27 17:07:20 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -15,11 +15,26 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <fcntl.h>
+#include <stdlib.h>
+#include <pthread.h>
 #include "acp.h"
 #include "raytracer.h"
 #include "raytracer_messages.h"
 #include "raytracer_data.h"
 #include "launch.h"
+
+int		raytracer_thread_launch(t_env *env)
+{
+  int		thread_id;
+  pthread_t	thrds[5];
+
+  thread_id = 0;
+  while (thread_id < 4)
+    {
+      env->thread = thread_id;
+      thread_id += 1;
+    }
+}
 
 int		raytracer_launcher(char *file_name, int exprt)
 {
@@ -38,9 +53,8 @@ int		raytracer_launcher(char *file_name, int exprt)
     return (EXIT_FAIL);
   raytrace_full_scene(&env);
   open_window(&w, file_name);
-  if (exprt)
-    if (export_render("rt_export", env.w->buffer) == -1)
-      acp_print("export error");
+  if (exprt && export_render("rt_export", env.w->buffer) == -1)
+    acp_print("export error");
   while (window_loop(&w, &env, file_name));
   destroy_objects(env.objects);
   window_destroy(&w);
