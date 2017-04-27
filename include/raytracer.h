@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Sat Apr 22 13:59:48 2017 Arthur Philippe
+** Last update Thu Apr 27 14:08:04 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -93,6 +93,10 @@ sfColor			get_def_color_ty(int type);
 int			resolve_object_type(char *str);
 char			*get_object_type(int type);
 sfColor			get_color_from_objs(t_object *objs, int id);
+int			add_limit(char *buffer,
+				  int *idx,
+				  t_object *new_object);
+
 /*
 ** Render
 */

@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Feb 18 11:24:50 2017 Arthur Philippe
-** Last update Tue Apr 18 14:37:06 2017 Arthur Philippe
+** Last update Thu Apr 27 14:35:34 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -16,7 +16,7 @@
 #include "raytracer_messages.h"
 #include "raytracer_data.h"
 
-int	add_size(char *buffer, int *idx, t_object *new_object)
+static int	add_size(char *buffer, int *idx, t_object *new_object)
 {
   if (buffer[*idx] == 'A')
     new_object->size_a = my_getnbr(&buffer[*idx + 2]);
@@ -27,7 +27,7 @@ int	add_size(char *buffer, int *idx, t_object *new_object)
   return (1);
 }
 
-int	add_rotation(char *buffer, int *idx, t_object *new_object)
+static int	add_rotation(char *buffer, int *idx, t_object *new_object)
 {
   if (buffer[*idx] == 'r' && buffer[*idx + 1] == 'X')
     new_object->rot.x = my_getnbr(&buffer[*idx + 3]);
@@ -40,7 +40,7 @@ int	add_rotation(char *buffer, int *idx, t_object *new_object)
   return (1);
 }
 
-int	add_position(char *buffer, int *idx, t_object *new_object)
+static int	add_position(char *buffer, int *idx, t_object *new_object)
 {
   if (buffer[*idx] == 'X')
     new_object->pos.x = my_getnbr(&buffer[*idx + 2]);
@@ -53,7 +53,7 @@ int	add_position(char *buffer, int *idx, t_object *new_object)
   return (1);
 }
 
-int	add_color(char *buffer, int *idx, t_object *new_object)
+static int	add_color(char *buffer, int *idx, t_object *new_object)
 {
   if (buffer[*idx] == 'c' && buffer[*idx + 1] == 'R')
     new_object->col.r = my_getnbr(&buffer[*idx + 3]);
@@ -83,6 +83,7 @@ t_object	*create_object(char *buffer, int *idx)
 	  add_rotation(buffer, idx, new_object);
 	  add_position(buffer, idx, new_object);
 	  add_color(buffer, idx, new_object);
+	  add_limit(buffer, idx, new_object);
 	  if (buffer[*idx] == 'T')
 	    new_object->type = resolve_object_type(&buffer[*idx + 2]);
 	}
