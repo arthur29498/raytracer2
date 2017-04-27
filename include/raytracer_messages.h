@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 16 16:35:31 2017 Arthur Philippe
-** Last update Mon Apr 17 17:01:55 2017 Arthur Philippe
+** Last update Thu Apr 27 13:36:26 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_MESSAGES_H_
@@ -30,6 +30,7 @@
 # define LOAD_CHAR		'#'
 # define MSG_WIN_OPEN		"\nOpenning window"
 # define MSG_SUCCES		" [SUCCESS]\n"
+# define HINT_LOAD		"Loading objects from: \'%s\'...\n\n"
 
 # define RED			"\x1b[31m"
 # define GREEN			"\x1b[32m"

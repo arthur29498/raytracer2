@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 16 14:38:11 2017 Arthur Philippe
-** Last update Tue Mar 14 14:13:45 2017 Arthur Philippe
+** Last update Thu Apr 27 13:36:42 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -20,6 +20,7 @@
 #include "acp.h"
 #include "raytracer.h"
 #include "raytracer_data.h"
+#include "raytracer_messages.h"
 
 char	*file_to_buffer(char *file_name)
 {
@@ -77,7 +78,7 @@ t_object	*get_objects_from_file(char *file_name)
   char		*buffer;
   int		i;
 
-  acp_print("Loading objects from: \'%s\'...\n\n", file_name);
+  acp_print(HINT_LOAD, file_name);
   buffer = file_to_buffer(file_name);
   if (!buffer)
     return (NULL);
