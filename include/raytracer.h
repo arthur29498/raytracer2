@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Sat Apr 22 13:59:48 2017 Arthur Philippe
+** Last update Thu Apr 27 16:52:09 2017 mael drapier
 */
 
 #ifndef RAYTRACER_H_
@@ -50,6 +50,8 @@
 # define X_TR_Z	((to_rotate.x * cosf(ZA)) + (to_rotate.y * -sinf(ZA)))
 # define Y_TR_Z	((to_rotate.x * sinf(ZA)) + (to_rotate.y * cosf(ZA)))
 # define Z_TR_Z	(to_rotate.z)
+# define CUT_DOWN 150
+# define CUT_UP 300
 /*
 ** Mandatory
 */
@@ -58,6 +60,9 @@ sfVector3f	calc_dir_vector(float, sfVector2i, sfVector2i);
 float		intersect_sphere(sfVector3f, sfVector3f, float radius);
 float		intersect_plane(sfVector3f, sfVector3f);
 float		intersect_cylinder(sfVector3f eye_pos,
+				   sfVector3f dir_vector,
+				   float radius);
+float		intersect_ltd_cylinder(sfVector3f eye_pos,
 				   sfVector3f dir_vector,
 				   float radius);
 float		intersect_cone(sfVector3f eye_pos,

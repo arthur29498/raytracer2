@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Sat Apr 22 15:21:35 2017 Arthur Philippe
+## Last update Thu Apr 27 16:19:26 2017 
 ##
 
 CC	=	gcc
@@ -35,8 +35,9 @@ SRCS	=	src/main.c				\
 		src/objects/cylinder.c			\
 		src/objects/plane.c			\
 		src/objects/sphere.c			\
- 		src/objects/utils.c			\
+		src/objects/utils.c			\
 		src/objects/default_colors.c		\
+		src/objects/limited_cylinder.c		\
 		src/data_gathering/objs_types.c		\
 		src/render/calc_dir_vector.c		\
 		src/render/get_intersection.c		\
