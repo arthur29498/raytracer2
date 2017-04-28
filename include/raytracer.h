@@ -124,6 +124,8 @@ void			display_progress(int *pr, int runing);
 float			std_color_effect(t_env *env, t_render_out *pr_out);
 void			apply_colored_light_effect(sfColor *color,
 						   t_object *objects);
+int			get_id_thread(void);
+void			*raytrace_bridge(void *env);
 /*
 ** Export
 */

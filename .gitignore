@@ -4,3 +4,4 @@ raytracer2
 export
 
 rt_export
+*.out
