@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 23 12:56:37 2017 Arthur Philippe
-** Last update Thu Apr 27 16:31:38 2017 mael drapier
+** Last update Fri Apr 28 14:36:36 2017 mael drapier
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -58,7 +58,10 @@ inline static float	obj_fctn_cylinder(t_object *object,
   new_eye.z = in_arg->eye_pt.z - object->pos.z;
   new_eye = rotate_zyx(new_eye, object->rot);
   new_dir_v = rotate_zyx(in_arg->dir_vector, object->rot);
-  k = intersect_ltd_cylinder(new_eye, new_dir_v, object->size_a);
+  if (object->limit_a == 0 && object->limit_b == 0)
+    k = intersect_cylinder(new_eye, new_dir_v, object->size_a);
+  else
+    k = intersect_ltd_cylinder(new_eye, new_dir_v, object->size_a, object);
   return (k);
 }
 
