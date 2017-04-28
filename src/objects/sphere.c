@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 15:35:04 2017 Arthur Philippe
-** Last update Sun Mar 19 21:50:36 2017 Arthur Philippe
+** Last update Fri Apr 28 15:27:03 2017 mael drapier
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -41,6 +41,22 @@ float		intersect_sphere(sfVector3f eye_pos, sfVector3f dir_vector,
   abc = define_quad_eq_vars(eye_pos, dir_vector, radius);
   discriminant = powf(abc.y, 2) - (4 * abc.x * abc.z);
   sol = solve_quadric_eq(discriminant, abc.x, abc.y);
+  return (sol);
+}
+
+float		intersect_ltd_sphere(sfVector3f eye_pos,
+				     sfVector3f dir_vector,
+				     float radius,
+				     t_object *object)
+{
+  sfVector3f	abc;
+  float		discriminant;
+  float		sol;
+
+  abc = define_quad_eq_vars(eye_pos, dir_vector, radius);
+  discriminant = powf(abc.y, 2) - (4 * abc.x * abc.z);
+  abc.z = discriminant;
+  sol = solve_ltd_quadric_eq(abc, eye_pos, dir_vector, object);
   return (sol);
 }
 

@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Thu Apr 27 14:08:04 2017 Arthur Philippe
+** Last update Fri Apr 28 16:00:08 2017 mael drapier
 */
 
 #ifndef RAYTRACER_H_
@@ -56,13 +56,25 @@
 void		my_put_pixel(t_my_framebuffer *, int, int, sfColor);
 sfVector3f	calc_dir_vector(float, sfVector2i, sfVector2i);
 float		intersect_sphere(sfVector3f, sfVector3f, float radius);
+float		intersect_ltd_sphere(sfVector3f eye_pos,
+				       sfVector3f dir_vector,
+				       float radius,
+				       t_object *object);
 float		intersect_plane(sfVector3f, sfVector3f);
 float		intersect_cylinder(sfVector3f eye_pos,
 				   sfVector3f dir_vector,
 				   float radius);
+float		intersect_ltd_cylinder(sfVector3f eye_pos,
+				       sfVector3f dir_vector,
+				       float radius,
+				       t_object *object);
 float		intersect_cone(sfVector3f eye_pos,
 			       sfVector3f dir_vector,
 			       float radius);
+float		intersect_ltd_cone(sfVector3f eye_pos,
+				       sfVector3f dir_vector,
+				       float radius,
+				       t_object *object);
 sfVector3f	rotate_xyz(sfVector3f to_rotate, sfVector3f angles);
 sfVector3f	rotate_zyx(sfVector3f to_rotate, sfVector3f angles);
 sfVector3f	get_normal_sphere(sfVector3f intersection_point);
@@ -115,7 +127,7 @@ void			apply_colored_light_effect(sfColor *color,
 /*
 ** Export
 */
-int	export_render(char *, t_my_framebuffer *);
+int			export_render(char *, t_my_framebuffer *);
 /*
 ** Math
 */
@@ -126,6 +138,10 @@ sfVector3f		define_quadric_eq_vars(sfVector3f eye_pos,
 float			solve_quadric_eq(float discriminant,
 					 float a,
 					 float b);
+float			solve_ltd_quadric_eq(sfVector3f abc,
+					     sfVector3f eye_pos,
+					     sfVector3f dir_vector,
+					     t_object *object);
 /*
 ** Data obliteration - for your destructive needs.
 */

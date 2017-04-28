@@ -34,9 +34,10 @@ SRCS	=	src/main.c				\
 		src/moves/translate.c			\
 		src/objects/cone.c			\
 		src/objects/cylinder.c			\
+		src/objects/limited.c			\
 		src/objects/plane.c			\
 		src/objects/sphere.c			\
- 		src/objects/utils.c			\
+		src/objects/utils.c			\
 		src/objects/default_colors.c		\
 		src/data_gathering/objs_types.c		\
 		src/render/calc_dir_vector.c		\
