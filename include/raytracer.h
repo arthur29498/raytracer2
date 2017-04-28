@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Thu Apr 27 16:52:09 2017 mael drapier
+** Last update Fri Apr 28 15:02:19 2017 mael drapier
 */
 
 #ifndef RAYTRACER_H_
@@ -50,8 +50,6 @@
 # define X_TR_Z	((to_rotate.x * cosf(ZA)) + (to_rotate.y * -sinf(ZA)))
 # define Y_TR_Z	((to_rotate.x * sinf(ZA)) + (to_rotate.y * cosf(ZA)))
 # define Z_TR_Z	(to_rotate.z)
-# define CUT_DOWN 150
-# define CUT_UP 300
 /*
 ** Mandatory
 */
@@ -124,9 +122,14 @@ float			get_quadric_discriminant(sfVector3f);
 sfVector3f		define_quadric_eq_vars(sfVector3f eye_pos,
 					       sfVector3f dir_vector,
 					       float radius);
+
 float			solve_quadric_eq(float discriminant,
 					 float a,
 					 float b);
+float			solve_ltd_quadric_eq(sfVector3f abc,
+					     sfVector3f eye_pos,
+					     sfVector3f dir_vector,
+					     t_object *object);
 /*
 ** Data obliteration - for your destructive needs.
 */
