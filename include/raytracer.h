@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Fri Apr 28 15:02:19 2017 mael drapier
+** Last update Fri Apr 28 14:26:08 2017 mael drapier
 */
 
 #ifndef RAYTRACER_H_
@@ -61,8 +61,9 @@ float		intersect_cylinder(sfVector3f eye_pos,
 				   sfVector3f dir_vector,
 				   float radius);
 float		intersect_ltd_cylinder(sfVector3f eye_pos,
-				   sfVector3f dir_vector,
-				   float radius);
+				       sfVector3f dir_vector,
+				       float radius,
+				       t_object *object);
 float		intersect_cone(sfVector3f eye_pos,
 			       sfVector3f dir_vector,
 			       float radius);
@@ -96,6 +97,10 @@ sfColor			get_def_color_ty(int type);
 int			resolve_object_type(char *str);
 char			*get_object_type(int type);
 sfColor			get_color_from_objs(t_object *objs, int id);
+int			add_limit(char *buffer,
+				  int *idx,
+				  t_object *new_object);
+
 /*
 ** Render
 */
@@ -114,7 +119,7 @@ void			apply_colored_light_effect(sfColor *color,
 /*
 ** Export
 */
-int	export_render(char *, t_my_framebuffer *);
+int			export_render(char *, t_my_framebuffer *);
 /*
 ** Math
 */
@@ -122,7 +127,6 @@ float			get_quadric_discriminant(sfVector3f);
 sfVector3f		define_quadric_eq_vars(sfVector3f eye_pos,
 					       sfVector3f dir_vector,
 					       float radius);
-
 float			solve_quadric_eq(float discriminant,
 					 float a,
 					 float b);

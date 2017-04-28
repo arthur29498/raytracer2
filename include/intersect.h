@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Mar 18 11:07:48 2017 Arthur Philippe
-** Last update Fri Apr 28 15:03:01 2017 mael drapier
+** Last update Fri Apr 28 14:27:23 2017 mael drapier
 */
 
 #ifndef INTERSECT_H_
