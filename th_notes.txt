@@ -1,0 +1,1 @@
+creer un thread et le stock

@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Apr 19 15:52:50 2017 Arthur Philippe
-** Last update Fri Apr 28 12:19:21 2017 Arthur Philippe
+** Last update Fri Apr 28 13:38:48 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -23,14 +23,7 @@
 #include "raytracer_data.h"
 #include "launch.h"
 
-int		get_id_thread(void)
-{
-  static int	id_thread = 0;
-
-  if (id_thread == 4)
-    id_thread = 0;
-  return (id_thread++);
-}
+void	*raytrace_bridge(void *env);
 
 int		raytracer_thread_launch(t_env *env)
 {
@@ -42,7 +35,7 @@ int		raytracer_thread_launch(t_env *env)
   while (thread_id < 4)
     {
       if (pthread_create(&thrds[thread_id], NULL,
-			 raytrace_full_scene, env))
+			 raytrace_bridge, (void *) env))
 	return (-1);
       thread_id += 1;
     }
