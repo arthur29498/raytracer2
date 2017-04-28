@@ -5,7 +5,7 @@
 ** Login   <mael.drapier@epitech.eu>
 **
 ** Started on  Fri Apr 28 14:54:39 2017 mael drapier
-** Last update Fri Apr 28 14:55:16 2017 mael drapier
+** Last update Fri Apr 28 15:22:16 2017 mael drapier
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -57,10 +57,10 @@ float	check_limit_k2(sfVector3f intersect_pt1,
   return (k.y);
 }
 
-float	check_limit(sfVector2f k,
-		    sfVector3f eye_pos,
-		    sfVector3f dir_vector,
-		    t_object *object)
+float		check_limit(sfVector2f k,
+			    sfVector3f eye_pos,
+			    sfVector3f dir_vector,
+			    t_object *object)
 {
   sfVector3f	intersect_pt1;
   sfVector3f	intersect_pt2;

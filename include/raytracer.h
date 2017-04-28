@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Fri Apr 28 14:26:08 2017 mael drapier
+** Last update Fri Apr 28 15:27:50 2017 mael drapier
 */
 
 #ifndef RAYTRACER_H_
@@ -56,6 +56,10 @@
 void		my_put_pixel(t_my_framebuffer *, int, int, sfColor);
 sfVector3f	calc_dir_vector(float, sfVector2i, sfVector2i);
 float		intersect_sphere(sfVector3f, sfVector3f, float radius);
+float		intersect_ltd_sphere(sfVector3f eye_pos,
+				       sfVector3f dir_vector,
+				       float radius,
+				       t_object *object);
 float		intersect_plane(sfVector3f, sfVector3f);
 float		intersect_cylinder(sfVector3f eye_pos,
 				   sfVector3f dir_vector,

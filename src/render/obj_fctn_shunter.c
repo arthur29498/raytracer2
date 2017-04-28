@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 23 12:56:37 2017 Arthur Philippe
-** Last update Fri Apr 28 14:36:36 2017 mael drapier
+** Last update Fri Apr 28 15:24:19 2017 mael drapier
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -26,7 +26,11 @@ inline static float	obj_fctn_sphere(t_object *object,
   new_eye.x = in_arg->eye_pt.x - object->pos.x;
   new_eye.y = in_arg->eye_pt.y - object->pos.y;
   new_eye.z = in_arg->eye_pt.z - object->pos.z;
-  k = intersect_sphere(new_eye, in_arg->dir_vector, object->size_a);
+  if (object->limit_a == 0 && object->limit_b == 0)
+    k = intersect_sphere(new_eye, in_arg->dir_vector, object->size_a);
+  else
+    k = intersect_ltd_sphere(new_eye, in_arg->dir_vector,
+			     object->size_a, object);
   return (k);
 }
 
