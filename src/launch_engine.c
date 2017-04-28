@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Apr 19 15:52:50 2017 Arthur Philippe
-** Last update Thu Apr 27 17:07:20 2017 Arthur Philippe
+** Last update Fri Apr 28 12:19:21 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -23,17 +23,34 @@
 #include "raytracer_data.h"
 #include "launch.h"
 
+int		get_id_thread(void)
+{
+  static int	id_thread = 0;
+
+  if (id_thread == 4)
+    id_thread = 0;
+  return (id_thread++);
+}
+
 int		raytracer_thread_launch(t_env *env)
 {
   int		thread_id;
   pthread_t	thrds[5];
 
   thread_id = 0;
+  display_progress(&thread_id, 0);
   while (thread_id < 4)
     {
-      env->thread = thread_id;
+      if (pthread_create(&thrds[thread_id], NULL,
+			 raytrace_full_scene, env))
+	return (-1);
       thread_id += 1;
     }
+  while (--thread_id >= 0)
+    pthread_join(thrds[thread_id], NULL);
+  thread_id = 1;
+  display_progress(&thread_id, 0);
+  return (0);
 }
 
 int		raytracer_launcher(char *file_name, int exprt)
@@ -51,7 +68,7 @@ int		raytracer_launcher(char *file_name, int exprt)
   env.screen_size.y = SC_H;
   if (!(w.buffer = my_framebuffer_create(SC_W, SC_H)))
     return (EXIT_FAIL);
-  raytrace_full_scene(&env);
+  raytracer_thread_launch(&env);
   open_window(&w, file_name);
   if (exprt && export_render("rt_export", env.w->buffer) == -1)
     acp_print("export error");
@@ -71,7 +88,7 @@ int	refresh_window(t_my_window *w, t_env *env, char *file_name)
   find_eye(env);
   find_light(env);
   reset_pixels(w->buffer);
-  raytrace_full_scene(env);
+  raytracer_thread_launch(env);
   sfTexture_updateFromPixels(w->tex, w->buffer->pixels, SC_W, SC_H, 0, 0);
   sfRenderWindow_clear(w->window, sfBlack);
   sfRenderWindow_drawSprite(w->window, w->sprite, NULL);

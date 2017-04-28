@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Thu Apr 27 16:57:32 2017 Arthur Philippe
+** Last update Fri Apr 28 12:23:32 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -77,13 +77,14 @@ void		raytrace_full_scene(t_env *env)
   t_px		px;
   t_render_in	in;
   t_render_out	out;
+  int		id_thread;
 
+  id_thread = get_id_thread();
   px.total_px = px.pos.x = px.pos.y = 0;
   px.color = sfBlue;
-  display_progress(&(px.total_px), 0);
   while (px.pos.y < SC_H / 4)
     {
-      prep_ray(&in, env, px.pos, env->thread);
+      prep_ray(&in, env, px.pos, id_thread);
       objects_hit_attempt(env, &in, &out);
       if (out.k > 0)
 	{
@@ -93,10 +94,9 @@ void		raytrace_full_scene(t_env *env)
 	  px.color.a *= std_color_effect(env, &out);
 	  apply_colored_light_effect(&(px.color), env->objects);
 	  my_put_pixel(env->w->buffer, px.pos.x - 1,
-		       px.pos.y + (env->thread * (SC_H / 4)), px.color);
+		       px.pos.y + (id_thread * (SC_H / 4)), px.color);
 	}
       display_progress(&(px.total_px), 1);
       progress_to_next_px(&(px.total_px), &(px.pos));
     }
-  display_progress(&(px.total_px), 0);
 }

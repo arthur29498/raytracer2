@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Thu Apr 27 14:07:57 2017 Arthur Philippe
+## Last update Fri Apr 28 12:22:33 2017 Arthur Philippe
 ##
 
 CC	=	gcc
@@ -57,7 +57,7 @@ CFLAGS	=	-Wextra -Wall
 
 CFLAGS	+=	-I include/
 
-LDFLAGS	=	-L./lib/acp -lacp -lc_graph_prog -lm
+LDFLAGS	=	-L./lib/acp -lacp -lc_graph_prog -lm -lpthread
 
 all: make_acp_print $(NAME)
 
