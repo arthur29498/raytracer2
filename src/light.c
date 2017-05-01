@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Mar  7 12:15:12 2017 Arthur Philippe
-** Last update Mon May  1 11:06:22 2017 Arthur Philippe
+** Last update Mon May  1 11:16:29 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -26,20 +26,16 @@ float	get_light_coef(sfVector3f light_vector,
 		       sfVector3f normal_vector)
 {
   float	dot;
-  float	l_norm;
-  float	n_norm;
-  float norms;
   float result;
 
-  l_norm = get_norm(light_vector);
-  n_norm = get_norm(normal_vector);
-  norms = l_norm * n_norm;
-  if (!norms)
+  if (!(get_norm(light_vector) * get_norm(normal_vector)))
     return (0);
+  light_vector = normalize_vector(light_vector);
+  normal_vector = normalize_vector(normal_vector);
   dot = light_vector.x * normal_vector.x;
   dot += light_vector.y * normal_vector.y;
   dot += normal_vector.z * light_vector.z;
-  result = dot / norms;
+  result = dot / 1;
   if (result < 0)
     return (0);
   if (result > 1)
