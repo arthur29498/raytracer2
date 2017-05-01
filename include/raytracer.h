@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Mon May  1 11:42:21 2017 Arthur Philippe
+** Last update Mon May  1 14:43:12 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -55,7 +55,7 @@
 /*
 ** Mandatory
 */
-void		my_put_pixel(t_my_framebuffer *, int, int, sfColor);
+void		my_put_pixel(t_fbuffer *, int, int, sfColor);
 sfVector3f	calc_dir_vector(float, sfVector2i, sfVector2i);
 float		intersect_sphere(sfVector3f, sfVector3f, float radius);
 float		intersect_ltd_sphere(sfVector3f eye_pos,
@@ -94,71 +94,71 @@ sfVector3f	get_intersection(sfVector3f eye_pos,
 /*
 ** window related implements.
 */
-int			open_window(t_my_window *w, char *file_name);
-sfRenderWindow		*create_window(char *, int, int);
-t_my_framebuffer	*my_framebuffer_create(int, int);
-void			wf_window_destroy(t_my_window *);
-void			reset_pixels(t_my_framebuffer *buffer);
+int		open_window(t_my_window *w, char *file_name);
+sfRenderWindow	*create_window(char *, int, int);
+t_fbuffer	*my_framebuffer_create(int, int);
+void		wf_window_destroy(t_my_window *);
+void		reset_pixels(t_fbuffer *buffer);
 /*
 ** Objects
 */
-sfColor			get_def_color_ob(t_object *obj);
-sfColor			get_def_color_ty(int type);
-int			resolve_object_type(char *str);
-char			*get_object_type(int type);
-sfColor			get_color_from_objs(t_object *objs, int id);
-int			add_limit(char *buffer,
-				  int *idx,
-				  t_object *new_object);
+sfColor		get_def_color_ob(t_object *obj);
+sfColor		get_def_color_ty(int type);
+int		resolve_object_type(char *str);
+char		*get_object_type(int type);
+sfColor		get_color_from_objs(t_object *objs, int id);
+int		add_limit(char *buffer,
+			  int *idx,
+			  t_object *new_object);
 
 /*
 ** Render
 */
-void			objects_hit_attempt(t_env *env,
-					    t_render_in *in,
-					    t_render_out *out);
-float			obj_fctn_shunter(t_object *object,
-					 t_render_in *in_arg);
-void			raytrace_full_scene(t_env *env, int id_thread);
-void			progress_to_next_px(int *total_px,
-					    sfVector2i *px);
-void			display_progress(int *pr, int runing);
-float			std_color_effect(t_env *env, t_render_out *pr_out);
-void			apply_colored_light_effect(sfColor *color,
-						   t_object *objects);
-int			get_id_thread(void);
-void			*raytrace_bridge(void *env);
+void		objects_hit_attempt(t_env *env,
+				    t_render_in *in,
+				    t_render_out *out);
+float		obj_fctn_shunter(t_object *object,
+				 t_render_in *in_arg);
+void		raytrace_full_scene(t_env *env, int id_thread);
+void		progress_to_next_px(int *total_px,
+				    sfVector2i *px);
+void		display_progress(int *pr, int runing);
+float		std_color_effect(t_env *env, t_render_out *pr_out);
+void		apply_colored_light_effect(sfColor *color,
+					   t_object *objects);
+int		get_id_thread(void);
+void		*raytrace_bridge(void *env);
 /*
 ** Export
 */
-int			export_render(char *, t_my_framebuffer *);
+int		export_render(char *, t_fbuffer *);
 /*
 ** Math
 */
-float			get_quadric_discriminant(sfVector3f);
-sfVector3f		define_quadric_eq_vars(sfVector3f eye_pos,
-					       sfVector3f dir_vector,
+float		get_quadric_discriminant(sfVector3f);
+sfVector3f	define_quadric_eq_vars(sfVector3f eye_pos,
+				       sfVector3f dir_vector,
 					       float radius);
-float			solve_quadric_eq(float discriminant,
-					 float a,
-					 float b);
-float			solve_ltd_quadric_eq(sfVector3f abc,
-					     sfVector3f eye_pos,
-					     sfVector3f dir_vector,
-					     t_object *object);
-float			get_norm(sfVector3f in);
-sfVector3f		normalize_vector(sfVector3f in);
+float		solve_quadric_eq(float discriminant,
+				 float a,
+				 float b);
+float		solve_ltd_quadric_eq(sfVector3f abc,
+				     sfVector3f eye_pos,
+				     sfVector3f dir_vector,
+				     t_object *object);
+float		get_norm(sfVector3f in);
+sfVector3f	normalize_vector(sfVector3f in);
 /*
 ** Data obliteration - for your destructive needs.
 */
-void			window_destroy(t_my_window *);
-void			destroy_objects(t_object *);
-int			acp_putstr(int fd, char *str);
-void			*my_memset(void *str, int c, int size);
-int			my_getnbr(char *);
-char			*my_strcpy(char *dest, char *src);
-char			*my_strcat(char *dest, char *src);
-void			set_chessboard_color(sfVector3f last_intersect,
-					     sfColor *color);
+void		window_destroy(t_my_window *);
+void		destroy_objects(t_object *);
+int		acp_putstr(int fd, char *str);
+void		*my_memset(void *str, int c, int size);
+int		my_getnbr(char *);
+char		*my_strcpy(char *dest, char *src);
+char		*my_strcat(char *dest, char *src);
+void		set_chessboard_color(sfVector3f last_intersect,
+				     sfColor *color);
 
 #endif /* !RAYTRACER_H_ */

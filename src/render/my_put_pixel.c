@@ -13,7 +13,7 @@
 #include <SFML/Graphics/Texture.h>
 #include "raytracer.h"
 
-void	my_put_pixel(t_my_framebuffer *framebuffer,
+void	my_put_pixel(t_fbuffer *framebuffer,
 		     int x,
 		     int y,
 		     sfColor color)

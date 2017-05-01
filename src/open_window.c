@@ -52,26 +52,26 @@ sfRenderWindow		*create_window(char *name, int width, int height)
   return (window);
 }
 
-t_my_framebuffer	*my_framebuffer_create(int width, int height)
+t_fbuffer	*my_framebuffer_create(int width, int height)
 {
   int			i;
-  t_my_framebuffer	*buffer;
+  t_fbuffer	*buffer;
 
-  buffer = malloc(sizeof(t_my_framebuffer));
+  buffer = malloc(sizeof(t_fbuffer));
   if (!buffer)
-    return ((t_my_framebuffer *) 0);
+    return ((t_fbuffer *) 0);
   (*buffer).pixels = malloc(width * height * 5 * sizeof(sfUint8));
   (*buffer).width = width;
   (*buffer).height = height;
   if (!((*buffer).pixels))
-    return ((t_my_framebuffer *) 0);
+    return ((t_fbuffer *) 0);
   i = 0;
   while (i < width * height * 4)
     (*buffer).pixels[i++] = 0;
   return (buffer);
 }
 
-void	reset_pixels(t_my_framebuffer *buffer)
+void	reset_pixels(t_fbuffer *buffer)
 {
   int	i;
 

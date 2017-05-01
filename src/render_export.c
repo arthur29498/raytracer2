@@ -41,7 +41,7 @@ char	*my_strdup(char *src)
 }
 
 int		export_render(char *file_name,
-			      t_my_framebuffer *buffer)
+			      t_fbuffer *buffer)
 {
   int		fd;
   sfUint8	*pixels;
@@ -50,7 +50,7 @@ int		export_render(char *file_name,
     return (-1);
   pixels = buffer->pixels;
   buffer->pixels = NULL;
-  if (write(fd, buffer, sizeof(t_my_framebuffer)) != sizeof(t_my_framebuffer))
+  if (write(fd, buffer, sizeof(t_fbuffer)) != sizeof(t_fbuffer))
     return (-1);
   if (write(fd, pixels, buffer->width * buffer->height * 4)
       != buffer->width * buffer->height * 4)
