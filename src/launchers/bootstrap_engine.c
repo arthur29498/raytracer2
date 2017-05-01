@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Apr 19 15:52:50 2017 Arthur Philippe
-** Last update Mon May  1 11:38:47 2017 Arthur Philippe
+** Last update Mon May  1 11:44:58 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -16,33 +16,11 @@
 #include <sys/wait.h>
 #include <fcntl.h>
 #include <stdlib.h>
-#include <pthread.h>
 #include "acp.h"
 #include "raytracer.h"
 #include "raytracer_messages.h"
 #include "raytracer_data.h"
 #include "launch.h"
-
-int		raytracer_thread_launch(t_env *env)
-{
-  int		thread_id;
-  pthread_t	thrds[5];
-
-  thread_id = 0;
-  display_progress(&thread_id, 0);
-  while (thread_id < 4)
-    {
-      if (pthread_create(&thrds[thread_id], NULL,
-			 raytrace_bridge, (void *) env))
-	return (-1);
-      thread_id += 1;
-    }
-  while (--thread_id >= 0)
-    pthread_join(thrds[thread_id], NULL);
-  thread_id = 1;
-  display_progress(&thread_id, 0);
-  return (0);
-}
 
 int		raytracer_launcher(char *file_name, int exprt)
 {

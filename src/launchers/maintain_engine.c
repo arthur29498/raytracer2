@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Mon May  1 11:36:12 2017 Arthur Philippe
-** Last update Mon May  1 11:42:30 2017 Arthur Philippe
+** Last update Mon May  1 11:43:56 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -50,8 +50,7 @@ int		window_loop(t_my_window *w, t_env *env, char *file_name)
 	  sfRenderWindow_close(w->window);
 	  return (INTERUPT);
 	}
-      if (env
-	  && event.type == sfEvtKeyPressed
+      if (env && event.type == sfEvtKeyPressed
 	  && event.key.code == sfKeySpace)
 	return (refresh_window(w, env, file_name));
     }
