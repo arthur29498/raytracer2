@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Fri Apr 28 13:37:10 2017 Arthur Philippe
+## Last update Mon May  1 10:32:22 2017 Arthur Philippe
 ##
 
 CC	=	gcc
@@ -61,12 +61,12 @@ CFLAGS	+=	-I include/
 
 LDFLAGS	=	-L./lib/acp -lacp -lc_graph_prog -lm -lpthread
 
-all: make_acp_print $(NAME)
+all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): make_lacp $(OBJS)
 	$(CC) $(OBJS) -o $(NAME) $(LDFLAGS)
 
-make_acp_print:
+make_lacp:
 	$(MAKE) -C lib/acp
 
 clean:
@@ -79,4 +79,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re make_acp_print
+.PHONY: all clean fclean re make_lacp
