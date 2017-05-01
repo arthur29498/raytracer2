@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 16 16:35:31 2017 Arthur Philippe
-** Last update Mon May  1 09:36:14 2017 Arthur Philippe
+** Last update Mon May  1 22:37:27 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_MESSAGES_H_
@@ -31,6 +31,7 @@
 # define MSG_WIN_OPEN		"\nOpenning window"
 # define MSG_SUCCES		" [SUCCESS]\n"
 # define HINT_LOAD		"Loading objects from: \'%s\'...\n\n"
+# define HINT_LOAD_FB		"Loading framebuffer from \'%s\'\n"
 
 # define RED			"\x1b[31m"
 # define GREEN			"\x1b[32m"

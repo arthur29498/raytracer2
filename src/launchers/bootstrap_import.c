@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 22 13:45:47 2017 Arthur Philippe
-** Last update Mon May  1 21:34:53 2017 Arthur Philippe
+** Last update Mon May  1 22:37:24 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -18,6 +18,7 @@
 #include <errno.h>
 #include "raytracer.h"
 #include "raytracer_data.h"
+#include "raytracer_messages.h"
 #include "launch.h"
 #include "acp.h"
 
@@ -27,6 +28,7 @@ int		framebuffer_from_file(char *file_name,
   int		fd;
   t_fbuffer	ingest;
 
+  acp_print(HINT_LOAD_FB, file_name);
   errno = 0;
   if ((fd = open(file_name, O_RDONLY)) == -1
       || read(fd, &ingest, sizeof(t_fbuffer)) != sizeof(t_fbuffer))

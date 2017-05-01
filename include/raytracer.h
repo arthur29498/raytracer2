@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Mon May  1 17:21:31 2017 Arthur Philippe
+** Last update Mon May  1 22:25:05 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -31,6 +31,11 @@
 # define OBJ_LIGHT	"LIGHT*"
 # define OBJ_EYE	"EYE*"
 # define EXPORT_EXT	".exp"
+# define CONF_EXT	".rtc"
+# define EXPORT_MATCH	"*.exp"
+# define CONF_MATCH	"*.rtc"
+# define MODE_RENDER	1
+# define MODE_IMPORT	2
 # define DEF_EXPRT	"default.exp"
 # define ID_SPHERE	1
 # define ID_PLANE	2

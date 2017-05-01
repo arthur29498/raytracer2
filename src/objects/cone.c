@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Fri Mar  3 15:52:08 2017 Arthur Philippe
-** Last update Fri Apr 28 15:59:08 2017 mael drapier
+** Last update Mon May  1 21:53:44 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -18,7 +18,7 @@ static inline sfVector3f	define_quad_eq_vars(sfVector3f eye_pos,
 						    sfVector3f dir_vector,
 						    float radius)
 {
-  sfVector3f		abc;
+  sfVector3f			abc;
 
   abc.x = powf(dir_vector.x, 2) + powf(dir_vector.y, 2);
   abc.x -= powf(tanf(radius), 2) * powf(dir_vector.z, 2);
