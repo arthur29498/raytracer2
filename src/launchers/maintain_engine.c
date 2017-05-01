@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Mon May  1 11:36:12 2017 Arthur Philippe
-** Last update Mon May  1 11:38:08 2017 Arthur Philippe
+** Last update Mon May  1 11:42:30 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -37,7 +37,7 @@ int	refresh_window(t_my_window *w, t_env *env, char *file_name)
 
 }
 
-int	window_loop(t_my_window *w, t_env *env, char *file_name)
+int		window_loop(t_my_window *w, t_env *env, char *file_name)
 {
   sfEvent	event;
 
@@ -48,12 +48,12 @@ int	window_loop(t_my_window *w, t_env *env, char *file_name)
 	      && event.key.code == sfKeyEscape))
 	{
 	  sfRenderWindow_close(w->window);
-	  return (0);
+	  return (INTERUPT);
 	}
       if (env
 	  && event.type == sfEvtKeyPressed
 	  && event.key.code == sfKeySpace)
 	return (refresh_window(w, env, file_name));
     }
-  return (1);
+  return (CONTINUE);
 }

@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Mon May  1 11:34:27 2017 Arthur Philippe
+** Last update Mon May  1 11:42:21 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -15,6 +15,8 @@
 # define EXIT_SUCCESS	0
 # define EXIT_FAIL	84
 # define EXIT_ARG_COUNT	84
+# define CONTINUE	1
+# define INTERUPT	0
 # define BUFFER_SIZE	10000
 # define SC_W		1280
 # define SC_H		720
