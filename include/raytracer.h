@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Mon May  1 11:14:36 2017 Arthur Philippe
+** Last update Mon May  1 11:34:27 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -117,7 +117,7 @@ void			objects_hit_attempt(t_env *env,
 					    t_render_out *out);
 float			obj_fctn_shunter(t_object *object,
 					 t_render_in *in_arg);
-void			raytrace_full_scene(t_env *env);
+void			raytrace_full_scene(t_env *env, int id_thread);
 void			progress_to_next_px(int *total_px,
 					    sfVector2i *px);
 void			display_progress(int *pr, int runing);

@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Fri Apr 28 13:25:00 2017 Arthur Philippe
-** Last update Fri Apr 28 13:39:00 2017 Arthur Philippe
+** Last update Mon May  1 11:34:05 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -25,6 +25,6 @@ int		get_id_thread(void)
 
 void	*raytrace_bridge(void *env)
 {
-  raytrace_full_scene((t_env *) env);
+  raytrace_full_scene((t_env *) env, get_id_thread());
   return (NULL);
 }

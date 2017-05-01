@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Mon May  1 09:56:24 2017 Arthur Philippe
+** Last update Mon May  1 11:34:43 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -84,14 +84,12 @@ static void	set_and_put_px(t_env *env, t_px *px,
 	       px->pos.y + (id_thread * (SC_H / 4)), px->color);
 }
 
-void		raytrace_full_scene(t_env *env)
+void		raytrace_full_scene(t_env *env, int id_thread)
 {
   t_px		px;
   t_render_in	in;
   t_render_out	out;
-  int		id_thread;
 
-  id_thread = get_id_thread();
   px.total_px = px.pos.x = px.pos.y = 0;
   px.color = sfBlue;
   while (px.pos.y < SC_H / 4)
