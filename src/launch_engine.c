@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Apr 19 15:52:50 2017 Arthur Philippe
-** Last update Fri Apr 28 13:38:48 2017 Arthur Philippe
+** Last update Mon May  1 09:25:12 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -22,8 +22,6 @@
 #include "raytracer_messages.h"
 #include "raytracer_data.h"
 #include "launch.h"
-
-void	*raytrace_bridge(void *env);
 
 int		raytracer_thread_launch(t_env *env)
 {
