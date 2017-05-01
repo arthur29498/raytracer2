@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Mon May  1 11:36:12 2017 Arthur Philippe
-** Last update Mon May  1 11:43:56 2017 Arthur Philippe
+** Last update Mon May  1 11:48:00 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -16,7 +16,6 @@
 #include "raytracer_data.h"
 #include "raytracer_messages.h"
 #include "launch.h"
-
 
 int	refresh_window(t_my_window *w, t_env *env, char *file_name)
 {
