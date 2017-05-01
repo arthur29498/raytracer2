@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Fri Apr 28 16:00:08 2017 mael drapier
+** Last update Mon May  1 11:08:33 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -144,6 +144,8 @@ float			solve_ltd_quadric_eq(sfVector3f abc,
 					     sfVector3f eye_pos,
 					     sfVector3f dir_vector,
 					     t_object *object);
+float			get_norm(sfVector3f in);
+
 /*
 ** Data obliteration - for your destructive needs.
 */

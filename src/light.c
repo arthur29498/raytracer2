@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Mar  7 12:15:12 2017 Arthur Philippe
-** Last update Sun Mar 19 22:13:38 2017 Arthur Philippe
+** Last update Mon May  1 11:06:22 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -14,7 +14,7 @@
 #include <math.h>
 #include "raytracer.h"
 
-static inline float	get_norm(sfVector3f in)
+float	get_norm(sfVector3f in)
 {
   float			norm;
 
