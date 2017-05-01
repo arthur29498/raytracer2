@@ -5,11 +5,14 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Jan 25 18:46:40 2017 Arthur Philippe
-** Last update Wed Jan 25 18:48:18 2017 Arthur Philippe
+** Last update Mon May  1 15:09:31 2017 Arthur Philippe
 */
 
 #ifndef ACP_H_
 # define ACP_H_
+
+# define TRUE		1
+# define FALSE		0
 
 int	acp_print(char *, ...);
 int	my_putchar(char);

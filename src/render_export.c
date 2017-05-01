@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Apr 19 16:02:34 2017 Arthur Philippe
-** Last update Sat Apr 22 11:26:48 2017 Arthur Philippe
+** Last update Mon May  1 17:21:27 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -40,12 +40,36 @@ char	*my_strdup(char *src)
   return (dest);
 }
 
+char	*set_file_ext(char *origin)
+{
+  char	*out;
+  int	idx;
+
+  if (!origin)
+    return (NULL);
+  out = my_strdup(origin);
+  idx = my_strlen(out) - 1;
+  acp_print("str: %s - len %d\n", out, idx);
+  while (idx)
+    {
+      if (out[idx] == '.')
+	{
+	  out[idx] = '\0';
+	  my_strcat(out, EXPORT_EXT);
+	  return (out);
+	}
+      idx -= 1;
+    }
+  return (DEF_EXPRT);
+}
+
 int		export_render(char *file_name,
 			      t_fbuffer *buffer)
 {
   int		fd;
   sfUint8	*pixels;
 
+  file_name = set_file_ext(file_name);
   if ((fd = open(file_name, O_CREAT | O_RDWR, S_IWUSR | S_IRUSR)) == -1)
     return (-1);
   pixels = buffer->pixels;

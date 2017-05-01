@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:35:59 2017 Arthur Philippe
-** Last update Sat Apr 15 17:20:09 2017 Arthur Philippe
+** Last update Mon May  1 17:02:17 2017 Arthur Philippe
 */
 
 #include <stdlib.h>
@@ -54,12 +54,12 @@ sfRenderWindow		*create_window(char *name, int width, int height)
 
 t_fbuffer	*my_framebuffer_create(int width, int height)
 {
-  int			i;
+  int		i;
   t_fbuffer	*buffer;
 
   buffer = malloc(sizeof(t_fbuffer));
   if (!buffer)
-    return ((t_fbuffer *) 0);
+    return (NULL);
   (*buffer).pixels = malloc(width * height * 5 * sizeof(sfUint8));
   (*buffer).width = width;
   (*buffer).height = height;

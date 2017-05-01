@@ -5,3 +5,5 @@ export
 
 rt_export
 *.out
+
+*.exp

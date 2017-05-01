@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 22 14:32:17 2017 Arthur Philippe
-** Last update Sun Apr 23 13:47:31 2017 Arthur Philippe
+** Last update Mon May  1 17:16:25 2017 Arthur Philippe
 */
 
 #include <stdlib.h>
@@ -20,11 +20,11 @@ void	set_rtc_opt(char *opt_str, t_rtc_opt *opt)
   while (opt_str[i])
     {
       if (opt_str[i] == OPT_RDR)
-	opt->render = 1;
+	opt->render = TRUE;
       else if (opt_str[i] == OPT_EXP)
-	opt->exprt = 1;
+	opt->exprt = TRUE;
       else if (opt_str[i] == OPT_IMP)
-	opt->imprt = 1;
+	opt->imprt = TRUE;
       i += 1;
     }
 }
