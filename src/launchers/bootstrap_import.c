@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 22 13:45:47 2017 Arthur Philippe
-** Last update Mon May  1 14:44:09 2017 Arthur Philippe
+** Last update Mon May  1 21:34:53 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -15,7 +15,9 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <fcntl.h>
+#include <errno.h>
 #include "raytracer.h"
+#include "raytracer_data.h"
 #include "launch.h"
 #include "acp.h"
 
@@ -25,11 +27,13 @@ int		framebuffer_from_file(char *file_name,
   int		fd;
   t_fbuffer	ingest;
 
-  if ((fd = open(file_name, O_RDONLY)) == -1)
-    return (-1);
-  if (read(fd, &ingest, sizeof(t_fbuffer))
-      != sizeof(t_fbuffer))
-    return (-1);
+  errno = 0;
+  if ((fd = open(file_name, O_RDONLY)) == -1
+      || read(fd, &ingest, sizeof(t_fbuffer)) != sizeof(t_fbuffer))
+    {
+      fd_errors(errno, file_name);
+      return (-1);
+    }
   if (ingest.width != SC_W || ingest.height != SC_H)
     {
       acp_print("import error\n");
