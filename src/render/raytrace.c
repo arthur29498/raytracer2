@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Fri Apr 28 12:23:32 2017 Arthur Philippe
+** Last update Mon May  1 09:56:24 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -72,6 +72,18 @@ static void	prep_ray(t_render_in *in,
   in->eye_pt = env->eye_pt;
 }
 
+static void	set_and_put_px(t_env *env, t_px *px,
+			       t_render_out *out, int id_thread)
+{
+  px->color = get_color_from_objs(env->objects, out->last_obj);
+  if (out->type == ID_PLANE)
+    set_chessboard_color(out->hit_pt, &(px->color));
+  px->color.a *= std_color_effect(env, out);
+  apply_colored_light_effect(&(px->color), env->objects);
+  my_put_pixel(env->w->buffer, px->pos.x - 1,
+	       px->pos.y + (id_thread * (SC_H / 4)), px->color);
+}
+
 void		raytrace_full_scene(t_env *env)
 {
   t_px		px;
@@ -87,15 +99,7 @@ void		raytrace_full_scene(t_env *env)
       prep_ray(&in, env, px.pos, id_thread);
       objects_hit_attempt(env, &in, &out);
       if (out.k > 0)
-	{
-	  px.color = get_color_from_objs(env->objects, out.last_obj);
-	  if (out.type == ID_PLANE)
-	    set_chessboard_color(out.hit_pt, &(px.color));
-	  px.color.a *= std_color_effect(env, &out);
-	  apply_colored_light_effect(&(px.color), env->objects);
-	  my_put_pixel(env->w->buffer, px.pos.x - 1,
-		       px.pos.y + (id_thread * (SC_H / 4)), px.color);
-	}
+	set_and_put_px(env, &px, &out, id_thread);
       display_progress(&(px.total_px), 1);
       progress_to_next_px(&(px.total_px), &(px.pos));
     }
