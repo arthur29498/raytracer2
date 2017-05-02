@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 16 16:35:31 2017 Arthur Philippe
-** Last update Tue May  2 09:23:39 2017 Arthur Philippe
+** Last update Tue May  2 14:03:25 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_MESSAGES_H_
@@ -25,13 +25,17 @@
 # define MSG_QUIT		"raytracer: user exited. (ESC)\
 \nrun terminated.\n"
 # define MSG_RELOAD		"----------------\n\nReloading\n"
-# define MSG_RENDER		"Rendering with up to 4 threads:\n[\t   ]\r"
+# define MSG_RENDER		"\n[\t   ] Rendering with up to 4 threads\r"
 # define MSG_RENDER_DONE	"-\x1b[32mCOMPLETE\x1b[0m-\n"
 # define LOAD_CHAR		'#'
 # define MSG_WIN_OPEN		"\nOpenning window"
 # define MSG_SUCCES		" [SUCCESS]\n"
-# define HINT_LOAD		"Loading objects from: \'%s\'...\n\n"
+# define HINT_LOAD		"Loading objects from: \'%s\'"
+# define HINT_SUMMARY		"Object summary:\n"
+# define HINT_SINGLE_OBJ_SUM	"#%d is a %s.\n"
 # define HINT_LOAD_FB		"Loading framebuffer from \'%s\'\n"
+# define HINT_EXPORT		"\nExport to \'%s\'"
+# define HINT_TOTAL_LOADED	"\n%sLoaded %d objects total.%s\n\n"
 
 # define HELPER		HELP_1 HELP_2 HELP_3 HELP_4 HELP_5 HELP_6
 # define HELP_1		"Raytracer project\n\nDescription:\n"

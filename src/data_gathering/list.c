@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Mon Feb 20 12:30:23 2017 Arthur Philippe
-** Last update Sat Apr 15 14:22:18 2017 Arthur Philippe
+** Last update Tue May  2 14:03:23 2017 Arthur Philippe
 */
 
 #include <stdlib.h>
@@ -87,16 +87,17 @@ int		check_list_content(t_object *list,
   if (!list)
     return (-1);
   current = list;
+  acp_print(HINT_SUMMARY);
   while (current->next)
     {
-      acp_print("#%d is a %s.\n", i, get_object_type(current->type));
+      acp_print(HINT_SINGLE_OBJ_SUM, i, get_object_type(current->type));
       if (!current->type)
 	err = 1;
       current = current->next;
       i += 1;
     }
-  acp_print("#%d is a %s.\n", i, get_object_type(current->type));
-  acp_print("\n%sLoaded %d objects total.\n\n%s", BOLD, i, RST);
+  acp_print(HINT_SINGLE_OBJ_SUM, i, get_object_type(current->type));
+  acp_print(HINT_TOTAL_LOADED, BOLD, i, RST);
   if (err)
     acp_print(MSG_PLAUSIBLE_WARNING, BOLD, file_name, MAGENTA, RST);
   return (i);
