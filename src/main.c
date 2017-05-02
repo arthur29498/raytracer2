@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Feb 15 19:36:12 2017 Arthur Philippe
-** Last update Mon May  1 22:30:48 2017 Arthur Philippe
+** Last update Tue May  2 09:22:06 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -54,6 +54,8 @@ int		main(int ac, char **av)
   int		status;
 
   status = 0;
+  if (ac >= 2 && match(av[1], "-h"))
+    return (helper());
   if (ac < 2)
     {
       acp_putstr(STDERR_FILENO, MSG_TOO_FEW_ARG);

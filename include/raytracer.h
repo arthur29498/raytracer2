@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Mon May  1 22:25:05 2017 Arthur Philippe
+** Last update Tue May  2 09:21:19 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -59,6 +59,8 @@
 # define X_TR_Z	((to_rotate.x * cosf(ZA)) + (to_rotate.y * -sinf(ZA)))
 # define Y_TR_Z	((to_rotate.x * sinf(ZA)) + (to_rotate.y * cosf(ZA)))
 # define Z_TR_Z	(to_rotate.z)
+
+int		helper(void);
 /*
 ** Mandatory
 */

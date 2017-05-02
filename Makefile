@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Mon May  1 11:39:04 2017 Arthur Philippe
+## Last update Tue May  2 09:21:40 2017 Arthur Philippe
 ##
 
 CC	=	gcc
@@ -25,6 +25,7 @@ SRCS	=	src/main.c				\
 		src/open_window.c			\
 		src/render_export.c			\
 		src/get_opt.c				\
+		src/helper.c				\
 		src/data_gathering/fd_errors.c		\
 		src/data_gathering/get_next_line.c	\
 		src/data_gathering/list.c		\

@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 16 16:35:31 2017 Arthur Philippe
-** Last update Mon May  1 22:37:27 2017 Arthur Philippe
+** Last update Tue May  2 09:23:39 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_MESSAGES_H_
@@ -32,6 +32,14 @@
 # define MSG_SUCCES		" [SUCCESS]\n"
 # define HINT_LOAD		"Loading objects from: \'%s\'...\n\n"
 # define HINT_LOAD_FB		"Loading framebuffer from \'%s\'\n"
+
+# define HELPER		HELP_1 HELP_2 HELP_3 HELP_4 HELP_5 HELP_6
+# define HELP_1		"Raytracer project\n\nDescription:\n"
+# define HELP_2		"\t3D layout engine featuring multiple objects\n"
+# define HELP_3		"\tincluding spheres, planes, cylinders, cones.\n\n"
+# define HELP_4		"Usage:\n"
+# define HELP_5		"\t./raytracer2 [-re | -i] [conf_file.rtc |"
+# define HELP_6		" export_file.exp]\n"
 
 # define RED			"\x1b[31m"
 # define GREEN			"\x1b[32m"
