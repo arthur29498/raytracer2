@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Tue May  2 09:21:40 2017 Arthur Philippe
+## Last update Tue May  2 15:26:26 2017 
 ##
 
 CC	=	gcc
@@ -52,6 +52,8 @@ SRCS	=	src/main.c				\
 		src/render/raytrace.c			\
 		src/render/progress.c			\
 		src/render/std_effects.c		\
+		src/render/calc_brightness.c		\
+		src/render/set_brightness.c		\
 		src/procedural_texturing/chess_board.c	\
 
 OBJS	=	$(SRCS:.c=.o)
