@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Tue May  2 15:31:31 2017 mael drapier
+## Last update Wed May  3 16:28:04 2017 mael drapier
 ##
 
 CC	=	gcc
@@ -52,7 +52,6 @@ SRCS	=	src/main.c				\
 		src/render/raytrace.c			\
 		src/render/progress.c			\
 		src/render/std_effects.c		\
-		src/render/calc_brightness.c		\
 		src/render/set_brightness.c		\
 		src/procedural_texturing/chess_board.c	\
 
