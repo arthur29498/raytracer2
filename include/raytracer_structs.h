@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 12:40:43 2017 Arthur Philippe
-** Last update Mon May  1 14:41:43 2017 Arthur Philippe
+** Last update Wed May  3 14:39:55 2017 mael drapier
 */
 
 #ifndef RAYTRACER_STRUCTS_H_
@@ -32,6 +32,7 @@ typedef struct		s_object
   int			type;
   float			size_a;
   float			size_b;
+  float			brightness;
   sfColor		col;
   sfVector3f		pos;
   sfVector3f		rot;
