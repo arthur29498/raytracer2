@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 12:40:43 2017 Arthur Philippe
-** Last update Wed May  3 14:39:55 2017 mael drapier
+** Last update Wed May  3 15:23:25 2017 mael drapier
 */
 
 #ifndef RAYTRACER_STRUCTS_H_
