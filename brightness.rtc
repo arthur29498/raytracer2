@@ -3,9 +3,9 @@ T=LIGHT
 X=-1000
 Y=200
 Z=600
-cR=150
-cG=175
-cB=255
+cR=0
+cG=255
+cB=0
 cA=255
 END
 
