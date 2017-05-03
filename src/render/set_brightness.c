@@ -5,7 +5,7 @@
 ** Login   <mael.drapier@epitech.eu>
 **
 ** Started on  Tue May  2 15:24:50 2017 mael drapier
-** Last update Wed May  3 16:25:12 2017 mael drapier
+** Last update Wed May  3 17:25:03 2017 mael drapier
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -13,16 +13,29 @@
 #include <SFML/Graphics/Texture.h>
 #include "raytracer.h"
 
-void	set_brightness(sfColor *color, t_object *objects, float coef)
+void	calc_brightness(sfColor *color, sfColor obj_color,
+			float brightness, float coef)
+{
+  if (color->r + (int) (brightness * obj_color.r * coef) <= 255)
+    color->r += (int) (brightness * obj_color.r * coef);
+  else
+    color->r = 255;
+  if (color->g + (int) (brightness * obj_color.g * coef) <= 255)
+    color->g += (int) (brightness * obj_color.g * coef);
+  else
+    color->g = 255;
+  if (color->b + (int) (brightness * obj_color.b * coef) <= 255)
+    color->b += (int) (brightness * obj_color.b * coef);
+  else
+    color->b = 255;
+}
+
+void	set_brightness(sfColor *color, t_object *objects, float coef, int id)
 {
   while (objects)
     {
       if (objects->type == ID_LIGHT && objects->col.a)
-	{
-	  color->r += 0.5 * objects->col.r * coef;
-	  color->g += 0.1 * objects->col.g * coef;
-	  color->b += 0.5 * objects->col.b * coef;
-	}
+	calc_brightness(color, objects->col, 0.5, coef);
       objects = objects->next;
     }
 }
