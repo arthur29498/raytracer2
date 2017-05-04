@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu May  4 10:33:17 2017 Arthur Philippe
-** Last update Thu May  4 10:57:06 2017 Arthur Philippe
+** Last update Thu May  4 11:18:58 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -14,7 +14,8 @@
 #include "math.h"
 #include "raytracer.h"
 
-sfVector3f	reflect_vector(sfVector3f dir_v, sfVector3f normal_v)
+sfVector3f	reflect_vector(const sfVector3f dir_v,
+			       const sfVector3f normal_v)
 {
   sfVector3f	reflected_v;
   float		dot;
