@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Wed May  3 17:30:01 2017 mael drapier
+** Last update Thu May  4 12:39:34 2017 mael drapier
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -83,7 +83,7 @@ static void	set_and_put_px(t_env *env, t_px *px,
   coef = std_color_effect(env, out);
   px->color.a *= coef;
   apply_colored_light_effect(&(px->color), env->objects);
-  set_brightness(&(px->color), env->objects, coef);
+  set_brightness(&(px->color), env->objects, out->last_obj, coef);
   my_put_pixel(env->w->buffer, px->pos.x - 1,
 	       px->pos.y + (id_thread * (SC_H / 4)), px->color);
 }

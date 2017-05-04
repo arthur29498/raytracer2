@@ -5,7 +5,7 @@
 ** Login   <mael.drapier@epitech.eu>
 **
 ** Started on  Tue May  2 15:24:50 2017 mael drapier
-** Last update Thu May  4 09:24:28 2017 Arthur Philippe
+** Last update Thu May  4 12:46:19 2017 mael drapier
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -13,29 +13,40 @@
 #include <SFML/Graphics/Texture.h>
 #include "raytracer.h"
 
-void	calc_brightness(sfColor *color, sfColor obj_color,
+void	calc_brightness(sfColor *color, sfColor light_color,
 			float brightness, float coef)
 {
-  if (color->r + (int) (brightness * obj_color.r * coef) <= 255)
-    color->r += (int) (brightness * obj_color.r * coef);
+  if (color->r + (int) (brightness * light_color.r * coef) <= 255)
+    color->r += (int) (brightness * light_color.r * coef);
   else
     color->r = 255;
-  if (color->g + (int) (brightness * obj_color.g * coef) <= 255)
-    color->g += (int) (brightness * obj_color.g * coef);
+  if (color->g + (int) (brightness * light_color.g * coef) <= 255)
+    color->g += (int) (brightness * light_color.g * coef);
   else
     color->g = 255;
-  if (color->b + (int) (brightness * obj_color.b * coef) <= 255)
-    color->b += (int) (brightness * obj_color.b * coef);
+  if (color->b + (int) (brightness * light_color.b * coef) <= 255)
+    color->b += (int) (brightness * light_color.b * coef);
   else
     color->b = 255;
 }
 
-void	set_brightness(sfColor *color, t_object *objects, float coef)
+void		set_brightness(sfColor *color, t_object *objects,
+			       int object_nb, float coef)
 {
+  t_object	*objs_save;
+  float		brightness;
+
+  objs_save = objects;
   while (objects)
     {
-      if (objects->type == ID_LIGHT && objects->col.a)
-	calc_brightness(color, objects->col, objects->brightness, coef);
+      if (objects->id == object_nb)
+	brightness = objects->brightness;
       objects = objects->next;
+    }
+  while (objs_save)
+    {
+      if (objs_save->type == ID_LIGHT && objs_save->col.a)
+	calc_brightness(color, objs_save->col, brightness, coef);
+      objs_save = objs_save->next;
     }
 }
