@@ -37,6 +37,8 @@ SRCS	=	src/main.c				\
 		src/vectors/rotate.c			\
 		src/vectors/translate.c			\
 		src/vectors/normalize.c			\
+		src/vectors/reflect.c			\
+		src/vectors/dot_product.c		\
 		src/objects/cone.c			\
 		src/objects/cylinder.c			\
 		src/objects/limited.c			\

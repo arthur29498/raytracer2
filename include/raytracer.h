@@ -159,6 +159,7 @@ float		solve_ltd_quadric_eq(sfVector3f abc,
 				     t_object *object);
 float		get_norm(sfVector3f in);
 sfVector3f	normalize_vector(sfVector3f in);
+float	dot_product(sfVector3f v1, sfVector3f v2);
 /*
 ** Data obliteration - for your destructive needs.
 */
