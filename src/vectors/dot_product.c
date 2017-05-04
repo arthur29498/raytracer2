@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu May  4 10:56:49 2017 Arthur Philippe
-** Last update Thu May  4 10:57:11 2017 Arthur Philippe
+** Last update Thu May  4 11:08:26 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -13,6 +13,14 @@
 #include <SFML/Graphics/Texture.h>
 #include "math.h"
 #include "raytracer.h"
+
+float		get_norm(sfVector3f in)
+{
+  float		norm;
+
+  norm = sqrtf((in.x * in.x) + (in.y * in.y) + (in.z * in.z));
+  return (norm);
+}
 
 float	dot_product(sfVector3f v1, sfVector3f v2)
 {
