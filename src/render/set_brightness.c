@@ -5,7 +5,7 @@
 ** Login   <mael.drapier@epitech.eu>
 **
 ** Started on  Tue May  2 15:24:50 2017 mael drapier
-** Last update Wed May  3 17:29:30 2017 mael drapier
+** Last update Thu May  4 09:24:28 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -35,7 +35,7 @@ void	set_brightness(sfColor *color, t_object *objects, float coef)
   while (objects)
     {
       if (objects->type == ID_LIGHT && objects->col.a)
-	calc_brightness(color, objects->col, 0.5, coef);
+	calc_brightness(color, objects->col, objects->brightness, coef);
       objects = objects->next;
     }
 }
