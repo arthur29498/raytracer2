@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Tue May  2 09:21:40 2017 Arthur Philippe
+## Last update Wed May  3 17:42:27 2017 mael drapier
 ##
 
 CC	=	gcc
@@ -33,6 +33,7 @@ SRCS	=	src/main.c				\
 		src/data_gathering/match.c		\
 		src/data_gathering/objects_creation.c	\
 		src/data_gathering/objects_limit.c	\
+		src/data_gathering/objects_brightness.c	\
 		src/vectors/rotate.c			\
 		src/vectors/translate.c			\
 		src/vectors/normalize.c			\
@@ -52,6 +53,7 @@ SRCS	=	src/main.c				\
 		src/render/raytrace.c			\
 		src/render/progress.c			\
 		src/render/std_effects.c		\
+		src/render/set_brightness.c		\
 		src/procedural_texturing/chess_board.c	\
 
 OBJS	=	$(SRCS:.c=.o)
