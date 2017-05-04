@@ -54,6 +54,7 @@ typedef struct		s_render_out
 {
   float			k;
   sfVector3f		hit_pt;
+  sfVector3f		normal;
   int			last_obj;
   int			type;
 }			t_render_out;

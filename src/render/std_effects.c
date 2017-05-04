@@ -75,6 +75,7 @@ float		std_color_effect(t_env *env, t_render_out *pr_out)
       light_v = in.dir_vector;
       prep_light_and_normal(&light_v, &normal_v, env, pr_out);
       coef = get_light_coef(light_v, normal_v);
+      pr_out->normal = normal_v;
     }
   coef += (coef < 0.9) ? 0.1 : 1 - coef;
   return (coef);
