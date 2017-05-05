@@ -76,6 +76,7 @@ cR=255
 cG=215
 cB=0
 cA=255
+mB=1000
 END
 
 OBJECT

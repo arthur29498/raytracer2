@@ -42,7 +42,7 @@ static void	prep_light_and_normal(sfVector3f *light,
     objs = objs->next;
   if (objs->id == pr_out->last_obj)
     {
-      hit = translate_inv(pr_out->hit_pt, objs->pos);
+      hit =  translate_inv(pr_out->hit_pt, objs->pos);
       hit = rotate_zyx(hit, objs->rot);
       *light = rotate_zyx(*light, objs->rot);
       if (objs->type == 1)
@@ -68,15 +68,15 @@ float		std_color_effect(t_env *env, t_render_out *pr_out)
   my_memset(&in, 0, sizeof(t_render_in));
   prep_ray(&in, pr_out, env);
   objects_hit_attempt(env, &in, &nw_out);
+  prep_light_and_normal(&light_v, &normal_v, env, pr_out);
   if (nw_out.k == 1)
     coef = 0;
   else
     {
       light_v = in.dir_vector;
-      prep_light_and_normal(&light_v, &normal_v, env, pr_out);
       coef = get_light_coef(light_v, normal_v);
-      pr_out->normal = normal_v;
     }
   coef += (coef < 0.9) ? 0.1 : 1 - coef;
+  pr_out->normal = normal_v;
   return (coef);
 }
