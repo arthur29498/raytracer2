@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Thu May  4 12:39:34 2017 mael drapier
+** Last update Fri May  5 11:33:30 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -81,6 +81,7 @@ static void	set_and_put_px(t_env *env, t_px *px,
   if (out->type == ID_PLANE)
     set_chessboard_color(out->hit_pt, &(px->color));
   coef = std_color_effect(env, out);
+  // reflect_effect(env, out, &(px->color));
   px->color.a *= coef;
   apply_colored_light_effect(&(px->color), env->objects);
   set_brightness(&(px->color), env->objects, out->last_obj, coef);
@@ -101,7 +102,10 @@ void		raytrace_full_scene(t_env *env, int id_thread)
       prep_ray(&in, env, px.pos, id_thread);
       objects_hit_attempt(env, &in, &out);
       if (out.k > 0)
-	set_and_put_px(env, &px, &out, id_thread);
+	{
+	  out.last_dir_v = in.dir_vector;
+	  set_and_put_px(env, &px, &out, id_thread);
+	}
       display_progress(&(px.total_px), 1);
       progress_to_next_px(&(px.total_px), &(px.pos));
     }

@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Thu May  4 12:38:36 2017 mael drapier
+** Last update Fri May  5 11:31:21 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -139,6 +139,12 @@ void		set_brightness(sfColor *color, t_object *objects,
 			       int object_nb, float coef);
 int		get_id_thread(void);
 void		*raytrace_bridge(void *env);
+sfColor		reflect_color(const sfColor pt1,
+			      const sfColor pt2,
+			      const float reflection);
+void		reflect_effect(t_env *env,
+			       t_render_out *pr_out,
+			       sfColor *color);
 /*
 ** Export
 */
