@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu May  4 10:33:17 2017 Arthur Philippe
-** Last update Fri May  5 11:32:53 2017 Arthur Philippe
+** Last update Fri May  5 11:45:24 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -14,12 +14,14 @@
 #include "math.h"
 #include "raytracer.h"
 
-static sfVector3f	reflect_vector(const sfVector3f dir_v,
-				       const sfVector3f normal_v)
+static sfVector3f	reflect_vector(sfVector3f dir_v,
+				       sfVector3f normal_v)
 {
   sfVector3f		reflected_v;
   float			dot;
 
+  dir_v = normalize_vector(dir_v);
+  normal_v = normalize_vector(normal_v);
   dot = dot_product(dir_v, normal_v);
   reflected_v.x = (normal_v.x * -2 * dot) + dir_v.x;
   reflected_v.y = (normal_v.y * -2 * dot) + dir_v.y;
@@ -46,6 +48,9 @@ void		reflect_effect(t_env *env,
   my_memset(&in, 0, sizeof(t_render_in));
   prep_ray(&in, pr_out);
   objects_hit_attempt(env, &in, &nw_out);
-  new_color = get_color_from_objs(env->objects, nw_out.last_obj);
-  *color = reflect_color(*color, new_color, 0.4);
+  if (nw_out.k > 0)
+    {
+      new_color = get_color_from_objs(env->objects, nw_out.last_obj);
+      *color = reflect_color(*color, new_color, 0.4);
+    }
 }

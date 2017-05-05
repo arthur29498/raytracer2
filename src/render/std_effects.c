@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Mon Apr 17 16:14:09 2017 Arthur Philippe
-** Last update Wed May  3 15:59:47 2017 mael drapier
+** Last update Fri May  5 11:41:32 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -42,7 +42,7 @@ static void	prep_light_and_normal(sfVector3f *light,
     objs = objs->next;
   if (objs->id == pr_out->last_obj)
     {
-      hit =  translate_inv(pr_out->hit_pt, objs->pos);
+      hit = translate_inv(pr_out->hit_pt, objs->pos);
       hit = rotate_zyx(hit, objs->rot);
       *light = rotate_zyx(*light, objs->rot);
       if (objs->type == 1)
