@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu May  4 10:56:49 2017 Arthur Philippe
-** Last update Thu May  4 11:18:30 2017 Arthur Philippe
+** Last update Sat May  6 11:05:50 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -25,14 +25,16 @@ float		get_norm(const sfVector3f in)
 float	dot_product(sfVector3f v1, sfVector3f v2)
 {
   float	dot;
+  float	norms;
 
-  if (!(get_norm(v1) * get_norm(v2)))
-    return (0);
   v1 = normalize_vector(v1);
   v2 = normalize_vector(v2);
+  if (!(norms = get_norm(v1) * get_norm(v2)))
+    return (0);
   dot = v1.x * v2.x;
   dot += v1.y * v2.y;
   dot += v2.z * v1.z;
+  dot /= norms;
   if (dot < 0)
     return (0);
   if (dot > 1)
