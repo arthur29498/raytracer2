@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Sun Feb 26 20:47:39 2017 Arthur Philippe
+## Last update Mon May  8 11:19:20 2017 Arthur Philippe
 ##
 
 CC	=	gcc
@@ -26,6 +26,9 @@ SRCS	=	src/print/my_printf.c		\
 		src/print/flags3.c		\
 		src/get_next_line.c		\
 		src/my_memset.c			\
+		src/my_strdup.c			\
+		src/my_strcat.c			\
+		src/match.c			\
 
 OBJS	=	$(SRCS:.c=.o)
 

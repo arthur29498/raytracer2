@@ -1,107 +1,90 @@
 /*
-** get_next_line.c for matchstick in /home/arthur/delivery/CPE_2016_matchstick/src/
+** get_next_line.c for lacp in /home/arthur/Projects/new_gnl/lib/acp/src/
 **
 ** Made by Arthur Philippe
 ** Login   <arthur.philippe@epitech.eu>
 **
-** Started on  Mon Feb 13 21:10:30 2017 Arthur Philippe
-** Last update Tue Mar 21 09:09:00 2017 Arthur Philippe
+** Started on  Sun May  7 21:16:35 2017 Arthur Philippe
+** Last update Mon May  8 11:12:45 2017 Arthur Philippe
 */
 
+#include <stdio.h>
+#include "str.h"
 #include "get_next_line.h"
 
-char			*get_next_line(const int fd)
+char	*my_strappend(char *s1, char *s2, int destroy_f)
 {
-  static t_fd_track	f = (t_fd_track) {0, -1, 0, 0};
-  int			size;
-  char			*stack;
-
-  size = 0;
-  stack = (f.idx) ? gnl_add_to_stack(0, &f) : 0;
-  if (f.status == 2)
-    gnl_rebuff(&f, &size);
-  if (fd != f.fd || ((f.status) == 1 && f.buffer[f.idx] == -1))
-    {
-      f = (t_fd_track) {0, fd, 0, f.buffer};
-      gnl_rebuff(&f, &size);
-    }
-  while (size > 0 && !f.status)
-    {
-      stack = gnl_add_to_stack(stack, &f);
-      if (f.status == 2)
-	gnl_rebuff(&f, &size);
-    }
-  if (!stack || (!stack[0] && f.status == 0))
-    return (0);
-  return (stack);
-}
-
-char	*gnl_add_to_stack(char *stack, t_fd_track *f_pt)
-{
-  char	*new_stack;
-  int	i1;
-  int	i2;
-
-  i1 = 0;
-  i2 = f_pt->idx;
-  new_stack = malloc(my_strlen(stack) + my_strlen(f_pt->buffer) + 1);
-  my_memset(new_stack, 0, my_strlen(stack) + my_strlen(f_pt->buffer) + 1);
-  if (my_strlen(stack))
-    {
-      while (stack[i1++])
-	new_stack[i1 - 1] = stack[i1 - 1];
-      i1 -= 1;
-      free(stack);
-    }
-  while (f_pt->buffer[f_pt->idx] && f_pt->buffer[f_pt->idx] != '\n'
-	 && f_pt->buffer[f_pt->idx] != -1)
-    {
-      new_stack[i1 + f_pt->idx - i2] = f_pt->buffer[f_pt->idx];
-      f_pt->idx += 1;
-    }
-  f_pt->status = (f_pt->buffer[f_pt->idx] == '\n') ? 1 : 2;
-  new_stack[i1 + f_pt->idx - i2] = 0;
-  f_pt->idx += (f_pt->status == 1) ? 1 : 0;
-  return (new_stack);
-}
-
-void	gnl_rebuff(t_fd_track *f_pt, int *size)
-{
-  free(f_pt->buffer);
-  *size = gnl_fill_buffer(&(f_pt->buffer), f_pt->fd);
-  f_pt->status = 0;
-  f_pt->idx = 0;
-}
-
-int	gnl_fill_buffer(char **buffer_ptr, int fd)
-{
-  int	size;
-
-  size = 0;
-  *buffer_ptr = malloc(sizeof(char) * READ_SIZE + 1);
-  my_memset(*buffer_ptr, 0, sizeof(char) * READ_SIZE + 1);
-  if (*buffer_ptr)
-    {
-      size = read(fd, *buffer_ptr, READ_SIZE);
-      if (buffer_ptr[0][0] == -1)
-	return (-1);
-      if (size > 0)
-	{
-	  buffer_ptr[0][size] = 0;
-	  return (size);
-	}
-    }
-  return (0);
-}
-
-int	my_strlen(char *str)
-{
+  char	*outp;
+  char	*old_s1;
+  char	*old_s2;
   int	i;
 
+  if (!(outp = malloc((my_strlen(s1) + my_strlen(s2) + 1))))
+    return (NULL);
   i = 0;
-  if (!str)
-    return (0);
-  while (str[i] && str[i] != -1)
-    i += 1;
-  return (i);
+  old_s1 = s1;
+  old_s2 = s2;
+  while (s1 && *s1)
+    outp[i++] = *(s1++);
+  while (s2 && *s2)
+    outp[i++] = *(s2++);
+  outp[i] = '\0';
+  if (old_s1 && (destroy_f == 1 || destroy_f == 3))
+    free(old_s1);
+  if (old_s2 && (destroy_f == 2 || destroy_f == 3))
+    free(old_s2);
+  return (outp);
+}
+
+static char	*set_leftovers(char *stack, int *eof_f)
+{
+  char		*left_overs;
+  int		idx;
+
+  idx = 0;
+  while (stack[idx] && stack[idx] != '\n' && stack[idx] != EOF)
+    idx += 1;
+  if (!stack[idx] || stack[idx] == EOF)
+    {
+      *eof_f = (stack[idx] == EOF && idx == 0) ? 1 : 0;
+      return (NULL);
+    }
+  left_overs = my_strdup(&stack[idx + 1]);
+  stack[idx] = '\0';
+  return (left_overs);
+}
+
+static char	*reset_gnl(const int fd, int *old_fd, char *left_overs)
+{
+  *old_fd = fd;
+  if (left_overs)
+    free(left_overs);
+  return (NULL);
+}
+
+char		*get_next_line(const int fd)
+{
+  char		*buffer;
+  char		*stack;
+  static char	*stack_leftover = NULL;
+  int		eof_f;
+  static int	old_fd = -2;
+
+  if (fd != old_fd)
+    stack_leftover = reset_gnl(fd, &old_fd, stack_leftover);
+  if (!(buffer = ub_malloc(READ_SIZE + 1)))
+    return (NULL);
+  stack = (stack_leftover) ? my_strappend(NULL, stack_leftover, 2) : NULL;
+  eof_f = 0;
+  if (stack)
+    stack_leftover = set_leftovers(stack, &eof_f);
+  while (!eof_f && !stack_leftover && read(fd, buffer, READ_SIZE) > 0)
+    {
+      stack = my_strappend(stack, buffer, 1);
+      stack_leftover = set_leftovers(stack, &eof_f);
+    }
+  free(buffer);
+  if (!stack_leftover && stack)
+    free(stack);
+  return ((!stack_leftover) ? NULL : stack);
 }
