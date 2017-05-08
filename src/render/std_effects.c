@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Mon Apr 17 16:14:09 2017 Arthur Philippe
-** Last update Mon May  8 17:09:39 2017 Arthur Philippe
+** Last update Mon May  8 21:31:39 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -76,6 +76,7 @@ float		std_color_effect(t_env *env, t_render_out *pr_out)
       light_v = in.dir_vector;
       coef = get_light_coef(light_v, normal_v);
     }
+  coef = (coef < 0) ? 0 : coef;
   coef += (coef < 0.9) ? 0.1 : 1 - coef;
   pr_out->normal = normal_v;
   return (coef);
