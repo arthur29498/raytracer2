@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu May  4 10:56:49 2017 Arthur Philippe
-** Last update Sat May  6 11:05:50 2017 Arthur Philippe
+** Last update Mon May  8 17:11:26 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -35,8 +35,8 @@ float	dot_product(sfVector3f v1, sfVector3f v2)
   dot += v1.y * v2.y;
   dot += v2.z * v1.z;
   dot /= norms;
-  if (dot < 0)
-    return (0);
+  if (dot < -1)
+    return (-1);
   if (dot > 1)
     return (1);
   return (dot);
