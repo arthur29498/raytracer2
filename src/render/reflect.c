@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu May  4 11:10:58 2017 Arthur Philippe
-** Last update Thu May  4 11:18:24 2017 Arthur Philippe
+** Last update Tue May  9 09:51:18 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -23,6 +23,6 @@ sfColor		reflect_color(const sfColor pt1,
   out.r = (pt2.r * reflection) + (pt1.r * (1 - reflection));
   out.g = (pt2.g * reflection) + (pt1.g * (1 - reflection));
   out.b = (pt2.b * reflection) + (pt1.b * (1 - reflection));
-  out.a = 255;
+  out.a = (pt2.a * reflection) + (pt1.a * (1 - reflection));
   return (out);
 }

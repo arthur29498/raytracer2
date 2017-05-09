@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu May  4 10:33:17 2017 Arthur Philippe
-** Last update Mon May  8 21:34:43 2017 Arthur Philippe
+** Last update Tue May  9 10:03:22 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -43,23 +43,30 @@ static void	prep_ray(t_render_in *in,
 
 void		reflect_effect(t_env *env,
 			       t_render_out *pr_out,
-			       sfColor *color)
+			       sfColor *color,
+			       int iter)
 {
   t_render_in	in;
   t_render_out	nw_out;
   sfColor	new_color;
   float		coef;
 
+  if (iter > 5)
+    return ;
   my_memset(&in, 0, sizeof(t_render_in));
   prep_ray(&in, pr_out);
   objects_hit_attempt(env, &in, &nw_out);
   if (nw_out.k > 0)
     {
       new_color = get_color_from_objs(env->objects, nw_out.last_obj);
+      nw_out.last_dir_v = in.dir_vector;
       if (nw_out.type == ID_PLANE)
 	set_chessboard_color(nw_out.hit_pt, &new_color);
       coef = std_color_effect(env, &nw_out);
+      reflect_effect(env, &nw_out, &new_color, iter + 1);
       new_color.a *= coef;
+      apply_colored_light_effect(&(new_color), env->objects);
+      set_brightness(&new_color, env->objects, nw_out.last_obj, coef);
       *color = reflect_color(*color, new_color, 0.3);
     }
 }

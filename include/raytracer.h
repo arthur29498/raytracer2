@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Fri May  5 11:31:21 2017 Arthur Philippe
+** Last update Tue May  9 09:13:04 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -144,7 +144,8 @@ sfColor		reflect_color(const sfColor pt1,
 			      const float reflection);
 void		reflect_effect(t_env *env,
 			       t_render_out *pr_out,
-			       sfColor *color);
+			       sfColor *color,
+			       int iter);
 /*
 ** Export
 */
@@ -165,7 +166,7 @@ float		solve_ltd_quadric_eq(sfVector3f abc,
 				     t_object *object);
 float		get_norm(sfVector3f in);
 sfVector3f	normalize_vector(sfVector3f in);
-float	dot_product(sfVector3f v1, sfVector3f v2);
+float		dot_product(sfVector3f v1, sfVector3f v2);
 /*
 ** Data obliteration - for your destructive needs.
 */

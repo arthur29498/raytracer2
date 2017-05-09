@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Mon May  8 21:35:41 2017 Arthur Philippe
+** Last update Tue May  9 09:12:44 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -81,7 +81,7 @@ static void	set_and_put_px(t_env *env, t_px *px,
   if (out->type == ID_PLANE)
     set_chessboard_color(out->hit_pt, &(px->color));
   coef = std_color_effect(env, out);
-  reflect_effect(env, out, &(px->color));
+  reflect_effect(env, out, &(px->color), 0);
   px->color.a *= coef;
   apply_colored_light_effect(&(px->color), env->objects);
   set_brightness(&(px->color), env->objects, out->last_obj, coef);
