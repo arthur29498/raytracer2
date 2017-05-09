@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu May  4 10:33:17 2017 Arthur Philippe
-** Last update Tue May  9 10:03:22 2017 Arthur Philippe
+** Last update Tue May  9 19:37:47 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -35,6 +35,7 @@ static void	prep_ray(t_render_in *in,
 {
   sfVector3f	reflected_v;
 
+  // printf("%f %f %f\n", pr_out->normal.x, pr_out->normal.y, pr_out->normal.z);
   reflected_v = reflect_vector(pr_out->last_dir_v, pr_out->normal);
   in->dir_vector = reflected_v;
   in->eye_pt = pr_out->hit_pt;

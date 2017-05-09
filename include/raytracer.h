@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Tue May  9 09:13:04 2017 Arthur Philippe
+** Last update Tue May  9 19:36:19 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -88,6 +88,7 @@ float		intersect_ltd_cone(sfVector3f eye_pos,
 				       t_object *object);
 sfVector3f	rotate_xyz(sfVector3f to_rotate, sfVector3f angles);
 sfVector3f	rotate_zyx(sfVector3f to_rotate, sfVector3f angles);
+sfVector3f	rotate_xyz_inv(sfVector3f to_rotate, sfVector3f angles);
 sfVector3f	get_normal_sphere(sfVector3f intersection_point);
 sfVector3f	get_normal_cylinder(sfVector3f intersection_point);
 sfVector3f	get_normal_cone(sfVector3f intersection_point,
