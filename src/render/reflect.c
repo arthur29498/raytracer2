@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu May  4 11:10:58 2017 Arthur Philippe
-** Last update Wed May 10 11:35:07 2017 Arthur Philippe
+** Last update Wed May 10 13:11:17 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -61,7 +61,6 @@ void		reflect_effect(t_env *env,
   t_render_in	in;
   t_render_out	nw_out;
   sfColor	new_color;
-  float		coef;
 
   if (iter > MAX_REFLECT || !pr_out->reflect)
     return ;
@@ -70,15 +69,8 @@ void		reflect_effect(t_env *env,
   objects_hit_attempt(env, &in, &nw_out);
   if (nw_out.k > 0)
     {
-      new_color = get_color_from_objs(env->objects, nw_out.last_obj);
       nw_out.last_dir_v = in.dir_vector;
-      if (nw_out.type == ID_PLANE)
-	set_chessboard_color(nw_out.hit_pt, &new_color);
-      coef = std_color_effect(env, &nw_out);
-      reflect_effect(env, &nw_out, &new_color, iter + 1);
-      new_color.a *= coef;
-      apply_colored_light_effect(&(new_color), env->objects);
-      set_brightness(&new_color, env->objects, nw_out.last_obj, coef);
+      set_pixel(env, &new_color, &nw_out, iter + 1);
       *color = reflect_color(*color, new_color, pr_out->reflect);
     }
 }

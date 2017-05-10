@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Wed May 10 11:22:11 2017 Arthur Philippe
+** Last update Wed May 10 13:04:56 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -148,6 +148,11 @@ void		reflect_effect(t_env *env,
 			       t_render_out *pr_out,
 			       sfColor *color,
 			       int iter);
+void		set_pixel(t_env *env,
+			  sfColor *color,
+			  t_render_out *out,
+			  int iter);
+
 /*
 ** Export
 */

@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Wed May 10 11:09:51 2017 Arthur Philippe
+** Last update Wed May 10 13:05:55 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -73,22 +73,19 @@ static void	prep_ray(t_render_in *in,
   in->eye_pt = env->eye_pt;
 }
 
-static void	set_and_put_px(t_env *env, t_px *px,
-			       t_render_out *out, int id_thread)
+void	set_pixel(t_env *env, sfColor *color, t_render_out *out, int iter)
 {
-  float		coef;
+  float	coef;
 
-  px->color = get_color_from_objs(env->objects, out->last_obj);
+  *color = get_color_from_objs(env->objects, out->last_obj);
   if (out->type == ID_PLANE)
-    set_chessboard_color(out->hit_pt, &(px->color));
+    set_chessboard_color(out->hit_pt, color);
   coef = std_color_effect(env, out);
   if (out->reflect != 0.00)
-    reflect_effect(env, out, &(px->color), 0);
-  px->color.a *= coef;
-  apply_colored_light_effect(&(px->color), env->objects);
-  set_brightness(&(px->color), env->objects, out->last_obj, coef);
-  my_put_pixel(env->w->buffer, px->pos.x - 1,
-	       px->pos.y + (id_thread * (SC_H / 4)), px->color);
+    reflect_effect(env, out, color, iter);
+  color->a *= coef;
+  apply_colored_light_effect(color, env->objects);
+  set_brightness(color, env->objects, out->last_obj, coef);
 }
 
 void		raytrace_full_scene(t_env *env, int id_thread)
@@ -106,7 +103,9 @@ void		raytrace_full_scene(t_env *env, int id_thread)
       if (out.k > 0)
 	{
 	  out.last_dir_v = in.dir_vector;
-	  set_and_put_px(env, &px, &out, id_thread);
+	  set_pixel(env, &(px.color), &out, 0);
+	  my_put_pixel(env->w->buffer, px.pos.x - 1,
+		       px.pos.y + (id_thread * (SC_H / 4)), px.color);
 	}
       display_progress(&(px.total_px), 1);
       progress_to_next_px(&(px.total_px), &(px.pos));
