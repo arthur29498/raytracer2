@@ -26,6 +26,7 @@ cR=0
 cG=123
 cB=255
 cA=255
+mR=500
 END
 
 OBJECT
@@ -39,6 +40,7 @@ cG=123
 cB=255
 cA=255
 rX=34
+mR=500
 END
 
 OBJECT
@@ -47,6 +49,7 @@ A=45
 X=120
 Y=-61
 Z=15
+mR=500
 END
 
 OBJECT
@@ -55,10 +58,12 @@ A=45
 X=120
 Y=111
 Z=15
+mR=500
 END
 
 OBJECT
 T=PLANE
 Z=-40
 rX=-10
+mR=500
 END

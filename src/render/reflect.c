@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu May  4 11:10:58 2017 Arthur Philippe
-** Last update Wed May 10 11:08:45 2017 Arthur Philippe
+** Last update Wed May 10 11:23:15 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -63,7 +63,7 @@ void		reflect_effect(t_env *env,
   sfColor	new_color;
   float		coef;
 
-  if (iter > 5)
+  if (iter > MAX_REFLECT || !pr_out->reflect)
     return ;
   my_memset(&in, 0, sizeof(t_render_in));
   prep_ray(&in, pr_out);

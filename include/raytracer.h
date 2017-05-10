@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Tue May  9 19:36:19 2017 Arthur Philippe
+** Last update Wed May 10 11:22:11 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -45,6 +45,7 @@
 # define ID_EYE		6
 # define PI		3.14159265359
 # define TILE_SIZE	50
+# define MAX_REFLECT	10
 # define XA		angles.x
 # define YA		angles.y
 # define ZA		angles.z
