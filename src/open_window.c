@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:35:59 2017 Arthur Philippe
-** Last update Tue May  2 17:32:32 2017 Arthur Philippe
+** Last update Wed May 10 10:17:53 2017 Arthur Philippe
 */
 
 #include <stdlib.h>
@@ -37,6 +37,8 @@ int		open_window(t_my_window *w, char *file_name)
   sfRenderWindow_drawSprite(w->window, w->sprite, NULL);
   sfRenderWindow_display(w->window);
   sfRenderWindow_clear(w->window, sfBlack);
+  sfTexture_updateFromPixels(w->tex, w->buffer->pixels, SC_W, SC_H, 0, 0);
+  sfSprite_setTexture(w->sprite, w->tex, sfTrue);
   sfRenderWindow_drawSprite(w->window, w->sprite, NULL);
   sfRenderWindow_display(w->window);
   acp_print(MSG_SUCCES);
