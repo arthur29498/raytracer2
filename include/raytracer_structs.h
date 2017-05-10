@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 12:40:43 2017 Arthur Philippe
-** Last update Thu May  4 09:13:54 2017 Arthur Philippe
+** Last update Wed May 10 11:08:10 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_STRUCTS_H_
@@ -54,7 +54,10 @@ typedef struct		s_render_out
 {
   float			k;
   sfVector3f		hit_pt;
+  sfVector3f		normal;
+  sfVector3f		last_dir_v;
   int			last_obj;
+  float			reflect;
   int			type;
 }			t_render_out;
 

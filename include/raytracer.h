@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Thu May  4 12:38:36 2017 mael drapier
+** Last update Wed May 10 13:04:56 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -45,6 +45,7 @@
 # define ID_EYE		6
 # define PI		3.14159265359
 # define TILE_SIZE	50
+# define MAX_REFLECT	10
 # define XA		angles.x
 # define YA		angles.y
 # define ZA		angles.z
@@ -88,6 +89,7 @@ float		intersect_ltd_cone(sfVector3f eye_pos,
 				       t_object *object);
 sfVector3f	rotate_xyz(sfVector3f to_rotate, sfVector3f angles);
 sfVector3f	rotate_zyx(sfVector3f to_rotate, sfVector3f angles);
+sfVector3f	rotate_xyz_inv(sfVector3f to_rotate, sfVector3f angles);
 sfVector3f	get_normal_sphere(sfVector3f intersection_point);
 sfVector3f	get_normal_cylinder(sfVector3f intersection_point);
 sfVector3f	get_normal_cone(sfVector3f intersection_point,
@@ -139,6 +141,18 @@ void		set_brightness(sfColor *color, t_object *objects,
 			       int object_nb, float coef);
 int		get_id_thread(void);
 void		*raytrace_bridge(void *env);
+sfColor		reflect_color(const sfColor pt1,
+			      const sfColor pt2,
+			      const float reflection);
+void		reflect_effect(t_env *env,
+			       t_render_out *pr_out,
+			       sfColor *color,
+			       int iter);
+void		set_pixel(t_env *env,
+			  sfColor *color,
+			  t_render_out *out,
+			  int iter);
+
 /*
 ** Export
 */
@@ -159,6 +173,7 @@ float		solve_ltd_quadric_eq(sfVector3f abc,
 				     t_object *object);
 float		get_norm(sfVector3f in);
 sfVector3f	normalize_vector(sfVector3f in);
+float		dot_product(sfVector3f v1, sfVector3f v2);
 /*
 ** Data obliteration - for your destructive needs.
 */

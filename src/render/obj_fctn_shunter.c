@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 23 12:56:37 2017 Arthur Philippe
-** Last update Fri Apr 28 15:52:27 2017 mael drapier
+** Last update Tue May  9 19:41:01 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -44,8 +44,8 @@ inline static float	obj_fctn_plane(t_object *object,
   new_eye.x = in_arg->eye_pt.x;
   new_eye.y = in_arg->eye_pt.y;
   new_eye.z = in_arg->eye_pt.z - object->pos.z;
-  new_eye = rotate_zyx(new_eye, object->rot);
-  new_dir_v = rotate_zyx(in_arg->dir_vector, object->rot);
+  new_eye = rotate_xyz_inv(new_eye, object->rot);
+  new_dir_v = rotate_xyz_inv(in_arg->dir_vector, object->rot);
   k = intersect_plane(new_eye, new_dir_v);
   return (k);
 }
@@ -60,8 +60,8 @@ inline static float	obj_fctn_cylinder(t_object *object,
   new_eye.x = in_arg->eye_pt.x - object->pos.x;
   new_eye.y = in_arg->eye_pt.y - object->pos.y;
   new_eye.z = in_arg->eye_pt.z - object->pos.z;
-  new_eye = rotate_zyx(new_eye, object->rot);
-  new_dir_v = rotate_zyx(in_arg->dir_vector, object->rot);
+  new_eye = rotate_xyz_inv(new_eye, object->rot);
+  new_dir_v = rotate_xyz_inv(in_arg->dir_vector, object->rot);
   if (object->limit_a == 0 && object->limit_b == 0)
     k = intersect_cylinder(new_eye, new_dir_v, object->size_a);
   else
@@ -79,8 +79,8 @@ inline static float	obj_fctn_cone(t_object *object,
   new_eye.x = in_arg->eye_pt.x - object->pos.x;
   new_eye.y = in_arg->eye_pt.y - object->pos.y;
   new_eye.z = in_arg->eye_pt.z - object->pos.z;
-  new_eye = rotate_zyx(new_eye, object->rot);
-  new_dir_v = rotate_zyx(in_arg->dir_vector, object->rot);
+  new_eye = rotate_xyz_inv(new_eye, object->rot);
+  new_dir_v = rotate_xyz_inv(in_arg->dir_vector, object->rot);
   if (object->limit_a == 0 && object->limit_b == 0)
     k = intersect_cone(new_eye, new_dir_v, object->size_a);
   else

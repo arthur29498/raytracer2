@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Mon Apr 17 16:14:09 2017 Arthur Philippe
-** Last update Wed May  3 15:59:47 2017 mael drapier
+** Last update Tue May  9 19:43:09 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -43,8 +43,8 @@ static void	prep_light_and_normal(sfVector3f *light,
   if (objs->id == pr_out->last_obj)
     {
       hit = translate_inv(pr_out->hit_pt, objs->pos);
-      hit = rotate_zyx(hit, objs->rot);
-      *light = rotate_zyx(*light, objs->rot);
+      hit = rotate_xyz_inv(hit, objs->rot);
+      *light = rotate_xyz_inv(*light, objs->rot);
       if (objs->type == 1)
 	*normal = get_normal_sphere(hit);
       else if (objs->type == 2)
@@ -53,7 +53,7 @@ static void	prep_light_and_normal(sfVector3f *light,
 	*normal = get_normal_cylinder(hit);
       else if (objs->type == 4)
 	*normal = get_normal_cone(hit, objs->size_a);
-      *normal = rotate_zyx(*normal, objs->rot);
+      *normal = rotate_xyz(*normal, objs->rot);
     }
 }
 
@@ -68,14 +68,15 @@ float		std_color_effect(t_env *env, t_render_out *pr_out)
   my_memset(&in, 0, sizeof(t_render_in));
   prep_ray(&in, pr_out, env);
   objects_hit_attempt(env, &in, &nw_out);
+  prep_light_and_normal(&light_v, &normal_v, env, pr_out);
   if (nw_out.k == 1)
     coef = 0;
   else
     {
       light_v = in.dir_vector;
-      prep_light_and_normal(&light_v, &normal_v, env, pr_out);
       coef = get_light_coef(light_v, normal_v);
     }
   coef += (coef < 0.9) ? 0.1 : 1 - coef;
+  pr_out->normal = normal_v;
   return (coef);
 }

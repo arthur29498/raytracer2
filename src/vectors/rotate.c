@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 23 19:51:13 2017 Arthur Philippe
-** Last update Sun Mar 19 14:39:14 2017 Arthur Philippe
+** Last update Tue May  9 19:36:05 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -40,6 +40,14 @@ sfVector3f	rotate_xyz(sfVector3f to_rotate, sfVector3f angles)
   tmp.z = Z_TR_Z;
   to_rotate = tmp;
   return (to_rotate);
+}
+
+sfVector3f	rotate_xyz_inv(sfVector3f to_rotate, sfVector3f angles)
+{
+  angles.x *= -1;
+  angles.y *= -1;
+  angles.z *= -1;
+  return (rotate_xyz(to_rotate, angles));
 }
 
 sfVector3f	rotate_zyx(sfVector3f to_rotate, sfVector3f angles)

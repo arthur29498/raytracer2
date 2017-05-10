@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Wed May  3 17:42:27 2017 mael drapier
+## Last update Wed May 10 10:51:11 2017 Arthur Philippe
 ##
 
 CC	=	gcc
@@ -37,6 +37,8 @@ SRCS	=	src/main.c				\
 		src/vectors/rotate.c			\
 		src/vectors/translate.c			\
 		src/vectors/normalize.c			\
+		src/vectors/dot_product.c		\
+		src/render/reflect.c			\
 		src/objects/cone.c			\
 		src/objects/cylinder.c			\
 		src/objects/limited.c			\
