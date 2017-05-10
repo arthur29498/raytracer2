@@ -5,13 +5,12 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu May  4 11:10:58 2017 Arthur Philippe
-** Last update Wed May 10 10:51:06 2017 Arthur Philippe
+** Last update Wed May 10 11:08:45 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
 #include <SFML/Graphics/Sprite.h>
 #include <SFML/Graphics/Texture.h>
-#include <stdio.h>
 #include "math.h"
 #include "raytracer.h"
 
@@ -80,6 +79,6 @@ void		reflect_effect(t_env *env,
       new_color.a *= coef;
       apply_colored_light_effect(&(new_color), env->objects);
       set_brightness(&new_color, env->objects, nw_out.last_obj, coef);
-      *color = reflect_color(*color, new_color, 0.3);
+      *color = reflect_color(*color, new_color, pr_out->reflect);
     }
 }

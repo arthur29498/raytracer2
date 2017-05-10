@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Tue May  9 09:12:44 2017 Arthur Philippe
+** Last update Wed May 10 11:09:51 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -28,10 +28,11 @@ static int	hit_single_obj(t_render_in *in,
   if (k >= 0 && (out->k == -1 || out->k > k))
     {
       out->k = (in->skip && k > 0 && k < 1) ? 1 : k;
-      if (in->skip && k > 0 && k < 1)
-	return (1);
       out->type = objs->type;
       out->last_obj = objs->id;
+      out->reflect = objs->reflection;
+      if (in->skip && k > 0 && k < 1)
+	return (1);
     }
   return (0);
 }
@@ -81,7 +82,8 @@ static void	set_and_put_px(t_env *env, t_px *px,
   if (out->type == ID_PLANE)
     set_chessboard_color(out->hit_pt, &(px->color));
   coef = std_color_effect(env, out);
-  reflect_effect(env, out, &(px->color), 0);
+  if (out->reflect != 0.00)
+    reflect_effect(env, out, &(px->color), 0);
   px->color.a *= coef;
   apply_colored_light_effect(&(px->color), env->objects);
   set_brightness(&(px->color), env->objects, out->last_obj, coef);
