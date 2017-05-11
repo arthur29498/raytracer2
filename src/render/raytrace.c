@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Wed May 10 13:05:55 2017 Arthur Philippe
+** Last update Thu May 11 16:32:22 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -31,6 +31,7 @@ static int	hit_single_obj(t_render_in *in,
       out->type = objs->type;
       out->last_obj = objs->id;
       out->reflect = objs->reflection;
+      out->refract = objs->refraction;
       if (in->skip && k > 0 && k < 1)
 	return (1);
     }

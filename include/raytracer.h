@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Wed May 10 13:04:56 2017 Arthur Philippe
+** Last update Thu May 11 16:40:28 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -46,6 +46,7 @@
 # define PI		3.14159265359
 # define TILE_SIZE	50
 # define MAX_REFLECT	10
+# define MAX_REFRACT	10
 # define XA		angles.x
 # define YA		angles.y
 # define ZA		angles.z
@@ -152,7 +153,6 @@ void		set_pixel(t_env *env,
 			  sfColor *color,
 			  t_render_out *out,
 			  int iter);
-
 /*
 ** Export
 */

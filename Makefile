@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Thu May 11 13:44:22 2017 Arthur Philippe
+## Last update Thu May 11 16:15:51 2017 Arthur Philippe
 ##
 
 CC	=	gcc
@@ -38,7 +38,6 @@ SRCS	=	src/main.c				\
 		src/vectors/translate.c			\
 		src/vectors/normalize.c			\
 		src/vectors/dot_product.c		\
-		src/render/reflect.c			\
 		src/objects/cone.c			\
 		src/objects/cylinder.c			\
 		src/objects/limited.c			\
@@ -56,6 +55,8 @@ SRCS	=	src/main.c				\
 		src/render/progress.c			\
 		src/render/std_effects.c		\
 		src/render/set_brightness.c		\
+		src/render/reflect.c			\
+		src/render/refract.c			\
 		src/procedural_texturing/chess_board.c	\
 
 OBJS	=	$(SRCS:.c=.o)
