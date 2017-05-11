@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Wed May 10 10:51:11 2017 Arthur Philippe
+## Last update Thu May 11 13:44:22 2017 Arthur Philippe
 ##
 
 CC	=	gcc
@@ -70,10 +70,11 @@ LDFLAGS	=	-L./lib/acp -lacp -lc_graph_prog -lm -lpthread
 
 all: $(NAME)
 
-$(NAME): make_lacp $(OBJS)
+$(NAME): $(OBJS)
+	$(MAKE) -C lib/acp
 	$(CC) $(OBJS) -o $(NAME) $(LDFLAGS)
 
-make_lacp:
+libacp.a:
 	$(MAKE) -C lib/acp
 
 clean:
@@ -86,4 +87,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re make_lacp
+.PHONY: all clean fclean re libacp.a
