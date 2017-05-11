@@ -5,7 +5,7 @@
 ** Login   <mael.drapier@epitech.eu>
 **
 ** Started on  Wed May  3 17:41:57 2017 mael drapier
-** Last update Wed May 10 11:09:27 2017 Arthur Philippe
+** Last update Thu May 11 16:53:17 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -22,6 +22,8 @@ int	add_brightness_reflect(char *buffer, int *idx, t_object *new_object)
     new_object->brightness = (float) my_getnbr(&buffer[*idx + 3]) / 1000;
   else if (buffer[*idx] == 'm' && buffer[*idx + 1] == 'R')
     new_object->reflection = (float) my_getnbr(&buffer[*idx + 3]) / 1000;
+  else if (buffer[*idx] == 'm' && buffer[*idx + 1] == 'F')
+    new_object->refraction = (float) my_getnbr(&buffer[*idx + 3]) / 1000;
   else
     return (0);
   return (1);

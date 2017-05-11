@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu May 11 14:01:29 2017 Arthur Philippe
-** Last update Thu May 11 16:40:56 2017 Arthur Philippe
+** Last update Thu May 11 17:15:03 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -25,11 +25,11 @@ static sfVector3f	refract_vector(sfVector3f dir_v,
 
   n = n2 / n1;
   dot = dot_product(dir_v, normal_v);
-  out.x = n * dot - sqrt(1 + (n * n * (dot * dot - 1))) * normal_v.x;
+  out.x = n * dot - sqrtf(1 + (n * n * (dot * dot - 1))) * normal_v.x;
   out.x += n * dir_v.x;
-  out.y = n * dot - sqrt(1 + (n * n * (dot * dot - 1))) * normal_v.y;
+  out.y = n * dot - sqrtf(1 + (n * n * (dot * dot - 1))) * normal_v.y;
   out.y += n * dir_v.y;
-  out.z = n * dot - sqrt(1 + (n * n * (dot * dot - 1))) * normal_v.z;
+  out.z = n * dot - sqrtf(1 + (n * n * (dot * dot - 1))) * normal_v.z;
   out.z += n * dir_v.z;
   return (out);
 }
@@ -37,10 +37,11 @@ static sfVector3f	refract_vector(sfVector3f dir_v,
 static void	prep_ray(t_render_in *in,
 			 t_render_out *pr_out)
 {
-  sfVector3f	reflected_v;
+  sfVector3f	refracted_v;
 
-  reflected_v = refract_vector(pr_out->last_dir_v, pr_out->normal, 1, pr_out->refract);
-  in->dir_vector = reflected_v;
+  refracted_v = refract_vector(pr_out->last_dir_v, pr_out->normal,
+			       1, pr_out->refract);
+  in->dir_vector = refracted_v;
   in->eye_pt = pr_out->hit_pt;
   in->skip = pr_out->last_obj;
 }
@@ -63,6 +64,6 @@ void	refract_effect(t_env *env,
     {
       nw_out.last_dir_v = in.dir_vector;
       set_pixel(env, &new_color, &nw_out, iter + 1);
-      *color = reflect_color(*color, new_color, pr_out->reflect);
+      *color = reflect_color(*color, new_color, pr_out->refract);
     }
 }

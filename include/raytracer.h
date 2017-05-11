@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Thu May 11 16:40:28 2017 Arthur Philippe
+** Last update Thu May 11 16:51:50 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -146,6 +146,10 @@ sfColor		reflect_color(const sfColor pt1,
 			      const sfColor pt2,
 			      const float reflection);
 void		reflect_effect(t_env *env,
+			       t_render_out *pr_out,
+			       sfColor *color,
+			       int iter);
+void		refract_effect(t_env *env,
 			       t_render_out *pr_out,
 			       sfColor *color,
 			       int iter);

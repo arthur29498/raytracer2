@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Thu May 11 16:32:22 2017 Arthur Philippe
+** Last update Thu May 11 17:11:24 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -82,8 +82,10 @@ void	set_pixel(t_env *env, sfColor *color, t_render_out *out, int iter)
   if (out->type == ID_PLANE)
     set_chessboard_color(out->hit_pt, color);
   coef = std_color_effect(env, out);
-  if (out->reflect != 0.00)
-    reflect_effect(env, out, color, iter);
+  // if (out->reflect != 0.00)
+    // reflect_effect(env, out, color, iter);
+  if (out->refract != 0.00)
+    refract_effect(env, out, color, iter);
   color->a *= coef;
   apply_colored_light_effect(color, env->objects);
   set_brightness(color, env->objects, out->last_obj, coef);
