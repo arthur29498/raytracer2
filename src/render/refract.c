@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu May 11 14:01:29 2017 Arthur Philippe
-** Last update Thu May 11 17:15:03 2017 Arthur Philippe
+** Last update Fri May 12 10:49:12 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -40,7 +40,7 @@ static void	prep_ray(t_render_in *in,
   sfVector3f	refracted_v;
 
   refracted_v = refract_vector(pr_out->last_dir_v, pr_out->normal,
-			       1, pr_out->refract);
+			       1, pr_out->refract_idx);
   in->dir_vector = refracted_v;
   in->eye_pt = pr_out->hit_pt;
   in->skip = pr_out->last_obj;
@@ -60,10 +60,11 @@ void	refract_effect(t_env *env,
   my_memset(&in, 0, sizeof(t_render_in));
   prep_ray(&in, pr_out);
   objects_hit_attempt(env, &in, &nw_out);
+  new_color = sfBlack;
   if (nw_out.k > 0)
     {
       nw_out.last_dir_v = in.dir_vector;
       set_pixel(env, &new_color, &nw_out, iter + 1);
-      *color = reflect_color(*color, new_color, pr_out->refract);
     }
+  *color = reflect_color(*color, new_color, pr_out->refract);
 }

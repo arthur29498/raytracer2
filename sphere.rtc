@@ -40,8 +40,7 @@ cG=123
 cB=255
 cA=255
 rX=34
-mF=400
-mR=0
+mR=300
 END
 
 OBJECT
@@ -50,7 +49,7 @@ A=45
 X=120
 Y=-61
 Z=15
-mF=400
+mF=900
 mR=0
 END
 

@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 12:40:43 2017 Arthur Philippe
-** Last update Thu May 11 14:21:15 2017 Arthur Philippe
+** Last update Fri May 12 10:46:59 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_STRUCTS_H_
@@ -35,6 +35,7 @@ typedef struct		s_object
   float			brightness;
   float			reflection;
   float			refraction;
+  float			refract_idx;
   sfColor		col;
   sfVector3f		pos;
   sfVector3f		rot;
@@ -60,6 +61,7 @@ typedef struct		s_render_out
   int			last_obj;
   float			reflect;
   float			refract;
+  float			refract_idx;
   int			type;
 }			t_render_out;
 
