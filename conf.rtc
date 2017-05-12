@@ -80,16 +80,15 @@ cG=175
 cB=0
 cA=255
 mB=0
-mF=700
 n=10
 END
 
 OBJECT
 T=SPHERE
-A=43
+A=150
 X=120
 mR=400
 Y=400
 Z=45
-mB=300
+mB=0
 END
