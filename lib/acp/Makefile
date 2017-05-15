@@ -5,12 +5,12 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Mon May  8 11:19:20 2017 Arthur Philippe
+## Last update Mon May 15 22:11:59 2017 Arthur Philippe
 ##
 
 CC	=	gcc
 
-RM	=	rm -f
+RM	=	rm -fv
 
 NAME	=	libacp.a
 
@@ -39,13 +39,14 @@ CFLAGS	+=	-I include/
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rc $(NAME) $(OBJS)
+	@ar rc $(NAME) $(OBJS)
+	@echo -e "\nArthur's lib assembled !"
 
 clean:
-	$(RM) $(OBJS)
+	@$(RM) $(OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 

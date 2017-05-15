@@ -5,12 +5,12 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Thu May 11 16:15:51 2017 Arthur Philippe
+## Last update Mon May 15 22:11:27 2017 Arthur Philippe
 ##
 
 CC	=	gcc
 
-RM	=	rm -f
+RM	=	rm -fv
 
 NAME	=	raytracer2
 
@@ -72,19 +72,20 @@ LDFLAGS	=	-L./lib/acp -lacp -lc_graph_prog -lm -lpthread
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(MAKE) -C lib/acp
-	$(CC) $(OBJS) -o $(NAME) $(LDFLAGS)
+	@$(MAKE) -C lib/acp
+	@$(CC) $(OBJS) -o $(NAME) $(LDFLAGS)
+	@echo -e "\nprogram assembled !"
 
 libacp.a:
 	$(MAKE) -C lib/acp
 
 clean:
-	$(RM) $(OBJS)
-	$(MAKE) clean -C lib/acp
+	@$(RM) $(OBJS)
+	@$(MAKE) clean -C lib/acp
 
 fclean: clean
-	$(RM) $(NAME)
-	$(MAKE) fclean -C lib/acp
+	@$(RM) $(NAME)
+	@$(MAKE) fclean -C lib/acp
 
 re: fclean all
 
