@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Mon May 15 22:11:27 2017 Arthur Philippe
+## Last update Tue May 16 11:01:38 2017 Arthur Philippe
 ##
 
 CC	=	gcc
@@ -74,7 +74,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@$(MAKE) -C lib/acp
 	@$(CC) $(OBJS) -o $(NAME) $(LDFLAGS)
-	@echo -e "\nprogram assembled !"
+	@echo -e "\n$(NAME) assembled !"
 
 libacp.a:
 	$(MAKE) -C lib/acp
