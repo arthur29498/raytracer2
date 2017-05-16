@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Tue May 16 11:01:38 2017 Arthur Philippe
+## Last update Tue May 16 15:45:38 2017 Arthur Philippe
 ##
 
 CC	=	gcc
@@ -80,7 +80,8 @@ libacp.a:
 	$(MAKE) -C lib/acp
 
 clean:
-	@$(RM) $(OBJS)
+	@echo -en "removed " ; $(RM) $(OBJS) | wc -l | tr -d '\n'
+	@echo -e " objects files."
 	@$(MAKE) clean -C lib/acp
 
 fclean: clean
