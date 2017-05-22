@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu May 11 14:01:29 2017 Arthur Philippe
-** Last update Fri May 12 10:49:12 2017 Arthur Philippe
+** Last update Mon May 22 12:28:03 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -46,10 +46,10 @@ static void	prep_ray(t_render_in *in,
   in->skip = pr_out->last_obj;
 }
 
-void	refract_effect(t_env *env,
-		       t_render_out *pr_out,
-		       sfColor *color,
-		       int iter)
+void		refract_effect(t_env *env,
+			       t_render_out *pr_out,
+			       sfColor *color,
+			       int iter)
 {
   t_render_in	in;
   t_render_out	nw_out;

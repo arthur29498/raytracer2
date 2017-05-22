@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Fri May 12 10:48:04 2017 Arthur Philippe
+** Last update Mon May 22 12:56:38 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -108,7 +108,7 @@ void		raytrace_full_scene(t_env *env, int id_thread)
 	{
 	  out.last_dir_v = in.dir_vector;
 	  set_pixel(env, &(px.color), &out, 0);
-	  my_put_pixel(env->w->buffer, px.pos.x - 1,
+	  my_put_pixel(env->w->buffer, px.pos.x,
 		       px.pos.y + (id_thread * (SC_H / 4)), px.color);
 	}
       display_progress(&(px.total_px), 1);
