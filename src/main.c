@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Feb 15 19:36:12 2017 Arthur Philippe
-** Last update Tue May  2 09:22:06 2017 Arthur Philippe
+** Last update Tue May 23 12:58:14 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -24,7 +24,6 @@ int		start_w_opt(int ac, char **av)
   int		status;
   t_rtc_opt	*opt;
 
-  status = 0;
   opt = get_rtc_opt(ac, av);
   if (opt && !opt->imprt)
     status = raytracer_launcher(opt->file_name, opt->exprt);
@@ -39,7 +38,6 @@ int	start_wo_opt(char *file_name)
 {
   int	status;
 
-  status = 0;
   if (match(file_name, CONF_MATCH))
     status = raytracer_launcher(file_name, FALSE);
   else if (match(file_name, EXPORT_MATCH))

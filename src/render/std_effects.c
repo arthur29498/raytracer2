@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Mon Apr 17 16:14:09 2017 Arthur Philippe
-** Last update Tue May  9 19:43:09 2017 Arthur Philippe
+** Last update Tue May 23 13:17:37 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -40,7 +40,7 @@ static void	prep_light_and_normal(sfVector3f *light,
   objs = env->objects;
   while (objs && objs->id != pr_out->last_obj)
     objs = objs->next;
-  if (objs->id == pr_out->last_obj)
+  if (objs && objs->id == pr_out->last_obj)
     {
       hit = translate_inv(pr_out->hit_pt, objs->pos);
       hit = rotate_xyz_inv(hit, objs->rot);
@@ -65,6 +65,8 @@ float		std_color_effect(t_env *env, t_render_out *pr_out)
   sfVector3f	normal_v;
   float		coef;
 
+  my_memset(&normal_v, 0, sizeof(sfVector3f));
+  my_memset(&light_v, 0, sizeof(sfVector3f));
   my_memset(&in, 0, sizeof(t_render_in));
   prep_ray(&in, pr_out, env);
   objects_hit_attempt(env, &in, &nw_out);
