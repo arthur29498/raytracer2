@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Mon May 22 12:56:38 2017 Arthur Philippe
+** Last update Tue May 23 17:02:51 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -70,7 +70,7 @@ static void	prep_ray(t_render_in *in,
 {
   px.y += thread * (SC_H / 4);
   my_memset(in, 0, sizeof(t_render_in));
-  in->dir_vector = calc_dir_vector(SC_W, env->screen_size, px);
+  in->dir_vector = calc_sub_dir_vector(SC_W, env->screen_size, px, 0);
   in->dir_vector = rotate_xyz(in->dir_vector, env->eye_rt);
   in->eye_pt = env->eye_pt;
 }
