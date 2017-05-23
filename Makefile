@@ -5,10 +5,10 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Tue May 23 12:54:10 2017 Arthur Philippe
+## Last update Tue May 23 16:36:27 2017 Arthur Philippe
 ##
 
-CC	=	gcc
+CC	=	@gcc
 
 RM	=	rm -fv
 
@@ -71,21 +71,21 @@ LDFLAGS	=	-L./lib/acp -lacp -lc_graph_prog -lm -lpthread
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(MAKE) -C lib/acp
+	@$(MAKE) -sC lib/acp
 	@$(CC) $(OBJS) -o $(NAME) $(LDFLAGS)
 	@echo -e "\n$(NAME) assembled !"
 
 libacp.a:
-	$(MAKE) -C lib/acp
+	@$(MAKE) -C lib/acp
 
 clean:
 	@echo -en "removed " ; $(RM) $(OBJS) | wc -l | tr -d '\n'
 	@echo -e " objects files."
-	@$(MAKE) clean -C lib/acp
+	@$(MAKE) clean -sC lib/acp
 
 fclean: clean
 	@$(RM) $(NAME)
-	@$(MAKE) fclean -C lib/acp
+	@$(MAKE) fclean -sC lib/acp
 
 re: fclean all
 
