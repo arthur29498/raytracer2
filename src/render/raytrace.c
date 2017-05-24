@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Wed May 24 16:56:39 2017 Arthur Philippe
+** Last update Wed May 24 17:30:56 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -103,6 +103,8 @@ void		raytrace_full_scene(t_env *env, int id_thread)
 	      set_color(env, &(px.color), &out, 0);
 	      px.color = get_color_avg(tmp, px.color, in.sub_ray);
 	    }
+	  else
+	    px.color = get_color_avg(px.color, MY_BLACK, in.sub_ray);
 	  in.sub_ray += 1;
 	}
       my_put_pixel(env->w->buffer, px.pos.x,

@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed May 24 16:07:04 2017 Arthur Philippe
-** Last update Wed May 24 17:00:19 2017 Arthur Philippe
+** Last update Wed May 24 17:05:08 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -37,9 +37,6 @@ sfColor		get_color_avg(sfColor color1, sfColor color2, int iter)
 
   if (!iter)
     return (color2);
-  if (color2.r == sfBlack.r && color2.g == sfBlack.g
-      && color2.b == sfBlack.b)
-    return (sfBlack);
   out.r = (color1.r + color2.r) / 2;
   out.g = (color1.g + color2.g) / 2;
   out.b = (color1.b + color2.b) / 2;

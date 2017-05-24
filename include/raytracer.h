@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Wed May 24 16:55:20 2017 Arthur Philippe
+** Last update Wed May 24 17:30:46 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -52,6 +52,7 @@
 # define ZA		angles.z
 # define DEFAULT_COLOR	sfBlack
 # define DEFAUT_LIGHT	(sfVector3f) {-300, 600, 200}
+# define MY_BLACK	(sfColor) {0, 0, 0, 0}
 # define X_TR_X	(to_rotate.x)
 # define Y_TR_X	((to_rotate.y * cosf(XA)) + (to_rotate.z * -sinf(XA)))
 # define Z_TR_X	((to_rotate.y * sinf(XA)) + (to_rotate.z * cosf(XA)))
