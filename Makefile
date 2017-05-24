@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Tue May 23 16:36:27 2017 Arthur Philippe
+## Last update Tue May 23 21:38:39 2017 Arthur Philippe
 ##
 
 CC	=	@gcc
@@ -13,6 +13,10 @@ CC	=	@gcc
 RM	=	rm -fv
 
 NAME	=	raytracer2
+
+GREEN	=	\033[0;32m
+
+RESET	=	\033[0m
 
 SRCS	=	src/main.c				\
 		src/launchers/bootstrap_import.c	\
@@ -73,20 +77,16 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@$(MAKE) -sC lib/acp
 	@$(CC) $(OBJS) -o $(NAME) $(LDFLAGS)
-	@echo -e "\n$(NAME) assembled !"
-
-libacp.a:
-	@$(MAKE) -C lib/acp
+	@echo -e "\n$(GREEN)$(NAME) built !$(RESET)"
 
 clean:
-	@echo -en "removed " ; $(RM) $(OBJS) | wc -l | tr -d '\n'
-	@echo -e " objects files."
-	@$(MAKE) clean -sC lib/acp
+	@echo -en "cleaned " ; $(RM) $(OBJS) | wc -l | tr -d '\n'
+	@echo -e " of $(NAME)'s object files"
+	@$(MAKE) fclean -sC lib/acp
 
 fclean: clean
 	@$(RM) $(NAME)
-	@$(MAKE) fclean -sC lib/acp
 
 re: fclean all
 
-.PHONY: all clean fclean re libacp.a
+.PHONY: all clean fclean re

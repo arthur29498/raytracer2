@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Tue May 16 15:45:53 2017 Arthur Philippe
+## Last update Tue May 23 21:42:44 2017 Arthur Philippe
 ##
 
 CC	=	gcc
@@ -13,6 +13,10 @@ CC	=	gcc
 RM	=	rm -fv
 
 NAME	=	libacp.a
+
+GREEN	=	\033[0;32m
+
+RESET	=	\033[0m
 
 SRCS	=	src/print/my_printf.c		\
 		src/print/disp.c		\
@@ -40,11 +44,11 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@ar rc $(NAME) $(OBJS)
-	@echo -e "\nArthur's lib assembled !"
+	@echo -e "\n$(GREEN)$(NAME) built$(RESET)!"
 
 clean:
-	@echo -en "removed " ; $(RM) $(OBJS) | wc -l | tr -d '\n'
-	@echo -e " objects files."
+	@echo -en "cleaned " ; $(RM) $(OBJS) | wc -l | tr -d '\n'
+	@echo -e " of $(NAME)'s source files"
 
 fclean: clean
 	@$(RM) $(NAME)
