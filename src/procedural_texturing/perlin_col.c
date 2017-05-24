@@ -5,13 +5,14 @@
 ** Login   <etienne.filliat@epitech.eu>
 **
 ** Started on  Wed May 24 16:04:19 2017 etienne.filliat
-** Last update Wed May 24 17:07:24 2017 etienne.filliat
+** Last update Wed May 24 17:53:00 2017 etienne.filliat
 */
 
 #include <SFML/Graphics/RenderWindow.h>
 #include <SFML/Graphics/Sprite.h>
 #include <SFML/Graphics/Texture.h>
 #include <math.h>
+#include <stdio.h>
 #include "raytracer.h"
 
 void		perlin_noised_color(sfVector3f pos, sfColor *color)
@@ -19,7 +20,7 @@ void		perlin_noised_color(sfVector3f pos, sfColor *color)
   float		p_noise;
   //sfColor	new_color;
 
-  p_noise = perlin2d(pos.x, pos.y, 0.3, 3);
+  printf("%f\n", p_noise = perlin2d(pos.x, pos.y, 0.1, 6));
   color->r = color->r * p_noise;
   color->g = color->g * p_noise;
   color->b = color->b * p_noise;

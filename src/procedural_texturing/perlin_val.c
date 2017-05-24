@@ -5,7 +5,7 @@
 ** Login   <etienne.filliat@epitech.eu>
 **
 ** Started on  Wed May 24 15:11:30 2017 etienne.filliat
-** Last update Wed May 24 16:23:29 2017 etienne.filliat
+** Last update Wed May 24 17:47:28 2017 etienne.filliat
 */
 
 #include <stdio.h>
@@ -63,7 +63,6 @@ float perlin2d(float x, float y, float freq, int depth)
     float amp = 1.0;
     float fin = 0;
     float div = 0.0;
-
     int i;
     for(i=0; i<depth; i++)
     {
@@ -74,5 +73,7 @@ float perlin2d(float x, float y, float freq, int depth)
         ya *= 2;
     }
 
-    return fin/div;
+  if (fin < 0)
+    fin *= -1;
+  return fin/div;
 }
