@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Thu May 11 16:51:50 2017 Arthur Philippe
+** Last update Wed May 24 16:23:50 2017 etienne.filliat
 */
 
 #ifndef RAYTRACER_H_
@@ -190,5 +190,8 @@ char		*my_strcpy(char *dest, char *src);
 char		*my_strcat(char *dest, char *src);
 void		set_chessboard_color(sfVector3f last_intersect,
 				     sfColor *color);
+
+void		perlin_noised_color(sfVector3f pos, sfColor *color);
+float perlin2d(float x, float y, float freq, int depth);
 
 #endif /* !RAYTRACER_H_ */

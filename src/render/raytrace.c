@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Mon May 22 12:56:38 2017 Arthur Philippe
+** Last update Wed May 24 17:02:50 2017 etienne.filliat
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -82,6 +82,8 @@ void	set_pixel(t_env *env, sfColor *color, t_render_out *out, int iter)
   *color = get_color_from_objs(env->objects, out->last_obj);
   if (out->type == ID_PLANE)
     set_chessboard_color(out->hit_pt, color);
+  if (out->type == ID_SPHERE)
+    perlin_noised_color(out->hit_pt, color);
   coef = std_color_effect(env, out);
   if (out->reflect != 0.00)
     reflect_effect(env, out, color, iter);
