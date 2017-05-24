@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Tue May 23 21:38:39 2017 Arthur Philippe
+## Last update Wed May 24 16:07:57 2017 Arthur Philippe
 ##
 
 CC	=	@gcc
@@ -56,6 +56,7 @@ SRCS	=	src/main.c				\
 		src/render/obj_fctn_shunter.c		\
 		src/render/raytrace.c			\
 		src/render/progress.c			\
+		src/render/set_color.c			\
 		src/render/std_effects.c		\
 		src/render/set_brightness.c		\
 		src/render/reflect.c			\

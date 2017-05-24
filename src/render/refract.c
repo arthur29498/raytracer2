@@ -64,7 +64,7 @@ void		refract_effect(t_env *env,
   if (nw_out.k > 0)
     {
       nw_out.last_dir_v = in.dir_vector;
-      set_pixel(env, &new_color, &nw_out, iter + 1);
+      set_color(env, &new_color, &nw_out, iter + 1);
     }
   *color = reflect_color(*color, new_color, pr_out->refract);
 }

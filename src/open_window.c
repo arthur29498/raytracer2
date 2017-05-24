@@ -79,7 +79,7 @@ t_fbuffer	*my_framebuffer_create(int width, int height)
   return (buffer);
 }
 
-void	reset_pixels(t_fbuffer *buffer)
+void	reset_colors(t_fbuffer *buffer)
 {
   int	i;
 

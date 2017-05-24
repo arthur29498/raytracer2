@@ -26,7 +26,7 @@ int	refresh_window(t_my_window *w, t_env *env, char *file_name)
     return (0);
   find_eye(env);
   find_light(env);
-  reset_pixels(w->buffer);
+  reset_colors(w->buffer);
   raytracer_thread_launch(env);
   sfTexture_updateFromPixels(w->tex, w->buffer->pixels, SC_W, SC_H, 0, 0);
   sfRenderWindow_clear(w->window, sfBlack);

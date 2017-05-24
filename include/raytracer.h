@@ -114,7 +114,7 @@ int		open_window(t_my_window *w, char *file_name);
 sfRenderWindow	*create_window(char *, int, int);
 t_fbuffer	*my_framebuffer_create(int, int);
 void		wf_window_destroy(t_my_window *);
-void		reset_pixels(t_fbuffer *buffer);
+void		reset_colors(t_fbuffer *buffer);
 /*
 ** Objects
 */
@@ -156,7 +156,7 @@ void		refract_effect(t_env *env,
 			       t_render_out *pr_out,
 			       sfColor *color,
 			       int iter);
-void		set_pixel(t_env *env,
+void		set_color(t_env *env,
 			  sfColor *color,
 			  t_render_out *out,
 			  int iter);
