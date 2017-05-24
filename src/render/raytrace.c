@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Wed May 24 16:08:03 2017 Arthur Philippe
+** Last update Wed May 24 16:56:39 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -68,9 +68,14 @@ static void	prep_ray(t_render_in *in,
 			 sfVector2i px,
 			 int thread)
 {
+  int		sub_ray;
+
+  sub_ray = in->sub_ray;
   px.y += thread * (SC_H / 4);
   my_memset(in, 0, sizeof(t_render_in));
-  in->dir_vector = calc_sub_dir_vector(SC_W, env->screen_size, px, 0);
+  in->sub_ray = sub_ray;
+  in->dir_vector = calc_sub_dir_vector(SC_W, env->screen_size,
+				       px, in->sub_ray);
   in->dir_vector = rotate_xyz(in->dir_vector, env->eye_rt);
   in->eye_pt = env->eye_pt;
 }
@@ -80,20 +85,28 @@ void		raytrace_full_scene(t_env *env, int id_thread)
   t_px		px;
   t_render_in	in;
   t_render_out	out;
+  sfColor	tmp;
 
   px.total_px = px.pos.x = px.pos.y = 0;
-  px.color = sfBlue;
   while (px.pos.y < SC_H / 4)
     {
-      prep_ray(&in, env, px.pos, id_thread);
-      objects_hit_attempt(env, &in, &out);
-      if (out.k > 0)
+      px.color = sfBlack;
+      in.sub_ray = 0;
+      while (in.sub_ray <= 4)
 	{
-	  out.last_dir_v = in.dir_vector;
-	  set_color(env, &(px.color), &out, 0);
-	  my_put_pixel(env->w->buffer, px.pos.x,
-		       px.pos.y + (id_thread * (SC_H / 4)), px.color);
+	  prep_ray(&in, env, px.pos, id_thread);
+	  objects_hit_attempt(env, &in, &out);
+	  if (out.k > 0)
+	    {
+	      out.last_dir_v = in.dir_vector;
+	      tmp = px.color;
+	      set_color(env, &(px.color), &out, 0);
+	      px.color = get_color_avg(tmp, px.color, in.sub_ray);
+	    }
+	  in.sub_ray += 1;
 	}
+      my_put_pixel(env->w->buffer, px.pos.x,
+		   px.pos.y + (id_thread * (SC_H / 4)), px.color);
       display_progress(&(px.total_px), 1);
       progress_to_next_px(&(px.total_px), &(px.pos));
     }
