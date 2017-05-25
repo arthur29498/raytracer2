@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 22 14:32:54 2017 Arthur Philippe
-** Last update Sun Apr 23 13:48:57 2017 Arthur Philippe
+** Last update Thu May 25 16:42:16 2017 Arthur Philippe
 */
 
 #ifndef OPT_H_
@@ -20,6 +20,7 @@ typedef struct	s_rtc_opt
   int		render;
   int		exprt;
   int		imprt;
+  int		a_aliasing;
   char		file_name[256];
 }		t_rtc_opt;
 

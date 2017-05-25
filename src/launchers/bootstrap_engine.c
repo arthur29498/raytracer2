@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Apr 19 15:52:50 2017 Arthur Philippe
-** Last update Mon May  1 17:16:31 2017 Arthur Philippe
+** Last update Thu May 25 16:44:23 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -22,7 +22,9 @@
 #include "raytracer_data.h"
 #include "launch.h"
 
-int		raytracer_launcher(char *file_name, int exprt)
+int		raytracer_launcher(char *file_name,
+				   int exprt,
+				   int a_aliasing)
 {
   t_my_window	w;
   t_env		env;
@@ -35,6 +37,7 @@ int		raytracer_launcher(char *file_name, int exprt)
   find_light(&env);
   env.screen_size.x = SC_W;
   env.screen_size.y = SC_H;
+  env.a_aliasing = a_aliasing;
   if (!(w.buffer = my_framebuffer_create(SC_W, SC_H)))
     return (EXIT_FAIL);
   raytracer_thread_launch(&env);

@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 12:40:43 2017 Arthur Philippe
-** Last update Thu May 25 15:26:04 2017 Arthur Philippe
+** Last update Thu May 25 16:44:15 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_STRUCTS_H_
@@ -80,6 +80,7 @@ typedef struct		s_env
   sfVector2i		screen_size;
   int			thread;
   int			tot_thread;
+  int			a_aliasing;
 }			t_env;
 
 typedef struct		s_px

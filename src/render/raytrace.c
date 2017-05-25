@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Thu May 25 16:05:22 2017 Arthur Philippe
+** Last update Thu May 25 16:46:42 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -110,7 +110,7 @@ void		raytrace_full_scene(t_env *env, int id_thread)
     {
       px.color = sfBlack;
       sub_ray = 0;
-      while (sub_ray <= 4)
+      while (sub_ray <= (env->a_aliasing) ? 4 : 0)
 	send_ray(env, &px, sub_ray++, id_thread);
       my_put_pixel(env->w->buffer, px.pos.x,
 		   px.pos.y + (id_thread * (SC_H / 4)), px.color);

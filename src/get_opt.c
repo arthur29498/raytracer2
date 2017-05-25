@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 22 14:32:17 2017 Arthur Philippe
-** Last update Mon May  1 17:16:25 2017 Arthur Philippe
+** Last update Thu May 25 16:42:13 2017 Arthur Philippe
 */
 
 #include <stdlib.h>
@@ -25,6 +25,8 @@ void	set_rtc_opt(char *opt_str, t_rtc_opt *opt)
 	opt->exprt = TRUE;
       else if (opt_str[i] == OPT_IMP)
 	opt->imprt = TRUE;
+      else
+	opt->a_aliasing = TRUE;
       i += 1;
     }
 }
