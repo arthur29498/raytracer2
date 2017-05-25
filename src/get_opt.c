@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 22 14:32:17 2017 Arthur Philippe
-** Last update Thu May 25 16:42:13 2017 Arthur Philippe
+** Last update Thu May 25 17:24:40 2017 Arthur Philippe
 */
 
 #include <stdlib.h>
@@ -25,7 +25,7 @@ void	set_rtc_opt(char *opt_str, t_rtc_opt *opt)
 	opt->exprt = TRUE;
       else if (opt_str[i] == OPT_IMP)
 	opt->imprt = TRUE;
-      else
+      else if (opt_str[i] == OPT_AAL)
 	opt->a_aliasing = TRUE;
       i += 1;
     }
@@ -34,22 +34,19 @@ void	set_rtc_opt(char *opt_str, t_rtc_opt *opt)
 t_rtc_opt	*get_rtc_opt(int ac, char **av)
 {
   t_rtc_opt	*opt;
+  int		i;
 
   if (!(opt = malloc(sizeof(t_rtc_opt))))
     return (NULL);
+  i = 1;
   my_memset(opt, 0, sizeof(t_rtc_opt));
-  if (av[1][0] == '-')
+  while (i < ac)
     {
-      if (ac == 3)
-	{
-	  set_rtc_opt(av[1], opt);
-	  my_strcpy(opt->file_name, av[2]);
-	  return (opt);
-	}
-      free(opt);
-      return (NULL);
+      if (av[i][0] == '-')
+	set_rtc_opt(av[i], opt);
+      else
+	my_strcpy(opt->file_name, av[i]);
+      i += 1;
     }
-  else
-    my_strcpy(opt->file_name, av[1]);
   return (opt);
 }

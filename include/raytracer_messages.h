@@ -5,14 +5,14 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 16 16:35:31 2017 Arthur Philippe
-** Last update Tue May  2 14:03:25 2017 Arthur Philippe
+** Last update Thu May 25 17:26:13 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_MESSAGES_H_
 # define RAYTRACER_MESSAGES_H_
 
-# define MSG_FD_ERROR		"file related error: "
-# define MSG_FC_ERROR		"file content error: "
+# define MSG_FD_ERROR		"\nfile related error: "
+# define MSG_FC_ERROR		"\nfile content error: "
 # define MSG_MISSING_FILE	"No such file or directory\n"
 # define MSG_PERMISSION		"Permission denied\n"
 # define MSG_IS_DIR		"Is a directory\n"
