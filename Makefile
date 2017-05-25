@@ -5,18 +5,16 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Wed May 24 16:07:57 2017 Arthur Philippe
+## Last update Thu May 25 09:15:01 2017 Arthur Philippe
 ##
 
-CC	=	@gcc
+CC	=	gcc
 
 RM	=	rm -fv
 
 NAME	=	raytracer2
 
-GREEN	=	\033[0;32m
-
-RESET	=	\033[0m
+LIBACP	=	lib/acp/libacp.a
 
 SRCS	=	src/main.c				\
 		src/launchers/bootstrap_import.c	\
@@ -73,17 +71,27 @@ CFLAGS	+=	-I include/
 
 LDFLAGS	=	-L./lib/acp -lacp -lc_graph_prog -lm -lpthread
 
+ifndef VERBOSE
+ MAKEFLAGS	+=	--no-print-directory
+endif
+
+GREEN	=	\033[0;32m
+
+RESET	=	\033[0m
+
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	@$(MAKE) -sC lib/acp
+$(LIBACP):
+	@$(MAKE) -C lib/acp/
+
+$(NAME): $(LIBACP) $(OBJS)
 	@$(CC) $(OBJS) -o $(NAME) $(LDFLAGS)
 	@echo -e "\n$(GREEN)$(NAME) built !$(RESET)"
 
 clean:
+	@$(MAKE) fclean -C lib/acp
 	@echo -en "cleaned " ; $(RM) $(OBJS) | wc -l | tr -d '\n'
 	@echo -e " of $(NAME)'s object files"
-	@$(MAKE) fclean -sC lib/acp
 
 fclean: clean
 	@$(RM) $(NAME)
