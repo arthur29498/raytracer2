@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Mon Apr 17 16:14:09 2017 Arthur Philippe
-** Last update Tue May 23 13:17:37 2017 Arthur Philippe
+** Last update Thu May 25 15:35:54 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -48,7 +48,7 @@ static void	prep_light_and_normal(sfVector3f *light,
       if (objs->type == 1)
 	*normal = get_normal_sphere(hit);
       else if (objs->type == 2)
-	*normal = get_normal_plane(1);
+	*normal = get_normal_plane(pr_out->last_dir_v.z);
       else if (objs->type == 3)
 	*normal = get_normal_cylinder(hit);
       else if (objs->type == 4)
