@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Thu May 25 11:00:17 2017 Arthur Philippe
+## Last update Thu May 25 15:25:18 2017 Arthur Philippe
 ##
 
 CC	=	gcc
@@ -33,6 +33,7 @@ SRCS	=	src/main.c				\
 		src/data_gathering/load_data.c		\
 		src/data_gathering/match.c		\
 		src/data_gathering/objects_creation.c	\
+		src/data_gathering/objects_pr_texture.c	\
 		src/data_gathering/objects_limit.c	\
 		src/data_gathering/objects_brightness.c	\
 		src/vectors/rotate.c			\

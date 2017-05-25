@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 12:40:43 2017 Arthur Philippe
-** Last update Tue May 23 16:06:01 2017 Arthur Philippe
+** Last update Thu May 25 15:26:04 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_STRUCTS_H_
@@ -36,6 +36,9 @@ typedef struct		s_object
   float			reflection;
   float			refraction;
   float			refract_idx;
+  float			perlin_fq;
+  float			perlin_ht;
+  int			chess_board_f;
   sfColor		col;
   sfVector3f		pos;
   sfVector3f		rot;
