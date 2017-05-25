@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Wed May 24 17:30:56 2017 Arthur Philippe
+** Last update Thu May 25 13:43:58 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -80,33 +80,39 @@ static void	prep_ray(t_render_in *in,
   in->eye_pt = env->eye_pt;
 }
 
+void		send_ray(t_env *env, t_px *px, int sub_ray, int id_thread)
+{
+  t_render_in	in;
+  t_render_out	out;
+  sfColor	old_color;
+
+  in.sub_ray = sub_ray;
+  prep_ray(&in, env, px->pos, id_thread);
+  objects_hit_attempt(env, &in, &out);
+  if (out.k > 0)
+    {
+      out.last_dir_v = in.dir_vector;
+      old_color = px->color;
+      set_color(env, &(px->color), &out, 0);
+      px->color = get_color_avg(old_color, px->color, sub_ray);
+    }
+  else
+    px->color = get_color_avg(px->color, MY_BLACK, sub_ray);
+
+}
+
 void		raytrace_full_scene(t_env *env, int id_thread)
 {
   t_px		px;
-  t_render_in	in;
-  t_render_out	out;
-  sfColor	tmp;
+  int		sub_ray;
 
   px.total_px = px.pos.x = px.pos.y = 0;
   while (px.pos.y < SC_H / 4)
     {
       px.color = sfBlack;
-      in.sub_ray = 0;
-      while (in.sub_ray <= 4)
-	{
-	  prep_ray(&in, env, px.pos, id_thread);
-	  objects_hit_attempt(env, &in, &out);
-	  if (out.k > 0)
-	    {
-	      out.last_dir_v = in.dir_vector;
-	      tmp = px.color;
-	      set_color(env, &(px.color), &out, 0);
-	      px.color = get_color_avg(tmp, px.color, in.sub_ray);
-	    }
-	  else
-	    px.color = get_color_avg(px.color, MY_BLACK, in.sub_ray);
-	  in.sub_ray += 1;
-	}
+      sub_ray = 0;
+      while (sub_ray <= 4)
+	send_ray(env, &px, sub_ray++, id_thread);
       my_put_pixel(env->w->buffer, px.pos.x,
 		   px.pos.y + (id_thread * (SC_H / 4)), px.color);
       display_progress(&(px.total_px), 1);

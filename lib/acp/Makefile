@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Thu May 25 09:15:33 2017 Arthur Philippe
+## Last update Thu May 25 11:00:08 2017 Arthur Philippe
 ##
 
 CC	=	gcc
@@ -44,7 +44,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@ar rc $(NAME) $(OBJS)
-	@echo -e "\n$(GREEN)$(NAME) built$(RESET)!"
+	@echo -e "\n$(GREEN)$(NAME) built$(RESET)\n--------------------"
 
 clean:
 	@echo -en "cleaned " ; $(RM) $(OBJS) | wc -l | tr -d '\n'

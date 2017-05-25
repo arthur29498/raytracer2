@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Wed May 24 17:48:48 2017 Arthur Philippe
+** Last update Thu May 25 13:48:07 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -47,7 +47,7 @@
 # define TILE_SIZE	50
 # define MAX_REFLECT	10
 # define MAX_REFRACT	10
-# define SUB_RAY_STEP	0.2
+# define SUB_RAY_STEP	0.7
 # define XA		angles.x
 # define YA		angles.y
 # define ZA		angles.z

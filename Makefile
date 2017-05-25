@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Thu May 25 09:15:01 2017 Arthur Philippe
+## Last update Thu May 25 11:00:17 2017 Arthur Philippe
 ##
 
 CC	=	gcc
@@ -86,7 +86,7 @@ $(LIBACP):
 
 $(NAME): $(LIBACP) $(OBJS)
 	@$(CC) $(OBJS) -o $(NAME) $(LDFLAGS)
-	@echo -e "\n$(GREEN)$(NAME) built !$(RESET)"
+	@echo -e "\n$(GREEN)$(NAME) built$(RESET)\n--------------------"
 
 clean:
 	@$(MAKE) fclean -C lib/acp
