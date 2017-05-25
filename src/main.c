@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Feb 15 19:36:12 2017 Arthur Philippe
-** Last update Tue May 23 12:58:14 2017 Arthur Philippe
+** Last update Thu May 25 14:01:13 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -47,9 +47,9 @@ int	start_wo_opt(char *file_name)
   return (status);
 }
 
-int		main(int ac, char **av)
+int	main(int ac, char **av)
 {
-  int		status;
+  int	status;
 
   status = 0;
   if (ac >= 2 && match(av[1], "-h"))

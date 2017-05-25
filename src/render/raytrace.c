@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 13:26:22 2017 Arthur Philippe
-** Last update Thu May 25 13:43:58 2017 Arthur Philippe
+** Last update Thu May 25 14:01:18 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -98,7 +98,6 @@ void		send_ray(t_env *env, t_px *px, int sub_ray, int id_thread)
     }
   else
     px->color = get_color_avg(px->color, MY_BLACK, sub_ray);
-
 }
 
 void		raytrace_full_scene(t_env *env, int id_thread)
