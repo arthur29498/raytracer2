@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Thu May 25 13:48:07 2017 Arthur Philippe
+** Last update Thu May 25 19:26:14 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_H_
@@ -29,6 +29,7 @@
 # define OBJ_CYLINDER	"CYLINDER*"
 # define OBJ_CONE	"CONE*"
 # define OBJ_LIGHT	"LIGHT*"
+# define OBJ_TORUS	"TORUS*"
 # define OBJ_EYE	"EYE*"
 # define EXPORT_EXT	".exp"
 # define CONF_EXT	".rtc"
@@ -43,6 +44,7 @@
 # define ID_CONE	4
 # define ID_LIGHT	5
 # define ID_EYE		6
+# define ID_TORUS	7
 # define PI		3.14159265359
 # define TILE_SIZE	50
 # define MAX_REFLECT	10

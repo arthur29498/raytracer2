@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Apr 18 13:50:17 2017 Arthur Philippe
-** Last update Tue Apr 18 13:50:52 2017 Arthur Philippe
+** Last update Thu May 25 19:25:19 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -24,6 +24,7 @@ t_keywords	g_keywords[] =
     {ID_CONE, OBJ_CONE, TYPE_CONE},
     {ID_LIGHT, OBJ_LIGHT, TYPE_LIGHT},
     {ID_EYE, OBJ_EYE, TYPE_EYE},
+    {ID_TORUS, OBJ_TORUS, TYPE_TORUS},
     {0, NULL, NULL},
   };
 
