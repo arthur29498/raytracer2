@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Wed May 24 16:18:49 2017 
+## Last update Thu May 25 15:25:18 2017 Arthur Philippe
 ##
 
 CC	=	gcc
@@ -13,6 +13,8 @@ CC	=	gcc
 RM	=	rm -fv
 
 NAME	=	raytracer2
+
+LIBACP	=	lib/acp/libacp.a
 
 SRCS	=	src/main.c				\
 		src/launchers/bootstrap_import.c	\
@@ -27,11 +29,11 @@ SRCS	=	src/main.c				\
 		src/get_opt.c				\
 		src/helper.c				\
 		src/data_gathering/fd_errors.c		\
-		src/data_gathering/get_next_line.c	\
 		src/data_gathering/list.c		\
 		src/data_gathering/load_data.c		\
 		src/data_gathering/match.c		\
 		src/data_gathering/objects_creation.c	\
+		src/data_gathering/objects_pr_texture.c	\
 		src/data_gathering/objects_limit.c	\
 		src/data_gathering/objects_brightness.c	\
 		src/vectors/rotate.c			\
@@ -53,6 +55,7 @@ SRCS	=	src/main.c				\
 		src/render/obj_fctn_shunter.c		\
 		src/render/raytrace.c			\
 		src/render/progress.c			\
+		src/render/set_color.c			\
 		src/render/std_effects.c		\
 		src/render/set_brightness.c		\
 		src/render/reflect.c			\
@@ -71,25 +74,31 @@ CFLAGS	+=	-I include/
 
 LDFLAGS	=	-L./lib/acp -lacp -lc_graph_prog -lm -lpthread
 
+ifndef VERBOSE
+ MAKEFLAGS	+=	--no-print-directory
+endif
+
+GREEN	=	\033[0;32m
+
+RESET	=	\033[0m
+
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	@$(MAKE) -C lib/acp
-	@$(CC) $(OBJS) -o $(NAME) $(LDFLAGS)
-	@echo -e "\n$(NAME) assembled !"
+$(LIBACP):
+	@$(MAKE) -C lib/acp/
 
-libacp.a:
-	$(MAKE) -C lib/acp
+$(NAME): $(LIBACP) $(OBJS)
+	@$(CC) $(OBJS) -o $(NAME) $(LDFLAGS)
+	@echo -e "\n$(GREEN)$(NAME) built$(RESET)\n--------------------"
 
 clean:
-	@echo -en "removed " ; $(RM) $(OBJS) | wc -l | tr -d '\n'
-	@echo -e " objects files."
-	@$(MAKE) clean -C lib/acp
+	@$(MAKE) fclean -C lib/acp
+	@echo -en "cleaned " ; $(RM) $(OBJS) | wc -l | tr -d '\n'
+	@echo -e " of $(NAME)'s object files"
 
 fclean: clean
 	@$(RM) $(NAME)
-	@$(MAKE) fclean -C lib/acp
 
 re: fclean all
 
-.PHONY: all clean fclean re libacp.a
+.PHONY: all clean fclean re

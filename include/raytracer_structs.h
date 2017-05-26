@@ -36,6 +36,9 @@ typedef struct		s_object
   float			reflection;
   float			refraction;
   float			refract_idx;
+  float			perlin_fq;
+  float			perlin_ht;
+  int			chess_board_f;
   sfColor		col;
   sfVector3f		pos;
   sfVector3f		rot;
@@ -50,6 +53,7 @@ typedef struct		s_render_in
   sfVector3f		eye_rt;
   sfVector3f		dir_vector;
   int			skip;
+  int			sub_ray;
 }			t_render_in;
 
 typedef struct		s_render_out
@@ -76,6 +80,7 @@ typedef struct		s_env
   sfVector2i		screen_size;
   int			thread;
   int			tot_thread;
+  int			a_aliasing;
 }			t_env;
 
 typedef struct		s_px

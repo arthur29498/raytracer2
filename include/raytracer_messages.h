@@ -5,14 +5,14 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 16 16:35:31 2017 Arthur Philippe
-** Last update Tue May  2 14:03:25 2017 Arthur Philippe
+** Last update Fri May 26 13:47:56 2017 mael drapier
 */
 
 #ifndef RAYTRACER_MESSAGES_H_
 # define RAYTRACER_MESSAGES_H_
 
-# define MSG_FD_ERROR		"file related error: "
-# define MSG_FC_ERROR		"file content error: "
+# define MSG_FD_ERROR		"\nfile related error: "
+# define MSG_FC_ERROR		"\nfile content error: "
 # define MSG_MISSING_FILE	"No such file or directory\n"
 # define MSG_PERMISSION		"Permission denied\n"
 # define MSG_IS_DIR		"Is a directory\n"
@@ -37,13 +37,21 @@
 # define HINT_EXPORT		"\nExport to \'%s\'"
 # define HINT_TOTAL_LOADED	"\n%sLoaded %d objects total.%s\n\n"
 
-# define HELPER		HELP_1 HELP_2 HELP_3 HELP_4 HELP_5 HELP_6
+# define HELPER		HELP_1 HELP_2 HELP_3 HELP_4 HELP_5 HELP_6 H_FLAGS
 # define HELP_1		"Raytracer project\n\nDescription:\n"
 # define HELP_2		"\t3D layout engine featuring multiple objects\n"
 # define HELP_3		"\tincluding spheres, planes, cylinders, cones.\n\n"
 # define HELP_4		"Usage:\n"
-# define HELP_5		"\t./raytracer2 [-re | -i] [conf_file.rtc |"
+# define HELP_5		"\t./raytracer2 [-rea | -i] [conf_file.rtc |"
 # define HELP_6		" export_file.exp]\n"
+# define HELP_7		"Flags:\n"
+# define HELP_8		"\t-r:\tstandard rendering\n"
+# define HELP_9		"\t-a:\trendering with antialiasing\n"
+# define HELP_10	"\t-e:\trendering exported to .exp file\n"
+# define HELP_11	"\t-i:\trendering from imported .exp file\n"
+# define HELP_12	"Note:\n"
+# define HELP_13	"\twithout flags, antialiasing is activated.\n"
+# define H_FLAGS	HELP_7 HELP_8 HELP_9 HELP_10 HELP_11 HELP_12 HELP_13
 
 # define RED			"\x1b[31m"
 # define GREEN			"\x1b[32m"
@@ -61,6 +69,7 @@
 # define TYPE_LIGHT		"light"
 # define TYPE_EYE		"camera"
 # define TYPE_UNK		"beautiful princess or a rune of hyrule"
+# define TYPE_TORUS		"torus"
 
 int	acp_putstr(int, char *);
 

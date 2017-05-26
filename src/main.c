@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Feb 15 19:36:12 2017 Arthur Philippe
-** Last update Tue May  2 09:22:06 2017 Arthur Philippe
+** Last update Thu May 25 17:31:42 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -24,10 +24,18 @@ int		start_w_opt(int ac, char **av)
   int		status;
   t_rtc_opt	*opt;
 
-  status = 0;
   opt = get_rtc_opt(ac, av);
-  if (opt && !opt->imprt)
-    status = raytracer_launcher(opt->file_name, opt->exprt);
+  if (opt && !opt->imprt && !opt->render)
+    acp_print("%s\n\n", MSG_IMPL_OPT);
+  if (opt && (!opt->file_name || !opt->file_name[0]))
+    {
+      acp_print("%s\n", MSG_NO_FILE);
+      status = EXIT_FAIL;
+    }
+  else if (opt && !opt->imprt)
+    status = raytracer_launcher(opt->file_name,
+				opt->exprt,
+				opt->a_aliasing);
   else if (opt)
     status = import_launcher(opt->file_name);
   else
@@ -39,9 +47,8 @@ int	start_wo_opt(char *file_name)
 {
   int	status;
 
-  status = 0;
   if (match(file_name, CONF_MATCH))
-    status = raytracer_launcher(file_name, FALSE);
+    status = raytracer_launcher(file_name, FALSE, TRUE);
   else if (match(file_name, EXPORT_MATCH))
     status = import_launcher(file_name);
   else
@@ -49,9 +56,9 @@ int	start_wo_opt(char *file_name)
   return (status);
 }
 
-int		main(int ac, char **av)
+int	main(int ac, char **av)
 {
-  int		status;
+  int	status;
 
   status = 0;
   if (ac >= 2 && match(av[1], "-h"))

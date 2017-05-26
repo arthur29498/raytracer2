@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:35:59 2017 Arthur Philippe
-** Last update Wed May 10 10:17:53 2017 Arthur Philippe
+** Last update Tue May 23 13:03:11 2017 Arthur Philippe
 */
 
 #include <stdlib.h>
@@ -69,14 +69,17 @@ t_fbuffer	*my_framebuffer_create(int width, int height)
   (*buffer).width = width;
   (*buffer).height = height;
   if (!((*buffer).pixels))
-    return ((t_fbuffer *) 0);
+    {
+      free(buffer);
+      return ((t_fbuffer *) 0);
+    }
   i = 0;
   while (i < width * height * 4)
     (*buffer).pixels[i++] = 0;
   return (buffer);
 }
 
-void	reset_pixels(t_fbuffer *buffer)
+void	reset_colors(t_fbuffer *buffer)
 {
   int	i;
 

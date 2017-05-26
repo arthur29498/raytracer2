@@ -29,6 +29,7 @@
 # define OBJ_CYLINDER	"CYLINDER*"
 # define OBJ_CONE	"CONE*"
 # define OBJ_LIGHT	"LIGHT*"
+# define OBJ_TORUS	"TORUS*"
 # define OBJ_EYE	"EYE*"
 # define EXPORT_EXT	".exp"
 # define CONF_EXT	".rtc"
@@ -43,16 +44,19 @@
 # define ID_CONE	4
 # define ID_LIGHT	5
 # define ID_EYE		6
+# define ID_TORUS	7
 # define PI		3.14159265359
 # define TILE_SIZE	50
 # define MAX_REFLECT	10
 # define MAX_REFRACT	10
 # define SEED		0
+# define SUB_RAY_STEP	0.2
 # define XA		angles.x
 # define YA		angles.y
 # define ZA		angles.z
 # define DEFAULT_COLOR	sfBlack
 # define DEFAUT_LIGHT	(sfVector3f) {-300, 600, 200}
+# define MY_BLACK	(sfColor) {0, 0, 0, 0}
 # define X_TR_X	(to_rotate.x)
 # define Y_TR_X	((to_rotate.y * cosf(XA)) + (to_rotate.z * -sinf(XA)))
 # define Z_TR_X	((to_rotate.y * sinf(XA)) + (to_rotate.z * cosf(XA)))
@@ -69,6 +73,10 @@ int		helper(void);
 */
 void		my_put_pixel(t_fbuffer *, int, int, sfColor);
 sfVector3f	calc_dir_vector(float, sfVector2i, sfVector2i);
+sfVector3f	calc_sub_dir_vector(float dist_to_plane,
+				    sfVector2i screen_size,
+				    sfVector2i screen_pos,
+				    int sub_ray);
 float		intersect_sphere(sfVector3f, sfVector3f, float radius);
 float		intersect_ltd_sphere(sfVector3f eye_pos,
 				       sfVector3f dir_vector,
@@ -111,7 +119,7 @@ int		open_window(t_my_window *w, char *file_name);
 sfRenderWindow	*create_window(char *, int, int);
 t_fbuffer	*my_framebuffer_create(int, int);
 void		wf_window_destroy(t_my_window *);
-void		reset_pixels(t_fbuffer *buffer);
+void		reset_colors(t_fbuffer *buffer);
 /*
 ** Objects
 */
@@ -123,7 +131,6 @@ sfColor		get_color_from_objs(t_object *objs, int id);
 int		add_limit(char *buffer,
 			  int *idx,
 			  t_object *new_object);
-
 /*
 ** Render
 */
@@ -154,10 +161,11 @@ void		refract_effect(t_env *env,
 			       t_render_out *pr_out,
 			       sfColor *color,
 			       int iter);
-void		set_pixel(t_env *env,
+sfColor		set_color(t_env *env,
 			  sfColor *color,
 			  t_render_out *out,
 			  int iter);
+sfColor		get_color_avg(sfColor color1, sfColor color2, int iter);
 /*
 ** Export
 */

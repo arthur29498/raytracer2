@@ -5,7 +5,7 @@
 ** Login   <mael.drapier@epitech.eu>
 **
 ** Started on  Tue May  2 15:24:50 2017 mael drapier
-** Last update Thu May  4 12:46:19 2017 mael drapier
+** Last update Tue May 23 13:07:31 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -36,6 +36,7 @@ void		set_brightness(sfColor *color, t_object *objects,
   t_object	*objs_save;
   float		brightness;
 
+  brightness = 0;
   objs_save = objects;
   while (objects)
     {
