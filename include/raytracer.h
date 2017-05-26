@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Wed May 24 16:23:50 2017 etienne.filliat
+** Last update Fri May 26 14:19:35 2017 etienne.filliat
 */
 
 #ifndef RAYTRACER_H_
@@ -47,6 +47,7 @@
 # define TILE_SIZE	50
 # define MAX_REFLECT	10
 # define MAX_REFRACT	10
+# define SEED		0
 # define XA		angles.x
 # define YA		angles.y
 # define ZA		angles.z
@@ -192,6 +193,7 @@ void		set_chessboard_color(sfVector3f last_intersect,
 				     sfColor *color);
 
 void		perlin_noised_color(sfVector3f pos, sfColor *color);
-float perlin2d(float x, float y, float freq, int depth);
+float		perlin2d(float x, float y, float freq, int depth);
+
 
 #endif /* !RAYTRACER_H_ */

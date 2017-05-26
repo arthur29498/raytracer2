@@ -5,32 +5,33 @@
 ** Login   <etienne.filliat@epitech.eu>
 **
 ** Started on  Wed May 24 16:04:19 2017 etienne.filliat
-** Last update Wed May 24 17:53:00 2017 etienne.filliat
+** Last update Fri May 26 14:15:36 2017 etienne.filliat
 */
 
 #include <SFML/Graphics/RenderWindow.h>
 #include <SFML/Graphics/Sprite.h>
 #include <SFML/Graphics/Texture.h>
 #include <math.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include "raytracer.h"
 
 void		perlin_noised_color(sfVector3f pos, sfColor *color)
 {
   float		p_noise;
-  //sfColor	new_color;
+  int		cast;
 
-  printf("%f\n", p_noise = perlin2d(pos.x, pos.y, 0.1, 6));
-  color->r = color->r * p_noise;
-  color->g = color->g * p_noise;
-  color->b = color->b * p_noise;
-  color->a = color->a * p_noise;
-  /*if (p_noise <= -0.5)
-    color->r = color->r * 0.5;
-  else if (p_noise <= 0)
-    color->g = color->g * 0.5;
-  else if (p_noise <= 0.5)
-    color->b = color->b * 0.5;
-  else
-    color->a = color->a * 0.5;*/
+  if (pos.x < 0.0)
+    pos.x = pos.x * -1.0;
+  if (pos.y < 0.0)
+    pos.y = pos.y * -1.0;
+  p_noise = perlin2d(pos.x, pos.y, 0.1, 2);
+  if (p_noise >= 1.0)
+    {
+      cast = p_noise;
+      p_noise = p_noise - cast;
+    }
+    color->r = color->r * p_noise;
+    color->g = color->g * p_noise;
+    color->b = color->b * p_noise;
 }
