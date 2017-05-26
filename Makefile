@@ -61,6 +61,8 @@ SRCS	=	src/main.c				\
 		src/render/reflect.c			\
 		src/render/refract.c			\
 		src/procedural_texturing/chess_board.c	\
+		src/procedural_texturing/perlin_val.c	\
+		src/procedural_texturing/perlin_col.c
 
 OBJS	=	$(SRCS:.c=.o)
 

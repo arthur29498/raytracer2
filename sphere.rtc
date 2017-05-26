@@ -26,7 +26,7 @@ cR=0
 cG=123
 cB=255
 cA=255
-mR=600
+mR=0
 END
 
 OBJECT
