@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed May 24 16:07:04 2017 Arthur Philippe
-** Last update Thu May 25 15:48:54 2017 Arthur Philippe
+** Last update Fri May 26 18:03:09 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -28,6 +28,8 @@ sfColor		set_initial_color(t_object *objs, t_render_out *out)
 	    outp = get_def_color_ob(objs);
 	  if (objs->chess_board_f)
 	    set_chessboard_color(out->hit_pt, &outp);
+	  if (objs->chess_board_f)
+	    perlin_noised_color(out->hit_pt, &outp);
 	  return (outp);
 	}
       objs = objs->next;
@@ -39,9 +41,6 @@ sfColor	set_color(t_env *env, sfColor *color, t_render_out *out, int iter)
 {
   float	coef;
 
-  // *color = get_color_from_objs(env->objects, out->last_obj);
-  // if (out->type == ID_PLANE)
-  //   set_chessboard_color(out->hit_pt, color);
   *color = set_initial_color(env->objects, out);
   coef = std_color_effect(env, out);
   if (out->reflect != 0.00)
