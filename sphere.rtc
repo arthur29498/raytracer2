@@ -66,4 +66,5 @@ OBJECT
 T=PLANE
 Z=-40
 mR=600
+tC=1
 END
