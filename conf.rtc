@@ -43,8 +43,8 @@ T=PLANE
 Z=-35
 mR=700
 tC=1
-pF=500
-pH=500
+pF=2000
+pH=100
 END
 
 OBJECT
