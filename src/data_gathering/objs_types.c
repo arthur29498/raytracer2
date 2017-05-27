@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Apr 18 13:50:17 2017 Arthur Philippe
-** Last update Thu May 25 19:25:19 2017 Arthur Philippe
+** Last update Sat May 27 12:32:49 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -16,7 +16,7 @@
 #include "raytracer_messages.h"
 #include "raytracer_data.h"
 
-t_keywords	g_keywords[] =
+static t_keywords	g_keywords[] =
   {
     {ID_SPHERE, OBJ_SPHERE, TYPE_SPHERE},
     {ID_PLANE, OBJ_PLANE, TYPE_PLANE},

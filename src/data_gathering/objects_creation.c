@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Feb 18 11:24:50 2017 Arthur Philippe
-** Last update Thu May 25 15:28:11 2017 Arthur Philippe
+** Last update Sat May 27 12:33:53 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -84,7 +84,7 @@ t_object	*create_object(char *buffer, int *idx)
 	  add_position(buffer, idx, new_object);
 	  add_color(buffer, idx, new_object);
 	  add_limit(buffer, idx, new_object);
-          add_brightness_reflect(buffer, idx, new_object);
+	  add_brightness_reflect(buffer, idx, new_object);
 	  add_pr_texture(buffer, idx, new_object);
 	  if (buffer[*idx] == 'T')
 	    new_object->type = resolve_object_type(&buffer[*idx + 2]);
