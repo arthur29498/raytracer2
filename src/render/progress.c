@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Mon Apr 17 14:00:50 2017 Arthur Philippe
-** Last update Wed May 24 17:31:47 2017 Arthur Philippe
+** Last update Sat May 27 22:32:04 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -23,7 +23,7 @@ void	display_progress(int *pr, int runing)
     acp_print("%s[", MSG_RENDER);
   else if (*pr >= SC_W * SC_H / 10)
     {
-      acp_print("%c\a", LOAD_CHAR);
+      acp_print("%c", LOAD_CHAR);
       *pr = 0;
     }
 }
