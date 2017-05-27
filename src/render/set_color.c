@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed May 24 16:07:04 2017 Arthur Philippe
-** Last update Fri May 26 18:03:09 2017 Arthur Philippe
+** Last update Sat May 27 11:49:00 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -28,7 +28,7 @@ sfColor		set_initial_color(t_object *objs, t_render_out *out)
 	    outp = get_def_color_ob(objs);
 	  if (objs->chess_board_f)
 	    set_chessboard_color(out->hit_pt, &outp);
-	  if (objs->chess_board_f)
+	  if (objs->perlin_ht)
 	    perlin_noised_color(out->hit_pt, &outp);
 	  return (outp);
 	}

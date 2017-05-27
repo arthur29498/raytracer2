@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu May 25 15:18:25 2017 Arthur Philippe
-** Last update Thu May 25 15:25:59 2017 Arthur Philippe
+** Last update Sat May 27 11:55:34 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -19,9 +19,9 @@
 int	add_pr_texture(char *buffer, int *idx, t_object *new_object)
 {
   if (buffer[*idx] == 'p' && buffer[*idx + 1] == 'F')
-    new_object->perlin_fq = my_getnbr(&buffer[*idx + 3]) / 1000;
+    new_object->perlin_fq = (float) my_getnbr(&buffer[*idx + 3]) / 1000;
   else if (buffer[*idx] == 'p' && buffer[*idx + 1] == 'H')
-    new_object->perlin_ht = my_getnbr(&buffer[*idx + 3]) / 1000;
+    new_object->perlin_ht = (float) my_getnbr(&buffer[*idx + 3]) / 1000;
   else if (buffer[*idx] == 't' && buffer[*idx + 1] == 'C')
     new_object->chess_board_f = my_getnbr(&buffer[*idx + 3]);
   else
