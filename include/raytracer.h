@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:44:55 2017 Arthur Philippe
-** Last update Thu May 11 16:51:50 2017 Arthur Philippe
+** Last update Sat May 27 15:55:56 2017 HexA
 */
 
 #ifndef RAYTRACER_H_
@@ -84,6 +84,10 @@ float		intersect_ltd_cylinder(sfVector3f eye_pos,
 float		intersect_cone(sfVector3f eye_pos,
 			       sfVector3f dir_vector,
 			       float radius);
+float		intersect_tore(sfVector3f eye_pos,
+			       sfVector3f dir_vector,
+			       float radius,
+			       float mradius);
 float		intersect_ltd_cone(sfVector3f eye_pos,
 				       sfVector3f dir_vector,
 				       float radius,

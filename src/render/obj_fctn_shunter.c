@@ -5,9 +5,10 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 23 12:56:37 2017 Arthur Philippe
-** Last update Tue May  9 19:41:01 2017 Arthur Philippe
+** Last update Sat May 27 16:08:51 2017 HexA
 */
 
+#include <stdio.h>
 #include <SFML/Graphics/RenderWindow.h>
 #include <SFML/Graphics/Sprite.h>
 #include <SFML/Graphics/Texture.h>
@@ -16,6 +17,7 @@
 #include "raytracer.h"
 #include "raytracer_messages.h"
 #include "raytracer_data.h"
+#include "intersect.h"
 
 inline static float	obj_fctn_sphere(t_object *object,
 					t_render_in *in_arg)
@@ -27,10 +29,11 @@ inline static float	obj_fctn_sphere(t_object *object,
   new_eye.y = in_arg->eye_pt.y - object->pos.y;
   new_eye.z = in_arg->eye_pt.z - object->pos.z;
   if (object->limit_a == 0 && object->limit_b == 0)
-    k = intersect_sphere(new_eye, in_arg->dir_vector, object->size_a);
+    k = intersect_tore(new_eye, in_arg->dir_vector, object->size_a, 10);
   else
     k = intersect_ltd_sphere(new_eye, in_arg->dir_vector,
 			     object->size_a, object);
+  printf("k=%f\n", k);
   return (k);
 }
 
@@ -86,18 +89,18 @@ inline static float	obj_fctn_cone(t_object *object,
   else
     k = intersect_ltd_cone(new_eye, new_dir_v, object->size_a, object);
   return (k);
-
 }
 
 float			obj_fctn_shunter(t_object *object, t_render_in *in_arg)
 {
-  static float		(*obj_intersect[5])(t_object *, t_render_in *);
+  static float		(*obj_intersect[6])(t_object *, t_render_in *);
 
   obj_intersect[1] = obj_fctn_sphere;
   obj_intersect[2] = obj_fctn_plane;
   obj_intersect[3] = obj_fctn_cylinder;
   obj_intersect[4] = obj_fctn_cone;
-  if (object->type > 0 && object->type <= 4)
+  obj_intersect[5] = obj_fctn_tore;
+  if (object->type > 0 && object->type <= 5)
     return (obj_intersect[object->type](object, in_arg));
   else
     return (-1);

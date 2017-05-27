@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 15:35:04 2017 Arthur Philippe
-** Last update Fri Apr 28 15:27:03 2017 mael drapier
+** Last update Tue May 23 12:51:03 2017 HexA
 */
 
 #include <SFML/Graphics/RenderWindow.h>
