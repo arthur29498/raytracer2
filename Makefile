@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Thu May 25 15:25:18 2017 Arthur Philippe
+## Last update Sat May 27 12:10:54 2017 Arthur Philippe
 ##
 
 CC	=	gcc
@@ -62,7 +62,8 @@ SRCS	=	src/main.c				\
 		src/render/refract.c			\
 		src/procedural_texturing/chess_board.c	\
 		src/procedural_texturing/perlin_val.c	\
-		src/procedural_texturing/perlin_col.c
+		src/procedural_texturing/perlin_col.c	\
+		src/procedural_texturing/perlin_tab.c
 
 OBJS	=	$(SRCS:.c=.o)
 

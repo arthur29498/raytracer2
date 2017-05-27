@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Feb 18 13:51:25 2017 Arthur Philippe
-** Last update Thu May 25 15:27:52 2017 Arthur Philippe
+** Last update Sat May 27 12:10:20 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_DATA_H_
@@ -27,5 +27,7 @@ int		add_brightness_reflect(char *buffer,
 int		add_pr_texture(char *buffer,
 			       int *idx,
 			       t_object *new_object);
+
+extern int g_hash[];
 
 #endif /* !RAYTRACER_DATA_H_ */
