@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 23 12:56:37 2017 Arthur Philippe
-** Last update Sat May 27 16:08:51 2017 HexA
+** Last update Sun May 28 17:03:43 2017 HexA
 */
 
 #include <stdio.h>
@@ -29,7 +29,7 @@ inline static float	obj_fctn_sphere(t_object *object,
   new_eye.y = in_arg->eye_pt.y - object->pos.y;
   new_eye.z = in_arg->eye_pt.z - object->pos.z;
   if (object->limit_a == 0 && object->limit_b == 0)
-    k = intersect_tore(new_eye, in_arg->dir_vector, object->size_a, 10);
+    k = intersect_tore(object, new_eye, in_arg->dir_vector, 10);
   else
     k = intersect_ltd_sphere(new_eye, in_arg->dir_vector,
 			     object->size_a, object);

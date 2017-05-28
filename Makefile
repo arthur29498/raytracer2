@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Tue May 23 12:47:36 2017 HexA
+## Last update Sun May 28 17:04:09 2017 HexA
 ##
 
 CC	=	gcc
@@ -59,6 +59,8 @@ SRCS	=	src/main.c				\
 		src/render/reflect.c			\
 		src/render/refract.c			\
 		src/procedural_texturing/chess_board.c	\
+		src/quadric_eq/ferari.c			\
+		src/quadric_eq/cardran.c		\
 
 OBJS	=	$(SRCS:.c=.o)
 

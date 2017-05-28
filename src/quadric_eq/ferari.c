@@ -5,17 +5,14 @@
 ** Login   <hexa@epitech.net>
 ** 
 ** Started on  Sat May 27 17:56:46 2017 HexA
-** Last update Sun May 28 16:44:47 2017 HexA
+** Last update Sun May 28 16:58:30 2017 HexA
 */
 
 #include <SFML/Graphics.h>
 #include <math.h>
 #include "raytracer.h"
 #include "intersect.h"
-
-#define P2(x) (x * x)
-#define P3(x) (x * x * x)
-#define P4(x) (x * x * x * x)
+#include "quadric.h"
 
 static float		get_smallest_x(float x1, float x2, float x3, float x4)
 {

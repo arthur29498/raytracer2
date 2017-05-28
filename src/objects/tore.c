@@ -5,7 +5,7 @@
 ** Login   <hexa@epitech.net>
 ** 
 ** Started on  Tue May 09 12:44:05 2017 HexA
-** Last update Sat May 27 16:11:23 2017 HexA
+** Last update Sun May 28 17:02:55 2017 HexA
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -14,11 +14,7 @@
 #include <math.h>
 #include "raytracer.h"
 #include "intersect.h"
-
-#define P2(x) (x * x)
-#define P3(x) (x * x * x)
-#define P4(x) (x * x * x * x)
-#define absf(x) ((x < 0) ? -x : x)
+#include "quadric.h"
 
 static inline t_tore_poly	define_tetra_eq_vars(sfVector3f p,
 						    sfVector3f d,
@@ -44,45 +40,16 @@ static inline t_tore_poly	define_tetra_eq_vars(sfVector3f p,
   return (poly);
 }
 
-static inline float		do_tore(t_tore_poly poly, float x, int d)
-{
-  float				r;
-
-  if (d != 1)
-  {
-    r = ((poly.e * (P4(x))) + (poly.d * (P3(x))) + (poly.c * (P2(x))));
-    r = r + (poly.b * x) + poly.a;
-  }
-  else
-  {
-    r = ((4 * poly.e * P3(x)) + (3 * poly.d * P2(x)) + (2 * poly.c * x));
-    r = r + poly.b;
-  }
-  return (r);
-}
-
-static inline float		newton(t_tore_poly poly, float xnewton, float N)
-{
-  float				c;
-
-  if (N > 100)
-    return (-1);
-  c = xnewton - (do_tore(poly, xnewton, 0) / do_tore(poly, xnewton, 1));
-  if (absf((c - xnewton)) / absf(c) > powf(10, -5))
-    newton(poly, c, N + 1);
-  return (xnewton);
-}
-
-float				intersect_tore(sfVector3f eye_pos,
+float				intersect_tore(t_object *obj,
+					       sfVector3f eye_pos,
 					       sfVector3f dir_vector,
-					       float radius,
 					       float mradius)
 {
   t_tore_poly			poly;
   float				sol;
 
-  poly = define_tetra_eq_vars(eye_pos, dir_vector, radius, mradius);
-  sol = newton(poly, 0.5, 0);
+  poly = define_tetra_eq_vars(eye_pos, dir_vector, obj->size_a, mradius);
+  sol = ferari(obj, poly);
   return (sol);
 }
 
@@ -99,6 +66,6 @@ float				obj_fctn_tore(t_object *object,
   new_eye = rotate_xyz_inv(new_eye, object->rot);
   new_dir_v = rotate_xyz_inv(in_arg->dir_vector, object->rot);
   if (object->limit_a == 0 && object->limit_b == 0)
-    k = intersect_tore(new_eye, new_dir_v, object->size_a, 10);
+    k = intersect_tore(object, new_eye, new_dir_v, 10);
   return (k);
 }
