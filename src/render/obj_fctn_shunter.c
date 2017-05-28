@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Thu Feb 23 12:56:37 2017 Arthur Philippe
-** Last update Thu May 25 19:28:08 2017 Arthur Philippe
+** Last update Sun May 28 11:36:16 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -102,4 +102,3 @@ float			obj_fctn_shunter(t_object *object, t_render_in *in_arg)
   else
     return (-1);
 }
-	

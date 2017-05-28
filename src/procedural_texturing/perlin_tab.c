@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat May 27 12:05:54 2017 Arthur Philippe
-** Last update Sat May 27 12:06:28 2017 Arthur Philippe
+** Last update Sun May 28 11:41:02 2017 Arthur Philippe
 */
 
 int g_hash[] =
