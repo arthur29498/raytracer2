@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:35:59 2017 Arthur Philippe
-** Last update Tue May 23 13:03:11 2017 Arthur Philippe
+** Last update Sun May 28 22:17:31 2017 Arthur Philippe
 */
 
 #include <stdlib.h>
@@ -36,11 +36,6 @@ int		open_window(t_my_window *w, char *file_name)
   sfRenderWindow_clear(w->window, sfBlack);
   sfRenderWindow_drawSprite(w->window, w->sprite, NULL);
   sfRenderWindow_display(w->window);
-  sfRenderWindow_clear(w->window, sfBlack);
-  sfTexture_updateFromPixels(w->tex, w->buffer->pixels, SC_W, SC_H, 0, 0);
-  sfSprite_setTexture(w->sprite, w->tex, sfTrue);
-  sfRenderWindow_drawSprite(w->window, w->sprite, NULL);
-  sfRenderWindow_display(w->window);
   acp_print(MSG_SUCCES);
   return (0);
 }
@@ -66,6 +61,7 @@ t_fbuffer	*my_framebuffer_create(int width, int height)
   if (!buffer)
     return (NULL);
   (*buffer).pixels = malloc(width * height * 5 * sizeof(sfUint8));
+  my_memset(buffer->pixels, 0, width * height * 5 * sizeof(sfUint8));
   (*buffer).width = width;
   (*buffer).height = height;
   if (!((*buffer).pixels))
