@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 **
 ** Started on  Wed Nov  9 16:51:23 2016 Arthur Philippe
-** Last update Mon Mar 20 12:54:23 2017 Arthur Philippe
+** Last update Sun May 28 18:06:05 2017 Arthur Philippe
 */
 
 #include "acp_print.h"
@@ -58,7 +58,6 @@ int		my_putnbr_base(unsigned int nb, char *base)
   b_len = my_strlen(base);
   index = 0;
   tmp = nb;
-  printed = 0;
   if (!nb)
     return (my_putchar('0'));
   printed = my_put_alt_prefix(base, b_len);
@@ -87,7 +86,6 @@ int			my_putlong_base(unsigned long nb, char *base)
   b_len = my_strlen(base);
   index = 0;
   tmp = nb;
-  printed = 0;
   if (!nb)
     return (my_putchar('0'));
   printed = my_put_alt_prefix(base, b_len);

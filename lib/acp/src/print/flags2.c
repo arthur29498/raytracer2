@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 **
 ** Started on  Sat Nov 12 12:46:03 2016 Arthur Philippe
-** Last update Wed Jan 25 17:50:17 2017 Arthur Philippe
+** Last update Sun May 28 17:48:58 2017 Arthur Philippe
 */
 
 #include "acp_print.h"
@@ -29,22 +29,22 @@ int	long_flags(char **strptr, va_list params)
   return (sum);
 }
 
-int	flag_u_unsigned_long(va_list params)
+int	flag_u_unsigned_long(va_list prm)
 {
-  return (my_putlong_base(va_arg(params, unsigned long), "0123456789"));
+  return (my_putlong_base(va_arg(prm, unsigned long), "0123456789"));
 }
 
-int	flag_x_hexa_long(va_list params)
+int	flag_x_hexa_long(va_list prm)
 {
-  return (my_putlong_base(va_arg(params, unsigned long), "0123456789abcdef"));
+  return (my_putlong_base(va_arg(prm, unsigned long), "0123456789abcdef"));
 }
 
-int	flag_X_hexa_long(va_list params)
+int	flag_X_hexa_long(va_list prm)
 {
-  return (my_putlong_base(va_arg(params, unsigned long), "0123456789abcdef"));
+  return (my_putlong_base(va_arg(prm, unsigned long), "0123456789abcdef"));
 }
 
-int	flag_o_octal_long(va_list params)
+int	flag_o_octal_long(va_list prm)
 {
-  return (my_putlong_base(va_arg(params, unsigned long), "0123456789ABCDEF"));
+  return (my_putlong_base(va_arg(prm, unsigned long), "0123456789ABCDEF"));
 }

@@ -5,7 +5,7 @@
 ** Login   <arthur@epitech.net>
 **
 ** Started on  Sun Nov 20 13:03:11 2016 Arthur Philippe
-** Last update Wed Jan 25 17:49:46 2017 Arthur Philippe
+** Last update Sun May 28 18:06:35 2017 Arthur Philippe
 */
 
 #include "acp_print.h"
@@ -16,6 +16,7 @@ int	my_put_alt_prefix(char *base, int b_len)
   char	x;
 
   sum = 0;
+  x = 0;
   if (b_len == 16)
     x = base[10] + 23;
   if (apply_preformat(0, 0) == 3)
