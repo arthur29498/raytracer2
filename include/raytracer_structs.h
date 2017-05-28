@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Apr 15 12:40:43 2017 Arthur Philippe
-** Last update Fri May 26 12:24:29 2017 etienne.filliat
+** Last update Sun May 28 21:17:10 2017 Arthur Philippe
 */
 
 #ifndef RAYTRACER_STRUCTS_H_
@@ -99,10 +99,10 @@ typedef struct		s_keywords
 
 typedef struct		s_Vector4i
 {
-  int		s;
-  int		t;
-  int		u;
-  int		v;
+  int			s;
+  int			t;
+  int			u;
+  int			v;
 }			t_Vector4i;
 
 #endif /* !RAYTRACER_STRUCTS_H_ */

@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Feb 15 19:36:12 2017 Arthur Philippe
-** Last update Thu May 25 17:31:42 2017 Arthur Philippe
+** Last update Sun May 28 21:17:24 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -27,7 +27,7 @@ int		start_w_opt(int ac, char **av)
   opt = get_rtc_opt(ac, av);
   if (opt && !opt->imprt && !opt->render)
     acp_print("%s\n\n", MSG_IMPL_OPT);
-  if (opt && (!opt->file_name || !opt->file_name[0]))
+  if (opt && !opt->file_name[0])
     {
       acp_print("%s\n", MSG_NO_FILE);
       status = EXIT_FAIL;
