@@ -5,7 +5,7 @@
 ## Login   <arthur@epitech.net>
 ##
 ## Started on  Mon Nov  7 11:39:45 2016 Arthur Philippe
-## Last update Sun May 28 19:49:17 2017 etienne.filliat
+## Last update Sun May 28 21:33:00 2017 Arthur Philippe
 ##
 
 CC	=	gcc
@@ -22,9 +22,9 @@ SRCS	=	src/main.c				\
 		src/launchers/bootstrap_threads.c	\
 		src/launchers/maintain_engine.c		\
 		src/window_output/str.c			\
-		src/window_output/helper.c		\
-		src/window_output/open_window.c		\
-		src/window_output/data_nuke.c		\
+		src/helper.c				\
+		src/launchers/open_window.c		\
+		src/data_gathering/data_nuke.c		\
 		src/data_gathering/get_opt.c		\
 		src/data_gathering/fd_errors.c		\
 		src/data_gathering/list.c		\

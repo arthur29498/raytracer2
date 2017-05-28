@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Apr 19 16:02:34 2017 Arthur Philippe
-** Last update Tue May  2 13:48:15 2017 Arthur Philippe
+** Last update Sun May 28 21:57:06 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
@@ -16,29 +16,11 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <fcntl.h>
+#include "str.h"
 #include "acp.h"
 #include "raytracer.h"
 #include "raytracer_messages.h"
 #include "raytracer_data.h"
-
-char	*my_strdup(char *src)
-{
-  char	*dest;
-  int	i;
-
-  if (!src)
-    return (NULL);
-  if (!((dest = malloc(my_strlen(src) + 1))))
-    return (NULL);
-  i = 0;
-  while (src[i])
-    {
-      dest[i] = src[i];
-      i += 1;
-    }
-  dest[i] = 0;
-  return (dest);
-}
 
 char	*set_file_ext(char *origin)
 {
@@ -59,7 +41,7 @@ char	*set_file_ext(char *origin)
 	}
       idx -= 1;
     }
-  return (DEF_EXPRT);
+  return (my_strdup(DEF_EXPRT));
 }
 
 int		export_render(char *file_name,
@@ -67,11 +49,14 @@ int		export_render(char *file_name,
 {
   int		fd;
   sfUint8	*pixels;
+  char		*new_f_name;
 
-  file_name = set_file_ext(file_name);
-  acp_print(HINT_EXPORT, file_name);
-  if ((fd = open(file_name, O_CREAT | O_RDWR, S_IWUSR | S_IRUSR)) == -1)
+  if (!(new_f_name = set_file_ext(file_name)))
     return (-1);
+  acp_print(HINT_EXPORT, new_f_name);
+  if ((fd = open(new_f_name, O_CREAT | O_RDWR, S_IWUSR | S_IRUSR)) == -1)
+    return (-1);
+  free(new_f_name);
   pixels = buffer->pixels;
   buffer->pixels = NULL;
   if (write(fd, buffer, sizeof(t_fbuffer)) != sizeof(t_fbuffer))

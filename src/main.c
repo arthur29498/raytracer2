@@ -5,13 +5,14 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Wed Feb 15 19:36:12 2017 Arthur Philippe
-** Last update Sun May 28 21:17:24 2017 Arthur Philippe
+** Last update Sun May 28 21:52:05 2017 Arthur Philippe
 */
 
 #include <SFML/Graphics/RenderWindow.h>
 #include <SFML/Graphics/Sprite.h>
 #include <SFML/Graphics/Texture.h>
 #include <unistd.h>
+#include "stdlib.h"
 #include "acp.h"
 #include "raytracer.h"
 #include "raytracer_messages.h"
@@ -21,7 +22,7 @@
 
 int		start_w_opt(int ac, char **av)
 {
-  int		status;
+  int		st;
   t_rtc_opt	*opt;
 
   opt = get_rtc_opt(ac, av);
@@ -30,17 +31,16 @@ int		start_w_opt(int ac, char **av)
   if (opt && !opt->file_name[0])
     {
       acp_print("%s\n", MSG_NO_FILE);
-      status = EXIT_FAIL;
+      st = EXIT_FAIL;
     }
   else if (opt && !opt->imprt)
-    status = raytracer_launcher(opt->file_name,
-				opt->exprt,
-				opt->a_aliasing);
+    st = raytracer_launcher(opt->file_name, opt->exprt, opt->a_aliasing);
   else if (opt)
-    status = import_launcher(opt->file_name);
+    st = import_launcher(opt->file_name);
   else
-    status = EXIT_FAIL;
-  return (status);
+    st = EXIT_FAIL;
+  free(opt);
+  return (st);
 }
 
 int	start_wo_opt(char *file_name)
