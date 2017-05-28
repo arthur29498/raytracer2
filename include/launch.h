@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Sat Mar 18 11:16:50 2017 Arthur Philippe
-** Last update Thu May 25 16:41:36 2017 Arthur Philippe
+** Last update Sun May 28 22:59:57 2017 Arthur Philippe
 */
 
 #ifndef LAUNCH_H_
@@ -17,6 +17,5 @@ int	import_launcher(char *file_name);
 void	find_light(t_env* env);
 void	find_eye(t_env* env);
 int	raytracer_thread_launch(t_env *env);
-
 
 #endif /* !LAUNCH_H_ */
