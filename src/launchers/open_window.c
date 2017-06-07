@@ -5,7 +5,7 @@
 ** Login   <arthur.philippe@epitech.eu>
 **
 ** Started on  Tue Feb  7 10:35:59 2017 Arthur Philippe
-** Last update Sun May 28 22:17:31 2017 Arthur Philippe
+** Last update Sat Jun  3 11:50:23 2017 Arthur Philippe
 */
 
 #include <stdlib.h>
@@ -44,7 +44,7 @@ sfRenderWindow		*create_window(char *name, int width, int height)
 {
   sfRenderWindow	*window;
   sfVideoMode		mode;
-
+	
   mode.width = width;
   mode.height = height;
   mode.bitsPerPixel = 32;
