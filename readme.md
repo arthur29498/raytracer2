@@ -1,9 +1,13 @@
 # Raytracer
 
---Depandancy:
-csfml lib
+__Depandancy:__
+
+- csfml lib
+
 On arch-linux run:
-    yaourt -S csfml
+```
+yaourt -S csfml
+```
 
 __Features:__
 
