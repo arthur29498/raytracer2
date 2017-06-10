@@ -1,5 +1,10 @@
 # Raytracer
 
+--Depandancy:
+csfml lib
+On arch-linux run:
+    yaourt -S csfml
+
 __Features:__
 
 - Fichier de configuration Key/Value
