@@ -73,7 +73,7 @@ CFLAGS	=	-Wextra -Wall
 
 CFLAGS	+=	-I include/
 
-LDFLAGS	=	-L./lib/acp -lacp -lc_graph_prog -lm -lpthread
+LDFLAGS	=	-L./lib/acp -lacp -lcsfml-graphics -lcsfml-window -lcsfml-system -lm -lpthread
 
 ifndef VERBOSE
  MAKEFLAGS	+=	--no-print-directory
